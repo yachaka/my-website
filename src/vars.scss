@@ -1,0 +1,18 @@
+
+$serif-font: Georgia;
+$sans-serif-font: Arial;
+
+/* TYPOGRAPHY */
+@import '~modularscale-sass/stylesheets/modularscale';
+
+$modularscale: (
+  base: 14px,
+  ratio: 1.333
+);
+
+%ms0 { font-size: ms(0); line-height: 1.4; }
+%ms1 { font-size: ms(1); line-height: 1.4; }
+%ms2 { font-size: ms(2); line-height: 1.4; }
+%ms3 { font-size: ms(3); line-height: 1.3; }
+%ms4 { font-size: ms(4); line-height: 1.2; }
+%ms5 { font-size: ms(5); line-height: 1.1; }

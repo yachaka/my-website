@@ -1,0 +1,18 @@
+
+@import '../../vars';
+
+#projects {
+  #spendeskMobileMockup {
+    overflow: hidden;
+  }
+  #spendeskUbuntuMockup {
+  }
+
+  .workBlock {
+    margin-bottom: 165px;
+    .brief {
+      @extend %ms2;
+      margin-bottom: 55px;
+    }
+  }
+}

@@ -1,0 +1,68 @@
+
+@import '../vars';
+
+:global {
+  *,
+  *:before,
+  *:after {
+    -webkit-box-sizing: border-box;
+       -moz-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+
+  body {
+    font-family: $serif-font;
+    @extend %ms0;
+  }
+
+  a {
+    color: black;
+    text-decoration: none;
+    border-bottom: 2px solid #999;
+    transition: all 200ms ease;
+  }
+
+  a:hover {
+    color: #498fff;
+    border-bottom-color: #498fff;
+  }
+
+  /* TYPOGRAPHY */
+  .sans-serif {
+    font-family: $sans-serif-font;
+  }
+
+  .ms0 { @extend %ms0; }
+  .ms1 { @extend %ms1; }
+  .ms2 { @extend %ms2; }
+  .ms3 { @extend %ms3; }
+  .ms4 { @extend %ms4; }
+  .ms5 { @extend %ms5; }
+
+  h1 { @extend %ms5; }
+  h2 { @extend %ms4; }
+  h3 { @extend %ms3; }
+  h4 { @extend %ms2; }
+  h5 { @extend %ms1; }
+
+
+  .muted { color: #aaa; }
+
+  /* ICONS */
+  .external-link {
+    &:after {
+      content: '';
+      display: inline-block;
+      vertical-align: top;
+      width: 1em;
+      height: 1em;
+      background-image: url('../img/external-link.svg');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain;
+    }
+  }
+
+  /* MISCEALLANOUS */
+  hr { border-bottom: none;}
+}

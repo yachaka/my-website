@@ -1,0 +1,75 @@
+
+@import '../vars';
+
+$saas-color: #ff1969;
+$mobile-color: #00c0e2;
+$learn-color: #0caf14;
+
+#home {
+  #firstH1 { margin-bottom: 5px; }
+  #secondH1 { margin-bottom: 50px; }
+
+  #H2Presentation { margin-bottom: 55px; }
+
+  #getStartedTitle { margin-bottom: 5px;}
+}
+
+.saasLink:hover, .saasLink.active {
+  color: $saas-color !important;
+  border-color: $saas-color !important;
+}
+.mobileLink:hover, .mobileLink.active {
+  color: $mobile-color !important;
+  border-color: $mobile-color !important;
+}
+.learnLink:hover, .learnLink.active {
+  color: $learn-color !important;
+  border-color: $learn-color !important;
+}
+
+#activities {
+  .activity {
+    display: block;
+    border: 2px solid black;
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 60px;
+
+    text-align: center;
+
+    .icon {
+      height: 120px;
+      padding: 10px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .text {
+      height: 65px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      p {
+        @extend %ms2;
+      }
+    }
+
+  }
+
+  .activity .icon svg path { transition: stroke 200ms ease; }
+  .activity#saasLinkBox {
+    .icon svg { height: 110px; }
+    &:hover, &.active { .icon svg path { stroke: $saas-color; } }
+  }
+  .activity#mobileLinkBox {
+    .icon svg { height: 110px; }
+    &:hover, &.active { .icon svg { path, circle { stroke: $mobile-color; } } }
+  }
+  .activity#learnLinkBox {
+    .icon svg { height: 90px; }
+    &:hover, &.active { .icon svg path { stroke: $learn-color; } }
+  }
+}
