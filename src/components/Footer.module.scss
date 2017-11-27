@@ -1,10 +1,24 @@
 
 .footer {
+  margin-bottom: 5px;
+  
+  a {
+    color: #aaa;
+
+    &:hover {
+      color: inherit;
+    }
+  }
+
+  hr { border-color: #999; }
+
   ul {
+    overflow: auto;
+
     li {
       float: right;
 
-      &.make-it-left { float: left; }
+      &.left { float: left; }
       &.leftmost a { padding: 0 30px 0 0; }
       &.rightmost a { padding: 0 0 0 30px; }
 

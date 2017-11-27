@@ -9,6 +9,8 @@
 
   &.arrowsOnWhite {
     .arrowBox {
+      background-color: transparent;
+      
       &:hover {
         background-color: #ddd;
       }

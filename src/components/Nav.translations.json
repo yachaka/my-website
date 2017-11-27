@@ -1,0 +1,14 @@
+{
+  "en": {
+    "home": "Home",
+    "projects": "Projects",
+    "services": "Services",
+    "rate-and-more": "Rate & How I Collaborate"
+  },
+  "fr": {
+    "home": "Accueil",
+    "projects": "Réalisations",
+    "services": "Services",
+    "rate-and-more": "Tarif & Comment je collabore"
+  }
+}

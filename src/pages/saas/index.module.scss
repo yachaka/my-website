@@ -1,0 +1,12 @@
+
+@import '../../vars';
+
+.heading {
+  margin-bottom: 50px;
+
+  img { height: 70px; vertical-align: bottom; display: inline-block; margin-right: 5px; }
+}
+
+p.talk {
+  @extend %ms2;
+}

@@ -1,26 +1,38 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Link from 'gatsby-link'
+import React, { PureComponent } from 'react'
+import Link from '../components/Link'
 // import Helmet from 'react-helmet'
 
 import 'reset-css';
-import 'bootstrap-grid';
+import '../bootstrap/css/bootstrap.min.css';
+// import 'bootstrap-grid';
 
 import s from './index.module.scss';
 
-import Nav from './Nav';
-import Footer from './Footer';
+import Nav from '../components/Nav';
+import Footer from '../components/Footer';
 
-const TemplateWrapper = ({ children }) => (
-  <div>
-    <Nav />
-    {children()}
-    <Footer />
-  </div>
-)
+class Layout extends PureComponent {
+  defaultProps = {
+    lang: 'en',
+  };
 
-TemplateWrapper.propTypes = {
-  children: PropTypes.func,
+  getChildContext() {
+    return {
+      lang: this.props.lang,
+    };
+  }
+
+  render() {
+    const { children } = this.props;
+
+    return (
+      <div>
+        <Nav />
+        {children()}
+        <Footer />
+      </div>
+    );
+  }
 }
 
-export default TemplateWrapper
+export default Layout

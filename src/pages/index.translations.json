@@ -1,0 +1,14 @@
+{
+  "en": {
+    "headline1": "Hi, I'm Ilyes Hermellin.",
+    "headline2": "I am a freelance fullstack developer.",
+    "presentation": "I can help you {{saas}}build SaaS{{/saas}}, {{mobile}}mobile applications{{/mobile}}<br/> and {{learn}}learn latest JS techs{{/learn}}.",
+    "ctas-title": "Get Started"
+  },
+  "fr": {
+    "headline1": "Bonjour, je m'appelle Ilyes Hermellin.",
+    "headline2": "Je suis un développeur fullstack freelance.",
+    "presentation": "Je peux vous aider à {{saas}}développer un SaaS{{/saas}},<br/>{{mobile}}une application mobile{{/mobile}} et {{learn}}apprendre le JS{{/learn}}.",
+    "ctas-title": "En savoir plus"
+  }
+}

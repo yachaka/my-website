@@ -1,0 +1,12 @@
+{
+  "en": {
+    "cta-saas-text": "Build my SaaS",
+    "cta-mobile-text": "Launch my Mobile Application",
+    "cta-learn-text": "Learn Latest JS Techs"
+  },
+  "fr": {
+    "cta-saas-text": "Construis mon SaaS",
+    "cta-mobile-text": "Développes mon application mobile",
+    "cta-learn-text": "Apprends-moi les dernières technos JS"
+  }
+}

@@ -48,6 +48,8 @@
 
   .muted { color: #aaa; }
 
+  abbr { border-bottom: 1px dashed black; text-decoration: none; }
+
   /* ICONS */
   .external-link {
     &:after {

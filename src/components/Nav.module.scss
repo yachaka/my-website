@@ -1,0 +1,244 @@
+
+@import '../vars';
+
+$nav-link-height: 50px;
+$nav-link-vertical-margin: 10px;
+$nav-height: $nav-link-height + $nav-link-vertical-margin * 2;
+$nav-margin-bottom: 25px;
+$nav-link-border-width: 2px;
+
+$submenu-extra-width: 60px;
+
+:global {
+  body {
+    padding-top: $nav-height + $nav-margin-bottom;
+  }
+}
+
+#nav {
+  position: fixed;
+  background-color: white;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  overflow: visible;
+
+  & > div > ul {
+    overflow: visible;
+
+    & > li {
+      float: right;
+
+      &.home { float: left; }
+      &.leftmost a { padding: 0 30px 0 0; }
+      &.rightmost a { padding: 0 0 0 30px; }
+
+      & > a {
+        position: relative;
+        display: block;
+        height: $nav-link-height;
+        line-height: $nav-link-height - $nav-link-border-width;
+        text-decoration: none;
+        margin: $nav-link-vertical-margin 0;
+        padding: 0 30px;
+        border-bottom: none;
+        border: $nav-link-border-width solid transparent;
+        @extend %ms1;
+
+        &.withSubmenu {
+          border-radius: 4px 4px 0 0;
+          border-bottom: none;
+          background-color: white;
+          
+          $step: 170ms;
+          $half-step: $step / 2;
+          $quart-step: $step / 4;
+          $three-four: $half-step + $quart-step;
+
+          .hider {
+            pointer-events: none;
+            position: absolute;
+            transition-timing-function: linear;
+            border: 0px solid black;
+            overflow: hidden;
+          }
+
+          .topLeftHider { top: 50%; left: -$nav-link-border-width; bottom: 50%; right: 100%; border-top-left-radius: 4px; }
+          .topRightHider { left: 50%; bottom: 100%; top: -$nav-link-border-width; right: 50%; border-top-right-radius: 4px; }
+          .subTopLeftHider { top: -$nav-link-border-width; left: $submenu-extra-width - $nav-link-border-width; width: 0; border-top-left-radius: 4px; bottom: 100%; }
+          .subTopRightHider { top: 50%; right: -$nav-link-border-width; width: $nav-link-border-width; bottom: 50%; border-top-right-radius: 4px; }
+          .subBottomLeftHider { left: 50%; bottom: -$nav-link-border-width; top: 100%; right: 50%; border-bottom-left-radius: 4px; }
+          .subLeftBottomHider { left: -$nav-link-border-width; bottom: 50%; top: 50%; right: 100%; border-bottom-left-radius: 4px;  }
+          .subBottomRightHider { top: 50%; right: -$nav-link-border-width; bottom: 50%; left: 100%; border-bottom-right-radius: 4px; }
+
+          &:hover, &:focus, &:focus-within {
+            .submenu {
+              opacity: 1;
+              pointer-events: auto;
+            }
+
+            .submenu ul {
+              opacity: 1;
+              transition: opacity $step + $half-step linear $half-step;
+            }
+
+            /* 0 to .5 */
+            .topLeftHider {
+              border-left-width: $nav-link-border-width; border-top-width: $nav-link-border-width; bottom: 0; top: -$nav-link-border-width; right: 50%;
+              transition-delay: 0s, 0s, $half-step;
+              transition-property: bottom, top, right;
+              transition-duration: $half-step, $half-step, $quart-step;
+            }
+
+            .topRightHider {
+              border-top-width: $nav-link-border-width; border-right-width: $nav-link-border-width;
+              right: -$nav-link-border-width;
+              bottom: 0;
+              transition-delay: $three-four, $three-four, $three-four, $step;
+              transition-duration: 0s, 0s, $quart-step, $half-step;
+              transition-property: border-top-width, border-right-width, right, bottom;
+            }
+
+            /* .5 to 1 */
+            .subTopLeftHider {
+              width: $submenu-extra-width; left: -$nav-link-border-width; border-left-width: $nav-link-border-width; border-top-width: $nav-link-border-width;
+              bottom: 50%;
+              transition-delay: $half-step, $half-step, $half-step, $half-step, $step;
+              transition-property: width, left, border-left-width, border-top-width, bottom;
+              transition-duration: $half-step, $half-step, 0s, 0s, $half-step;
+            }
+
+            .subTopRightHider {
+              border-right-width: $nav-link-border-width; border-top-width: $nav-link-border-width;
+              top: -$nav-link-border-width;
+              width: $submenu-extra-width;
+              transition-delay: $half-step, $half-step, $half-step, $step;
+              transition-duration: 0s, 0s, $half-step, $half-step;
+              transition-property: border-right-width, border-top-width, top, width;
+            }
+
+            .subBottomRightHider {
+              border-right-width: $nav-link-border-width; border-bottom-width: $nav-link-border-width;
+              bottom: -$nav-link-border-width;
+              left: 50%;
+              transition-delay: $half-step, $half-step, $half-step, $step;
+              transition-duration: 0s, 0s, $half-step, $half-step;
+              transition-property: border-right-width, border-bottom-width, bottom, left;
+            }
+
+            .subBottomLeftHider {
+              border-left-width: $nav-link-border-width; border-bottom-width: $nav-link-border-width;
+              left: -$nav-link-border-width;
+              top: 95%;
+              transition-delay: $step + $half-step, $step + $half-step, $step + $half-step, 2 * $step;
+              transition-duration: 0s, 0s, $half-step, 1ms;
+              transition-property: border-left-width, border-bottom-width, left, top;
+            }
+
+            .subLeftBottomHider {
+              border-left-width: $nav-link-border-width; border-bottom-width: $nav-link-border-width;
+              bottom: -$nav-link-border-width;
+              right: 95%;
+              transition-delay: $step + $half-step, $step + $half-step, $step + $half-step, 2 * $step;
+              transition-duration: 0s, 0s, $half-step, 1ms;
+              transition-property: border-left-width, border-bottom-width, bottom, right;
+            }
+          }
+
+          // .topLeftHider { height: $nav-link-border-width + 1; left: 0; right: 50%; top: -$nav-link-border-width; background-color: white; }
+          // .topRightHider { height: $nav-link-border-width + 1; right: 0; left: 50%; top: -$nav-link-border-width; background-color: white; }
+          // .leftTopHider { width: $nav-link-border-width + 1; top: -$nav-link-border-width; left: -$nav-link-border-width; bottom: 50%; background-color: white; }
+          // .leftBottomHider { width: $nav-link-border-width + 1; bottom: 0; left: -$nav-link-border-width; top: 50%; background-color: white; }
+          // .rightBottomHider { width: $nav-link-border-width + 1; bottom: 0; right: -$nav-link-border-width; top: 50%; background-color: white; }
+          // .rightTopHider { width: $nav-link-border-width + 1; top: -$nav-link-border-width; right: -$nav-link-border-width; bottom: 50%; background-color: white; }
+          // .bottomHider { left: 0; right: 0; top: 100%; z-index: 11; height: $nav-link-border-width; background-color: white; }
+
+          // &:hover, &:focus, &:focus-within {
+          //   color: #999;
+          //   cursor: default;
+          //   .submenu { opacity: 1; pointer-events: auto; }
+
+          //   /* 0 to 1 */
+          //   .leftTopHider { transition-duration: $half-step; bottom: 100%; top: 0; }
+          //   .leftBottomHider { transition-duration: $half-step; top: 100%; }
+
+          //   .topLeftHider { transition-delay: $half-step; transition-duration: $quart-step; left: 50%; }
+          //   .topRightHider { transition-delay: $half-step + $quart-step; transition-duration: $quart-step; left: 100%; }
+          //   .subRightTopHider { transition-delay: $half-step; bottom: 100%; top: 0; }
+          //   .subRightBottomHider { transition-delay: $half-step; bottom: 0; top: 100%; }
+          //   .subTopLeftHider { transition-delay: $half-step; transition-duration: $half-step; width: 0; left: 1; }
+
+          //   /* 1 to 2 */
+          //   .rightTopHider { transition-delay: $step; transition-duration: $quart-step; top: 50%; }
+          //   .rightBottomHider { transition-delay: $step + $quart-step; transition-duration: $quart-step; top: 100%; }
+          //   .subLeftTopHider { transition-delay: $step; transition-duration: $half-step; top: 50%; }
+
+          //   /* 2 to 3 */
+          //   .subTopRightHider { transition-delay: $step + $half-step; transition-duration: $quart-step; right: $submenu-extra-width + $nav-link-border-width; }
+          //   .subLeftBottomHider { transition-delay: $step + $half-step; transition-duration: $quart-step; top: 100%; bottom: 0; }
+          //   .subBottomRightHider { transition-delay: $step + $half-step; transition-duration: $quart-step; right: 50%; }
+          //   .subBottomLeftHider { transition-delay: $step + $half-step + $quart-step; transition-duration: $quart-step; right: 100%; left: 0; }
+          
+          //   .submenu ul {
+          //     opacity: 1;
+          //     transition-property: opacity;
+          //     transition-delay: $half-step;
+          //     transition-duration: $step + $half-step;
+          //   }
+          // }
+
+        }
+
+        & > .submenu {
+          .inner { position: relative; }
+
+          opacity: 0;
+          pointer-events: none;
+          border: $nav-link-border-width solid transparent;
+          border-radius: 4px;
+          position: absolute;
+          z-index: 10;
+          top: 100%;
+          left: 0;
+          right: 0;
+          margin-right: -$submenu-extra-width;
+          margin-left: -$submenu-extra-width;
+
+
+          // .subTopLeftHider { height: $nav-link-border-width; left: 0; width: $submenu-extra-width - $nav-link-border-width; top: -$nav-link-border-width; background-color: white; }
+          // .subTopRightHider { height: $nav-link-border-width; right: 0; width: $submenu-extra-width - $nav-link-border-width; top: -$nav-link-border-width; background-color: white; }
+          // .subLeftTopHider { width: $nav-link-border-width + 1; top: -$nav-link-border-width; left: -$nav-link-border-width; bottom: 50%; background-color: white; }
+          // .subLeftBottomHider { width: $nav-link-border-width + 1; bottom: -$nav-link-border-width; left: -$nav-link-border-width; top: 50%; background-color: white; }
+          // .subRightBottomHider { width: $nav-link-border-width + 1; bottom: -$nav-link-border-width; right: -$nav-link-border-width; top: 50%; background-color: white; }
+          // .subRightTopHider { width: $nav-link-border-width + 1; top: -$nav-link-border-width; right: -$nav-link-border-width; bottom: 50%; background-color: white; }
+          // .subBottomLeftHider { height: $nav-link-border-width + 1; left: 0; right: 50%; bottom: -$nav-link-border-width; background-color: white; }
+          // .subBottomRightHider { height: $nav-link-border-width + 1; right: 0; left: 50%; bottom: -$nav-link-border-width; background-color: white; }
+
+          ul {
+            background-color: #fff;
+            opacity: 0;
+
+            & > li {
+              line-height: 1.4;
+              margin: 0 20px;
+              border-bottom: 2px solid #aaa;
+
+              &:last-child {
+                border-bottom: none;
+              }
+
+              & > a {
+                padding: 20px 15px;
+                border-bottom: none;
+                display: block;
+                line-height: 1.4;
+                text-align: center;
+              }
+            }
+          }
+        }
+      }
+    }
+  }  
+}
