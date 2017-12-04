@@ -9,10 +9,27 @@
   }
 
   .workBlock {
-    margin-bottom: 220px;
+    // margin-bottom: 220px;
+    padding: 55px 0; 
+
+    h2 { margin-bottom: 5px; }
     .brief {
       @extend %ms2;
-      margin-bottom: 55px;
+    }
+
+    .workMockups {
+      margin: 75px 0;
+    }
+
+    .columns {
+      h3 {
+        margin-bottom: 10px;
+      }
+
+      p {
+        @extend %ms1;
+        text-align: justify;
+      }
     }
   }
 }

@@ -48,7 +48,7 @@
 
   .muted { color: #aaa; }
 
-  abbr { border-bottom: 1px dashed black; text-decoration: none; }
+  abbr { border-bottom: 1px dashed black; text-decoration: none; cursor: help; }
 
   /* ICONS */
   .external-link {
@@ -66,5 +66,5 @@
   }
 
   /* MISCEALLANOUS */
-  hr { border-bottom: none;}
+  hr { border-bottom: none; margin: 0; }
 }

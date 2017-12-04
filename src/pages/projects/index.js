@@ -29,42 +29,18 @@ export default class ProjectsPage extends PureComponent {
         <div class="container"><div class="row"><div class="col-xs-12">
           <h1 style="margin-bottom: 50px;">{t('projects')}</h1>
 
-          <hr style="margin-bottom: 50px;" />
+          {/*<hr style="margin-bottom: 50px;" />*/}
         </div></div></div>
 
 
-        <div class="container">
-          <SpendeskWork data={this.props.data} />
-
-          <SpeakenWork />
-        </div>
-      </div>
-    );
-  }
-}
-
-
-class SpendeskWork extends PureComponent {
-  render() {
-    return (
-      <div class={s.workBlock}>
-        <div class="row"><div class="col-xs-12">
-          <h2 style="margin-bottom: 5px;">
-            <span class="external-link">
-              <a href="https://www.spendesk.com" target="_blank">
-                Spendesk
-              </a></span><span class="muted"> - 10 months - as an employee</span>
-          </h2>
-          <h3 class="muted" style="margin-bottom: 30px;">
-            Techs used: Node.js, React, React-Native, GraphQL, Relay
-          </h3>
-
-          <p class={s.brief}>
-            Spendesk is a smart business expenses platform.
-          </p>
-        </div></div>
-
-        <MobileAndLaptopMockups
+        <Project
+          style="background-color: rgba(97, 0, 255, .04);"
+          name="Spendesk"
+          url="https://www.spendesk.com"
+          monthDuration={10}
+          wasFreelanceWork={false}
+          technologies={['Node.js', 'React', 'React-Native', 'GraphQL', 'Relay']}
+          productBrief={t('spendesk.product-brief')}
           laptopScreens={[
             this.props.data.requestsScreenImg.childImageSharp.sizes,
             this.props.data.paymentsScreenImg.childImageSharp.sizes,
@@ -79,7 +55,151 @@ class SpendeskWork extends PureComponent {
             TopUpVideo,
             LoginVideo,
           ]}
+          role={t('spendesk.role')}
+          team={t('spendesk.team')}
         />
+
+        <Project
+          style="background-color: rgba(63, 200, 214, .05);"
+          name="Speaken"
+          url="https://speaken.com"
+          monthDuration={4}
+          wasFreelanceWork={true}
+          technologies={['React', 'Redux']}
+          productBrief={t('speaken.product-brief')}
+          laptopScreens={['green']}
+          role={t('speaken.role')}
+          team={t('speaken.team')}
+        />
+        {/*<SpendeskWork data={this.props.data} />*/}
+
+
+        {/*<SpeakenWork />*/}
+        <div class="container">
+        </div>
+      </div>
+    );
+  }
+}
+
+class Project extends PureComponent {
+  render() {
+    const {
+      name,
+      url,
+      monthDuration,
+      wasFreelanceWork,
+      technologies,
+
+      productBrief,
+      mobileScreens,
+      laptopScreens,
+      role,
+      team,
+
+      ...others
+    } = this.props;
+
+    const { lang } = this.context;
+    const t = i18n(lang, translations);
+
+    return (
+      <div class={s.workBlock} {...others}>
+        <div class="container">
+          <div class="row"><div class="col-xs-12">
+            <h2>
+              <span class="external-link">
+                <a href={url} target="_blank">
+                  {name}
+                </a>
+              </span><span class="muted"> - {monthDuration} {monthDuration > 1 ? t('months') : t('month')} - {wasFreelanceWork ? t('as-freelance') : t('as-employee')}</span>
+            </h2>
+            <h3 class="muted" style="margin-bottom: 30px;">
+              {t('techs-used')} {technologies.join(', ')}
+            </h3>
+
+            <p class={s.brief} dangerouslySetInnerHTML={{ __html: productBrief }} />
+          </div></div>
+
+          {mobileScreens && laptopScreens &&
+          <MobileAndLaptopMockups
+            laptopScreens={laptopScreens}
+            mobileScreens={mobileScreens}
+          /> }
+
+          {laptopScreens && !mobileScreens &&
+          <LaptopMockup />}
+
+          <div class="row">
+            <div class={cx('col-xs-6', s.columns)}>
+              <h3>{t('role')}</h3>
+              <p dangerouslySetInnerHTML={{ __html: role }} />
+            </div>
+            <div class="col-xs-1"></div>
+            <div class={cx('col-xs-5', s.columns)}>
+              <h3>{t('team')}</h3>
+              <p dangerouslySetInnerHTML={{ __html: team }} />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+class SpendeskWork extends PureComponent {
+  render() {
+    const { lang } = this.context;
+    const t = i18n(lang, translations);
+
+    return (
+      <div class={s.workBlock} style="background-color: rgba(97, 0, 255, .04);">
+        <div class="container">
+          <div class="row"><div class="col-xs-12">
+            <h2 style="margin-bottom: 5px;">
+              <span class="external-link">
+                <a href="https://www.spendesk.com" target="_blank">
+                  Spendesk
+                </a></span><span class="muted"> - 10 {t('months')} - {t('as-employee')}</span>
+            </h2>
+            <h3 class="muted" style="margin-bottom: 30px;">
+              {t('techs-used')} Node.js, React, React-Native, GraphQL, Relay
+            </h3>
+
+            <p class={s.brief}>
+              {t('spendesk.product-brief')}
+            </p>
+          </div></div>
+
+          <MobileAndLaptopMockups
+            laptopScreens={[
+              this.props.data.requestsScreenImg.childImageSharp.sizes,
+              this.props.data.paymentsScreenImg.childImageSharp.sizes,
+              this.props.data.cardsScreenImg.childImageSharp.sizes,
+              this.props.data.cardOrder3ScreenImg.childImageSharp.sizes,
+              this.props.data.settingsTeamScreenImg.childImageSharp.sizes,
+              this.props.data.branchsMenuScreenImg.childImageSharp.sizes,
+            ]}
+            mobileScreens={[
+              InAppApprovalVideo,
+              PaymentEditionVideo,
+              TopUpVideo,
+              LoginVideo,
+            ]}
+          />
+
+          <div class="row">
+            <div class={cx('col-xs-6', s.columns)}>
+              <h3>{t('role')}</h3>
+              <p dangerouslySetInnerHTML={{ __html: t('spendesk.role') }} />
+            </div>
+            <div class="col-xs-1"></div>
+            <div class={cx('col-xs-5', s.columns)}>
+              <h3>{t('team')}</h3>
+              <p dangerouslySetInnerHTML={{ __html: t('spendesk.team') }} />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -88,24 +208,26 @@ class SpendeskWork extends PureComponent {
 class SpeakenWork extends PureComponent {
   render() {
     return (
-      <div class={s.workBlock}>
-        <div class="row"><div class="col-xs-12">
-          <h2 style="margin-bottom: 5px;">
-            <span class="external-link">
-              <a href="https://speaken.com" target="_blank">
-                Speaken
-              </a></span><span class="muted"> - 4 months - as a freelance</span>
-          </h2>
-          <h3 class="muted" style="margin-bottom: 30px;">
-            Techs used: React, Redux
-          </h3>
+      <div class={s.workBlock} style="background-color: rgba(63, 200, 214, .04);">
+        <div class="container">
+          <div class="row"><div class="col-xs-12">
+            <h2 style="margin-bottom: 5px;">
+              <span class="external-link">
+                <a href="https://speaken.com" target="_blank">
+                  Speaken
+                </a></span><span class="muted"> - 4 months - as a freelance</span>
+            </h2>
+            <h3 class="muted" style="margin-bottom: 30px;">
+              Techs used: React, Redux
+            </h3>
 
-          <p class={s.brief}>
-            Speaken is a platform to learn speaking languages.
-          </p>
-        </div></div>
+            <p class={s.brief}>
+              Speaken is a platform to learn speaking languages.
+            </p>
+          </div></div>
 
-        <LaptopMockup />
+          <LaptopMockup />
+        </div>
       </div>
     );
   }
@@ -121,7 +243,7 @@ class LaptopMockup extends PureComponent {
       : 700;
 
     return (
-      <div class="row"><div class="col-xs-12">
+      <div class={s.workMockups}><div class="row"><div class="col-xs-12">
         <DeviceMockup
           style={{ margin: 'auto' }}
           skinBackground={UbuntuLaptopBackground}
@@ -129,7 +251,7 @@ class LaptopMockup extends PureComponent {
           screens={['green']}
           width={width}
         />
-      </div></div>
+      </div></div></div>
     )
   }
 }
@@ -158,13 +280,13 @@ class MobileAndLaptopMockupsPure extends PureComponent {
 
       const mobileStyle = {
         marginTop: 50,
-        marginLeft: mobileMargin / 2,
+        marginLeft: mobileMargin,
         marginRight: -mobileMargin,
         float: 'left',
       };
 
       return (
-        <div class="row"><div class="col-xs-12">
+        <div class={s.workMockups}><div class="row"><div class="col-xs-12">
           <DeviceMockup
             id={s.spendeskMobileMockup}
             style={mobileStyle}
@@ -182,7 +304,7 @@ class MobileAndLaptopMockupsPure extends PureComponent {
             screens={this.props.laptopScreens}
             screensSpacing={6}
           />
-        </div></div>
+        </div></div></div>
       );
     }
 

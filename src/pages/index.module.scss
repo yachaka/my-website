@@ -6,8 +6,8 @@ $mobile-color: #00c0e2;
 $learn-color: #0caf14;
 
 #home {
-  #firstH1 { margin-bottom: 0; }
-  #secondH1 { margin-bottom: 42px; }
+  #firstH1 { margin-bottom: 0; @extend %ms4; }
+  #secondH1 { margin-bottom: 42px;  @extend %ms4;}
 
   #H2Presentation { margin-bottom: 50px; }
 

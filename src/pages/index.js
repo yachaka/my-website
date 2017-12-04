@@ -18,8 +18,11 @@ const translations = merge(commonTranslations, specificTranslations);
 class IndexPage extends PureComponent {
   componentDidMount() {
     synchronizeHover(this.refs.saasLink, this.refs.saasLinkBox.base, s.active);
+    synchronizeHover(this.refs.saasLinkBox.base, this.refs.saasLink, s.active);
     synchronizeHover(this.refs.mobileLink, this.refs.mobileLinkBox.base, s.active);
+    synchronizeHover(this.refs.mobileLinkBox.base, this.refs.mobileLink, s.active);
     synchronizeHover(this.refs.learnLink, this.refs.learnLinkBox.base, s.active);
+    synchronizeHover(this.refs.learnLinkBox.base, this.refs.learnLink, s.active);
   }
 
   render() {

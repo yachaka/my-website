@@ -14,6 +14,7 @@ import specificTranslations from './Nav.translations.json';
 import commonTranslations from '../common.translations.json';
 import pageProjectsUrls from '../pages/projects/index.urls.json';
 import pageSaasUrls from '../pages/saas/index.urls.json';
+import pageRateAndProcessUrls from '../pages/rate-and-process/index.urls.json';
 
 const translations = merge(commonTranslations, specificTranslations);
 
@@ -26,7 +27,8 @@ export default class Nav extends PureComponent {
       <nav id={s.nav}>
         <div class="container" style="margin: auto;">
           <ul>
-            <li class={s.rightmost}><Link to="/tarif-et-comment-je-collabore">{t('rate-and-more')}</Link></li>
+            <li class={s.rightmost}><Link to="/contact">{t('C')}</Link></li>
+            <li><Link to={pageRateAndProcessUrls[lang]}>{t('rate-and-more')}</Link></li>
             <li>
               <Link to="/services" class={s.withSubmenu}>
                 <span class={cx(s.hider, s.topLeftHider)}></span>
