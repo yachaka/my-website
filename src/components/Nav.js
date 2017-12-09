@@ -19,7 +19,7 @@ const translations = merge(commonTranslations, specificTranslations);
 
 export default class Nav extends PureComponent {
   state = {
-    contactMenuExpanded: true,
+    contactMenuExpanded: false,
   };
 
   componentDidMount() {
