@@ -85,27 +85,6 @@ class DeviceMockup extends Component {
     }).start();
   }
 
-  onVisibilityChange = (isVisible) => {
-    if (this.state.userInteracted)
-      return ;
-
-    const s = this.screenNodes[this.state.index]
-
-    if (s.play || s.pause) {
-      if (isVisible) {
-        s.play();
-      } else {
-        s.pause();
-      }
-    }
-  }
-
-  videoScreenEnded = (videoIndex) => {
-    if (this.state.index === videoIndex) {
-      this.next(true);
-    }
-  }
-
   render() {
     const {
       style: styleFromProps,
@@ -200,11 +179,9 @@ class DeviceMockup extends Component {
     return (
       <div style={{ ...PhoneStyle, ...styleFromProps }} {...others}>
         <div style={ScreenWrapperStyle} onClick={() => false && this.next()}>
-          <VisibilitySensor onChange={this.onVisibilityChange}>
-            <Animated.div style={ScreenInnerStyle}>
-              {Screens}
-            </Animated.div>
-          </VisibilitySensor>
+          <Animated.div style={ScreenInnerStyle}>
+            {Screens}
+          </Animated.div>
         </div>
         <div className={cx(s.arrows, arrowsOnBlack && s.arrowsOnBlack, !arrowsOnBlack && s.arrowsOnWhite)} style={ArrowsStyle}>
           <button style={{ ...ArrowBoxStyle, ...LeftArrowBoxStyle }} className={s.arrowBox} onClick={this.previous} disabled={index === 0}><img style={ArrowSvgStyle} src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTNweCIgaGVpZ2h0PSIyNHB4IiB2aWV3Qm94PSIwIDAgMTMgMjQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDQ3LjEgKDQ1NDIyKSAtIGh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaCAtLT4KICAgIDx0aXRsZT5TaGFwZTwvdGl0bGU+CiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4KICAgIDxkZWZzPjwvZGVmcz4KICAgIDxnIGlkPSJQYWdlLTEiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJHcm91cCIgZmlsbC1ydWxlPSJub256ZXJvIiBmaWxsPSIjMDAwMDAwIj4KICAgICAgICAgICAgPHBhdGggZD0iTTExLjg4MDE3NTYsMjQgQzExLjYzNzE0NDEsMjMuOTk5Nzg2IDExLjQwNDE0NDUsMjMuOTAzMDY5MyAxMS4yMzI0MDIyLDIzLjczMTExMjkgTDAuMjMyNDc3MDc4LDEyLjczMTE4NzggQy0wLjA5MTEyODEzOTIsMTIuMzY4MjU0OCAtMC4wNzUwMzY5NDQsMTEuODE1NzkwNCAwLjI2OTE0MzQ5NiwxMS40NzIzMDc1IEwxMS4yNjkwNjg3LDAuNDcyMzgyMzA0IEMxMS40NTkzNzg4LDAuMTI4OTc1MjcxIDExLjg0NzI1NDIsLTAuMDU1MTAzMTA0NSAxMi4yMzM2MjgzLDAuMDE0NjIwMzUxIEMxMi42MjAwMDI1LDAuMDg0MzQzODA2NCAxMi45MTkwNzIsMC4zOTIzODUzNTMgMTIuOTc3MzQ3NSwwLjc4MDY1MTEyNSBDMTMuMDM1NjIzMSwxLjE2ODkxNjkgMTIuODQwMTYzMywxLjU1MTE4MzMxIDEyLjQ5MTI4MjYsMS43MzEyNjI2MyBMMi4xNzU3OTcxOSwxMi4wODM0MTQ0IEwxMi40OTEyODI2LDIyLjQzNTU2NjIgQzEyLjc1MzEwNTYsMjIuNjk3NzE1IDEyLjgzMTM3MzYsMjMuMDkxNzAyMSAxMi42ODk2MzIsMjMuNDM0MDIxNSBDMTIuNTQ3ODkwMywyMy43NzYzNDA5IDEyLjIxNDAxMzEsMjMuOTk5Njc0MSAxMS44NDM1MDkyLDI0IEwxMS44ODAxNzU2LDI0IFoiIGlkPSJTaGFwZSI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+" /></button>
@@ -218,13 +195,6 @@ class DeviceMockup extends Component {
 
   renderScreen = (ScreenStyle, screen, index) => {
     let Screen;
-    const setScreenNode = (el) => {
-      this.screenNodes[index] = el;
-
-      if (screen.split && isVideo(screen) && el) {
-        el.addEventListener('ended', this.videoScreenEnded.bind(this, index));
-      }
-    }
 
     if (screen.base64) {
       Screen = this.renderGatsbyImageScreen(ScreenStyle, screen);
@@ -236,28 +206,12 @@ class DeviceMockup extends Component {
       Screen = (<div style={{ ...ScreenStyle, backgroundColor: screen }}></div>);
     }
 
-    return cloneElement(Screen, { ref: setScreenNode });
+    return Screen;
   }
 
   renderVideoScreen = (ScreenStyle, screen) => {
-    let videoNode;
-
-    function onVisibilityChange(visibility) {
-      if (!videoNode)
-        return ;
-      if (visibility) {
-        videoNode.play();
-      } else {
-        videoNode.pause();
-      }
-    }
-
-    function setVideoNode(el) {
-      videoNode = el;
-    }
-
     return (
-      <video ref={setVideoNode} width={ScreenStyle.width} height={ScreenStyle.height} controls style={ScreenStyle}>
+      <video width={ScreenStyle.width} height={ScreenStyle.height} controls style={ScreenStyle}>
         <source type="video/mp4" src={screen} />
       </video>
     );

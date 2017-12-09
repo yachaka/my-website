@@ -1,6 +1,7 @@
 
 import React, { PureComponent } from 'react';
 import cx from 'classnames';
+import Img from 'gatsby-image';
 import windowSize from 'react-window-size';
 
 import s from './index.module.scss';
@@ -34,7 +35,7 @@ export default class ProjectsPage extends PureComponent {
 
 
         <Project
-          style="background-color: rgba(97, 0, 255, .04);"
+          id={s.spendeskWork}
           name="Spendesk"
           url="https://www.spendesk.com"
           monthDuration={10}
@@ -57,10 +58,18 @@ export default class ProjectsPage extends PureComponent {
           ]}
           role={t('spendesk.role')}
           team={t('spendesk.team')}
+          testimonial={{
+            picture: this.props.data.guilhem.childImageSharp.sizes,
+            name: 'Guilhem Bellion',
+            external: 'https://www.linkedin.com/in/guilhembellion/',
+            role: t('spendesk.testimonial.role'),
+            text: `Ilyes a le don de conjuguer parfaitement créativité et pragmatisme !<br/><br/>
+J'ai eu l'occasion de travailler étroitement avec lui pendant 10 mois chez Spendesk, durant lesquels il a participé avec succès à de nombreux projets. Il a notamment été intégralement responsable du développement et de la maintenance de notre application mobile en React Native, et a posé les bases de notre nouvelle API GraphQL. [...]<br/><br/>Son expertise technique et sa bonne humeur sont de vrais atouts dans une équipe !`,
+          }}
         />
 
         <Project
-          style="background-color: rgba(63, 200, 214, .05);"
+          id={s.speakenWork}
           name="Speaken"
           url="https://speaken.com"
           monthDuration={4}
@@ -96,6 +105,7 @@ class Project extends PureComponent {
       laptopScreens,
       role,
       team,
+      testimonial,
 
       ...others
     } = this.props;
@@ -108,11 +118,10 @@ class Project extends PureComponent {
         <div class="container">
           <div class="row"><div class="col-xs-12">
             <h2>
-              <span class="external-link">
-                <a href={url} target="_blank">
-                  {name}
-                </a>
-              </span><span class="muted"> - {monthDuration} {monthDuration > 1 ? t('months') : t('month')} - {wasFreelanceWork ? t('as-freelance') : t('as-employee')}</span>
+              <a href={url} class="external-link" target="_blank">
+                {name}
+              </a>
+              <span class="muted"> - {monthDuration} {monthDuration > 1 ? t('months') : t('month')} - {wasFreelanceWork ? t('as-freelance') : t('as-employee')}</span>
             </h2>
             <h3 class="muted" style="margin-bottom: 30px;">
               {t('techs-used')} {technologies.join(', ')}
@@ -141,6 +150,24 @@ class Project extends PureComponent {
               <p dangerouslySetInnerHTML={{ __html: team }} />
             </div>
           </div>
+
+          {testimonial &&
+          <div class="row"><div class="col-xs-10 col-xs-offset-1">
+            <div class={s.testimonial}>
+              <h3>{t('feedback')}</h3>
+              <div class={s.content}>
+                <div class={s.text}><p class={s.inner} dangerouslySetInnerHTML={{ __html: testimonial.text }} /></div>
+                <div class={s.who}>
+                  <Img outerWrapperClassName={s.picture} sizes={testimonial.picture} />
+                  <div class={s.details}>
+                    <p class={s.name}><a href={testimonial.external} class="external-link" target="_blank">{testimonial.name}</a></p>
+                    <p class={s.role}>{testimonial.role}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div></div> }
+
         </div>
       </div>
     );
@@ -151,6 +178,8 @@ class SpendeskWork extends PureComponent {
   render() {
     const { lang } = this.context;
     const t = i18n(lang, translations);
+
+    const { testimonial } = this.props;
 
     return (
       <div class={s.workBlock} style="background-color: rgba(97, 0, 255, .04);">
@@ -382,6 +411,13 @@ export const query = graphql`
     }
     branchsMenuScreenImg:file(relativePath: { eq: "data/Spendesk/webapp/Branchs-Menu.png" }) {
       ...ImageForLaptopMockup
+    }
+    guilhem:file(relativePath: { eq: "data/Spendesk/guilhem.jpg" }) {
+      childImageSharp {
+        sizes(maxWidth: 64, maxHeight: 64) {
+          ...GatsbyImageSharpSizes
+        }
+      }
     }
   }
 

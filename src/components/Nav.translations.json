@@ -9,6 +9,19 @@
     "home": "Accueil",
     "projects": "Réalisations",
     "services": "Services",
-    "rate-and-more": "Tarif & Comment je collabore"
+    "rate-and-more": "Tarif & Comment je collabore",
+    "contact-form": {
+      "title": "Une question, des mots doux ?<br/>Envoyez-moi un message 👇",
+      "your-name-label": "Nom",
+      "your-name-placeholder": "Jean Bernard",
+      "your-email-label": "E-mail",
+      "your-email-placeholder": "jean.bernard@startup.io",
+      "your-phone-label": "Téléphone",
+      "your-phone-placeholder": "07 33 11 40 45",
+      "your-message-label": "Message",
+      "your-message-placeholder": "Salut Ilyes, j'adore ce que tu fais",
+      "help-text": "Je réponds aux messages en moins de 24 heures.",
+      "send-button": "Envoyer"
+    }
   }
 }

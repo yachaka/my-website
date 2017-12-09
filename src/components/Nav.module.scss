@@ -32,9 +32,266 @@ $submenu-extra-width: 60px;
 
       &.home { float: left; }
       &.leftmost a { padding: 0 30px 0 0; }
-      &.rightmost a { padding: 0 0 0 30px; }
+      // &.rightmost a { padding: 0 0 0 30px; }
+
+      $contact-link-size: 50px;
+      $contact-link-border-width: 2px;
+      $contact-link-padding: 1px;
+      $contact-link-inner-gray-box-size: $contact-link-size - ($contact-link-border-width * 2) - ($contact-link-padding * 2);
+      $contact-svg-size: 28px;
+      $contact-form-width: 500px;
+      $contact-form-height: 400px;
+
+      $total-px-border-travel-length: $contact-link-size * 3 + ($contact-form-width - $contact-link-size) + $contact-form-width + $contact-form-height * 2;
+
+      /////////////////
+      // Borders animation
+      $animationDuration: 650ms;
+      
+      $topLeftMiddleToLeftDuration: ($animationDuration * ($contact-link-size / 2) / $total-px-border-travel-length) * 2;
+      $topLeftTopToBottomDuration: ($animationDuration * $contact-link-size / $total-px-border-travel-length) * 2;
+
+      $topRightMiddleToRightDuration: $topLeftMiddleToLeftDuration;
+      $topRightTopToBottomDuration: $topLeftTopToBottomDuration;
+      
+      $subTopLeftRightToLeftDuration: $animationDuration * ($contact-form-width - $contact-link-size) / $total-px-border-travel-length;
+      $subTopLeftTopToMiddleDuration: $animationDuration * ($contact-form-height / 2) / $total-px-border-travel-length;
+      
+      $subBottomRightTopToBottomDuration: $animationDuration * $contact-form-height / $total-px-border-travel-length;
+      $subBottomRightRightToMiddleDuration: $animationDuration * ($contact-form-width / 2) / $total-px-border-travel-length;
+
+      $subLeftBottomMiddleToBottomDuration: $animationDuration * ($contact-form-height / 2) / $total-px-border-travel-length;
+      
+      $subBottomLeftMiddleToLeftDuration: $animationDuration * ($contact-form-width / 2) / $total-px-border-travel-length;
+      
+      &.contact {
+
+        .border { position: absolute; display: block; pointer-events: none; border: 0px solid black; transition-timing-function: linear; }
+
+        & > a {
+          border-width: $contact-link-border-width;
+          width: $contact-link-size;
+          padding: $contact-link-padding;
+          position: relative;
+
+          &:hover {
+            color: inherit;
+          }
+
+          & > .inner {
+            width: $contact-link-inner-gray-box-size; text-align: center;  display: inline-block; height: 100%; border-radius: 4px;
+            cursor: pointer;
+            &:hover {
+              background-color: #ddd;
+            }
+
+          }
+          svg { vertical-align: text-bottom; width: $contact-svg-size; height: $contact-svg-size; }
+
+          .topLeftBorder {
+            $start-delay: $subLeftBottomMiddleToBottomDuration + $subTopLeftTopToMiddleDuration + $subTopLeftRightToLeftDuration;
+            $border-delay: $start-delay + $topLeftTopToBottomDuration + $topLeftMiddleToLeftDuration;
+            left: 50%; right: 50%; top: -2px; bottom: 100%; border-top-left-radius: 4px; border-left-width: 0; border-top-width: 0;
+            transition-property: border-left-width, border-top-width, bottom, left;
+            transition-delay: $border-delay, $border-delay, $start-delay, $start-delay + $topLeftTopToBottomDuration;
+            transition-duration: 0s, 0s, $topLeftTopToBottomDuration, $topLeftMiddleToLeftDuration;
+          }
+          .topRightBorder {
+            $start-delay: $subBottomLeftMiddleToLeftDuration + $subBottomRightRightToMiddleDuration + $subBottomRightTopToBottomDuration;
+            $border-delay: $start-delay + $topRightTopToBottomDuration + $topRightMiddleToRightDuration;
+            right: 50%; left: 50%; top: -2px; bottom: 100%; border-top-right-radius: 4px; border-right-width: 0; border-top-width: 0;
+            transition-property: border-right-width, border-top-width, bottom, right;
+            transition-delay: $border-delay, $border-delay, $start-delay, $start-delay + $topRightTopToBottomDuration;
+            transition-duration: 0s, 0s, $topRightTopToBottomDuration, $topRightMiddleToRightDuration;
+          }
+
+          .subTopLeftBorder {
+            $start-delay: $subLeftBottomMiddleToBottomDuration;
+            $border-delay: $subLeftBottomMiddleToBottomDuration + $subTopLeftTopToMiddleDuration + $subTopLeftRightToLeftDuration;
+            right: $contact-link-size - 2px; left: $contact-form-width - $contact-link-size; bottom: 100%; top: -2px; border-top-left-radius: 4px; border-left-width: 0; border-top-width: 0;
+            transition-property: border-left-width, border-top-width, bottom, left;
+            transition-delay: $border-delay, $border-delay, $start-delay, $start-delay + $subTopLeftTopToMiddleDuration;
+            transition-duration: 0s, 0s, $subTopLeftTopToMiddleDuration, $subTopLeftRightToLeftDuration;
+          }
+          .subBottomRightBorder {
+            $start-delay: $subBottomLeftMiddleToLeftDuration;
+            $border-delay: $subBottomLeftMiddleToLeftDuration + $subBottomRightRightToMiddleDuration + $subBottomRightTopToBottomDuration;
+            top: -2px; left: 100%; right: -2px; bottom: 100%; border-bottom-right-radius: 4px; border-right-width: 0; border-bottom-width: 0;
+            transition-property: border-bottom-width, border-right-width, left, bottom;
+            transition-delay: $border-delay, $border-delay, $start-delay, $start-delay + $subBottomRightRightToMiddleDuration;
+            transition-duration: 0s, 0s, $subBottomRightRightToMiddleDuration, $subBottomRightTopToBottomDuration;
+          }
+          .subLeftBottomBorder {
+            bottom: 50%; left: -2px; top: 50%; right: 100%; border-bottom-left-radius: 4px;  border-left-width: 0; border-bottom-width: 0;
+            transition-property: border-left-width, border-bottom-width, bottom;
+            transition-delay: $subLeftBottomMiddleToBottomDuration, $subLeftBottomMiddleToBottomDuration, 0s;
+            transition-duration: 0s, 0s, $subLeftBottomMiddleToBottomDuration;
+          }
+          .subBottomLeftBorder {
+            right: 50%; bottom: -2px; top: 100%; left: 50%; border-bottom-left-radius: 4px;  border-left-width: 0; border-bottom-width: 0;
+            transition-property: border-left-width, border-bottom-width, left;
+            transition-delay: $subBottomLeftMiddleToLeftDuration, $subBottomLeftMiddleToLeftDuration, 0s;
+            transition-duration: 0s, 0s, $subBottomLeftMiddleToLeftDuration;
+          }
+        }
+
+        .contactForm {
+          pointer-events: none;
+          position: absolute;
+          top: 100%;
+          right: 0;
+
+          .inner {
+            position: relative;
+
+            .content {
+              overflow: auto;
+              line-height: 1.4;
+              $delay: $animationDuration / 16;
+              $duration: $animationDuration * 0.33;
+              transition: opacity $duration ease $delay;
+              opacity: 0;
+              background-color: white;
+              width: $contact-form-width;
+              // height: $contact-form-height;
+
+              padding: 15px;
+
+              .title { margin-bottom: 20px; }
+
+              form {
+                @extend %ms1;
+
+                .inputGroup {
+                  margin-bottom: 15px;
+                  
+                  label {
+                    @extend %ms0;
+                    display: none;
+                  }
+
+                  input, textarea {
+                    font: inherit;
+                    @extend %ms1;
+                    border: 1px solid #999;
+                    border-radius: 4px;
+                    padding: 8px;
+                    width: 100%;
+                    margin: 0;
+
+                    &:focus {
+                      border-color: darken(#cceeff, 40%);
+                    }
+                  }
+                }
+
+                .helpText {
+                  @extend %ms0;
+                }
+
+                .send {
+                  float: right;
+                  margin-left: 8px;
+                  background-color: rgba(187, 239, 253, 0.5);
+                  border: none;
+                  padding: 6px 8px;
+                  @extend %ms1;
+
+                  img { width: 18px; height: 18px; display: inline-block; vertical-align: middle; margin-right: 8px; }
+
+                  &:hover {
+                    background-color: #bbeffd;
+                  }
+
+                  &:active {
+                    background-color: darken(#bbeffd, 10%);
+                  }
+                }
+              }
+            }
+          }
+        }
+
+      }
+
+
+      &.contact a.active {
+        // Slow down first
+        .topLeftBorder {
+          left: -2px;
+          bottom: 0;
+          border-top-width: 2px; border-left-width: 2px; 
+          transition-property: left, bottom;
+          transition-duration: $topLeftMiddleToLeftDuration, $topLeftTopToBottomDuration;
+          transition-delay: 0s, $topLeftMiddleToLeftDuration;
+        }
+
+        .topRightBorder {
+          right: -2px;
+          bottom: 0;
+          border-top-width: 2px; border-right-width: 2px; 
+          transition-property: right, bottom;
+          transition-duration: $topRightMiddleToRightDuration, $topRightTopToBottomDuration;
+          transition-delay: 0s, $topRightMiddleToRightDuration;
+        }
+
+        .subTopLeftBorder {
+          $start-delay: $topLeftMiddleToLeftDuration + $topLeftTopToBottomDuration;
+          left: -2px;
+          bottom: 50%;
+          border-top-width: 2px; border-left-width: 2px;
+          transition-property: border-top-width, border-left-width, left, bottom;
+          transition-delay: $start-delay, $start-delay, $start-delay, $start-delay + $subTopLeftRightToLeftDuration;
+          transition-duration: 0s, 0s, $subTopLeftRightToLeftDuration, $subTopLeftTopToMiddleDuration;
+        }
+
+        .subBottomRightBorder {
+          $start-delay: $topRightMiddleToRightDuration + $topRightTopToBottomDuration;
+          bottom: -2px;
+          left: 50%;
+          border-bottom-width: 2px; border-right-width: 2px;
+          transition-property: border-bottom-width, border-right-width, bottom, left;
+          transition-delay: $start-delay, $start-delay, $start-delay, $start-delay + $subBottomRightTopToBottomDuration;
+          transition-duration: 0s, 0s, $subBottomRightTopToBottomDuration, $subBottomRightRightToMiddleDuration;
+        }
+
+        .subLeftBottomBorder {
+          $start-delay: $topLeftMiddleToLeftDuration + $topLeftTopToBottomDuration + $subTopLeftRightToLeftDuration + $subTopLeftTopToMiddleDuration;
+          bottom: -2px;
+          border-left-width: 2px; border-bottom-width: 2px;
+          transition-property: border-left-width, border-bottom-width, bottom;
+          transition-delay: $start-delay, $start-delay, $start-delay;
+          transition-duration: 0s, 0s, $subLeftBottomMiddleToBottomDuration;
+        }
+
+        .subBottomLeftBorder {
+          $start-delay: $topRightMiddleToRightDuration + $topRightTopToBottomDuration + $subBottomRightTopToBottomDuration + $subBottomRightRightToMiddleDuration;
+          left: -2px;
+          border-bottom-width: 2px; border-left-width: 2px;
+          transition-property: border-bottom-width, border-left-width, left;
+          transition-delay: $start-delay, $start-delay, $start-delay;
+          transition-duration: 0s, 0s, $subBottomLeftMiddleToLeftDuration;
+        }
+
+        & > .inner {
+          background-color: #999;
+        }
+
+        .contactForm {
+          pointer-events: auto;
+        }
+
+        .contactForm > .inner > .content {
+          $delay: $animationDuration / 16;
+          $duration: $animationDuration * 0.33;
+          opacity: 1;
+          transition: opacity $duration ease $delay;
+        }
+
+      }
 
       & > a {
+        background-color: transparent;
         position: relative;
         display: block;
         height: $nav-link-height;
@@ -45,6 +302,10 @@ $submenu-extra-width: 60px;
         border-bottom: none;
         border: $nav-link-border-width solid transparent;
         @extend %ms1;
+
+        &:hover {
+          color: darken(#cceeff, 40%);
+        }
 
         &.withSubmenu {
           border-radius: 4px 4px 0 0;
@@ -238,6 +499,7 @@ $submenu-extra-width: 60px;
             }
           }
         }
+
       }
     }
   }  

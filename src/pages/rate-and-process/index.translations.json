@@ -5,6 +5,8 @@
   "fr": {
     "title": "Tarif & Comment je collabore",
     "rate": "Tarif",
-    "introduction": "Mon <abbr title=\"Taux Journalier Moyen\">T.J.M.</abbr> est de 630€."
+    "introduction": "Mon <abbr title=\"Taux Journalier\">T.J.</abbr> est de 590€.",
+    "how-i-collaborate": "Comment je collabore",
+    "main": "<b>Dans le cadre d'une équipe,</b> mes objectifs principaux sont la communication sur le travail que je réalise et la réalisation des objectifs dans la durée prévue.<br/><br/><b>Dans un cadre direct,</b> mon premier objectif va être la définition d'objectifs clairs pour votre projet. Loin d'être rigides, ces objectifs sont flexibles et destinés à fournir une ligne directrice sur laquelle construire."
   }
 }

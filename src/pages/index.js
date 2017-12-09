@@ -3,6 +3,7 @@ import React, { PureComponent } from 'react'
 import cx from 'classnames';
 import merge from 'lodash.merge';
 import Link from '../components/Link';
+import Img from 'gatsby-image';
 
 import saasSVG from '!!raw!../img/saas.svg';
 import mobileSVG from '!!raw!../img/mobile.svg';
@@ -12,39 +13,42 @@ import s from './index.module.scss';
 import i18n from '../i18n';
 import specificTranslations from './index.translations.json';
 import commonTranslations from '../common.translations.json';
+import projectsPageUrls from './projects/index.urls.json';
 
 const translations = merge(commonTranslations, specificTranslations);
 
 class IndexPage extends PureComponent {
   componentDidMount() {
-    synchronizeHover(this.refs.saasLink, this.refs.saasLinkBox.base, s.active);
-    synchronizeHover(this.refs.saasLinkBox.base, this.refs.saasLink, s.active);
-    synchronizeHover(this.refs.mobileLink, this.refs.mobileLinkBox.base, s.active);
-    synchronizeHover(this.refs.mobileLinkBox.base, this.refs.mobileLink, s.active);
-    synchronizeHover(this.refs.learnLink, this.refs.learnLinkBox.base, s.active);
-    synchronizeHover(this.refs.learnLinkBox.base, this.refs.learnLink, s.active);
+    // synchronizeHover(this.refs.saasLink, this.refs.saasLinkBox.base, s.active);
+    // synchronizeHover(this.refs.saasLinkBox.base, this.refs.saasLink, s.active);
+    // synchronizeHover(this.refs.mobileLink, this.refs.mobileLinkBox.base, s.active);
+    // synchronizeHover(this.refs.mobileLinkBox.base, this.refs.mobileLink, s.active);
+    // synchronizeHover(this.refs.learnLink, this.refs.learnLinkBox.base, s.active);
+    // synchronizeHover(this.refs.learnLinkBox.base, this.refs.learnLink, s.active);
+  }
+
+  onContactLinkClick = () => {
+    window.openContact();
   }
 
   render() {
     const { lang } = this.context;
     const t = i18n(lang, translations);
 
-    // const presentationTrad = t('presentation')
-    //   .replace('{{saasLink}}', `<a id="${s.saasLinkText}" href="#" class="${s.saasLink}" ref="saasLink">`)
-    const presentationTokens = t('presentation')
+    const presentation2Links = {
+      'projects': (text) => (<Link to={projectsPageUrls[lang]}>{text}</Link>),
+      'contact': (text) => (<a href="javascript:;" onClick={this.onContactLinkClick}>{text}</a>),
+    };
+
+    const presentation2Tokens = t('presentation2')
       .split(/(\{\{[a-zA-Z]+\}\}[a-zA-Z0-9\séè]+\{\{\/[a-zA-Z]+\}\}|<br\/>)/g);
 
-    const presentationsChildren = presentationTokens.map(tk => {
+    const presentation2Children = presentation2Tokens.map(tk => {
       if (tk[0] === '{') {
         const name = tk.substring(2, tk.indexOf('}'));
         const text = tk.substr(name.length + 4, tk.length - (2 * name.length + 4 * 2 + 1));
-        console.log(text);
 
-        return (
-          <a id={s[`${name}LinkText`]} href="#" class={s[`${name}Link`]} ref={`${name}Link`}>
-            {text}
-          </a>
-        );
+        return (presentation2Links[name](text));
       } else if (tk === '<br/>') {
         return (<br/>);
       }
@@ -56,17 +60,18 @@ class IndexPage extends PureComponent {
       <div id={s.home}>
         <div class="container">
           <div class="row"><div class="col-xs-12">
-            <h1 id={s.firstH1}>{t('headline1')}</h1>
-            <h1 id={s.secondH1}>{t('headline2')}</h1>
+            <div id={s.headline}>
+              <h1 dangerouslySetInnerHTML={{ __html: t('headline') }} />
+              <Img outerWrapperClassName={s.me} sizes={this.props.data.meImg.childImageSharp.sizes} />
+            </div>
 
-            <h2 id={s.H2Presentation}>
-              {presentationsChildren}
+            <h2 dangerouslySetInnerHTML={{ __html: t('presentation') }} />
+            <h2>
+              {presentation2Children}
             </h2>
-
-            <h4 id={s.getStartedTitle} class={cx('sans-serif')}>{t('ctas-title')}</h4>
           </div></div>
 
-          <div id={s.activities} class="row">
+          {/*<div id={s.activities} class="row">
             <div class="col-xs-4">
               <Link to="/developpement-de-saas" id={s.saasLinkBox} class={cx(s.activity, s.saasLink)} ref="saasLinkBox">
                 <div class={s.icon} dangerouslySetInnerHTML={{ __html: saasSVG }}>
@@ -96,7 +101,7 @@ class IndexPage extends PureComponent {
                 </div>
               </Link>
             </div>
-          </div>
+          </div>*/}
         </div>
       </div>
     );
@@ -104,6 +109,20 @@ class IndexPage extends PureComponent {
 };
 
 export default IndexPage
+
+export const query = graphql`
+  query HomeQuery {
+    meImg:file(
+      relativePath: { eq: "pages/me.jpg"}
+    ) {
+      childImageSharp {
+        sizes(maxWidth: 100, maxHeight: 100, quality: 50) {
+          ...GatsbyImageSharpSizes
+        }
+      }
+    }
+  }
+`;
 
 
 function synchronizeHover(el, target, classNameToAdd) {

@@ -13,4 +13,7 @@ export default {
   arrowBoxHeight: 67,
   arrowBoxWidth: 177,
   arrowBoxCornerRadius: 43,
+  arrowBoxAdditionalStyle: {
+    border: '1px solid #999'
+  }
 };

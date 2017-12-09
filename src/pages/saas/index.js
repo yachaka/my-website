@@ -10,7 +10,7 @@ export default class SaasPage extends PureComponent {
       <div class="container">
         <div class="row"><div class="col-xs-12">
           <h1 class={s.heading}>
-            <img src={saasSVG}/> SaaS Building
+            <img src={saasSVG}/> Développement de SaaS
           </h1>
         </div></div>
 
@@ -19,8 +19,10 @@ export default class SaasPage extends PureComponent {
             <p>
               Mon coeur de métier est la création et le développement de <abbr title="Software as a Service">SaaS</abbr>, ou plus généralement d'applications complexes nécessitant la création de systèmes sur-mesure.<br/><br/>
 
-              Mon language de prédilection est le JavaScript (Node.js, React) ; mais sans m'y limiter, je peux intervenir sur des bases de code en Go, PHP, Python.<br/><br/>
-
+              Mon language de prédilection est le JavaScript (Node.js, React) ; mais sans m'y limiter, je peux intervenir sur des bases de code en Go, PHP, Python.
+            </p>
+            <hr style="margin: 55px 0;" />
+            <p>
               Je porte plusieurs valeurs dans mon code :
             </p>
             <ul>
@@ -37,8 +39,14 @@ export default class SaasPage extends PureComponent {
 
               <li>
                 <span class={s.title}>Flexibilité</span>
-                La flexibilité du code 
-                Un code clair promeut un code solide : une meilleure compréhension aide à repérer d'éventuels dysfonctionnements. Mais également l'écriture de tests automatisés, ou l'utilisation d'outils de typage statique (dans le cas de languages non-typés, comme le JavaScript).
+                La flexibilité du code s'exprimera lors de l'évolution de la plateforme, en permettant le développement de nouvelles fonctionnalités plus rapidement.<br/><br/>
+                Certains indicateurs d'un code flexible sont le respect du principe de responsabilité unique ou l'application de paradigmes tels que la programmation fonctionnelle.
+              </li>
+
+              <li>
+                <span class={s.title}>Performance</span>
+                Pour que votre SaaS soit rapide et consomme peu de ressources ;)<br/><br/>
+                Outre la réécriture d'un code inefficient, la mise en cache et le choix de la technologie adaptée au problème sont des solutions pour améliorer les performances d'un code.
               </li>
 
             </ul>

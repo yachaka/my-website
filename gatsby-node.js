@@ -20,15 +20,13 @@ exports.onCreatePage = ({ page, boundActionCreators: { createPage, deletePage } 
         ? urlsForLang[l]
         : page.path;
 
-      return {
-        ...page,
+      return Object.assign({}, page, {
         layout: `${page.layout}.${l}`,
         path: `/${l}${path}`,
-        context: {
-          ...page.context,
+        context: Object.assign({}, page.context, {
           lang: l,
-        },
-      };
+        }),
+      });
     });
 
     deletePage(page);
