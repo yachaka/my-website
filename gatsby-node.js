@@ -1,5 +1,6 @@
 
 const fs = require('fs');
+const path = require('path');
 
 const langs = ['en', 'fr'];
 
@@ -32,6 +33,17 @@ exports.onCreatePage = ({ page, boundActionCreators: { createPage, deletePage } 
     deletePage(page);
     langPages.forEach(page => createPage(page));
   }
+};
+
+
+exports.onPostBuild = () => {
+  const filesToCopy = [
+    path.resolve(__dirname, './_redirects'),
+  ];
+
+  filesToCopy.forEach(filePath => {
+    fs.copyFileSync(filePath, path.join(__dirname, '/public', path.basename(filePath)))
+  });
 };
 
 // exports.modifyBabelrc = ({ babelrc }) => {
