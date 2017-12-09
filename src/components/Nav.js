@@ -2,10 +2,12 @@
 import React, { PureComponent } from 'react';
 import cx from 'classnames';
 import merge from 'lodash.merge';
+import Cookies from 'js-cookie';
 import Link from './Link';
 
 import messengerSVG from './messenger.svg';
 import sendSVG from './send.svg';
+import okSVG from './ok.svg';
 
 import s from './Nav.module.scss';
 import i18n from '../i18n';
@@ -17,9 +19,43 @@ import pageRateAndProcessUrls from '../pages/rate-and-process/index.urls.json';
 
 const translations = merge(commonTranslations, specificTranslations);
 
+const daysByLang  = {
+  en: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+  fr: ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'],
+};
+
+const monthsByLang  = {
+  en: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  fr: ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'],
+};
+
+const formatDateByLang = (time, lang) => {
+  const d = new Date(time);
+
+  if (lang === 'en') {
+    return `${daysByLang['en'][d.getDay()]} ${d.getDate()} of ${monthsByLang['en'][d.getMonth()]}`;
+  }
+
+  if (lang === 'fr') {
+    return `${daysByLang['fr'][d.getDay()]} ${d.getDate()} ${monthsByLang['fr'][d.getMonth()]}`;
+  }
+};
+
 export default class Nav extends PureComponent {
   state = {
-    contactMenuExpanded: false,
+    contactMenuExpanded: true,
+
+    data: {
+      name: null,
+      email: null,
+      phone: null,
+      message: null,
+    },
+    errors: null,
+
+    sending: false,
+    sent: false,
+    errorSending: null,
   };
 
   componentDidMount() {
@@ -33,12 +69,65 @@ export default class Nav extends PureComponent {
     }
   }
 
+  setData = (e) => this.setState({ data: { ...this.state.data, [e.target.name]: e.target.value }, errors: null })
+
   toggleContactMenu = () => this.setState({ contactMenuExpanded: !this.state.contactMenuExpanded })
 
+  sendForm = (e) => {
+    e.preventDefault();
+
+    const isValid = {
+      name: (v) => v && v.length > 0,
+      email: (v) => v && v.length > 0 && /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(v),
+      phone: () => true,
+      message: (v) => v && v.length > 10,
+    };
+
+    const errors = {};
+
+    for (let key in isValid) {
+      if (!isValid[key](this.state.data[key])) {
+        errors[key] = true;
+      }
+    }
+
+    if (Object.keys(errors).length > 0) {
+      this.setState({ errors });
+      return ;
+    }
+
+    this.setState({ sending: true });
+
+    sendForm(this.state.data, (errorStatusText) => {
+      if (errorStatusText) {
+        this.setState({ sending: false, errorSending: errorStatusText });
+      } else {
+        this.setState({ sending: false, sent: true });
+        Cookies.set('lastMessageSent', (new Date()).getTime(), { expires: 365 });
+      }
+    });
+  }
+
   render() {
-    const { contactMenuExpanded } = this.state;
+    const {
+      contactMenuExpanded,
+      data: {
+        name,
+        email,
+        phone,
+        message,
+      },
+      errors,
+      sending,
+      sent,
+    } = this.state;
+
     const { lang } = this.context;
     const t = i18n(lang, translations);
+
+    const lastMessageSent = Cookies.get('lastMessageSent');
+
+    const shouldDisable = sending || sent;
 
     return (
       <nav id={s.nav}>
@@ -56,37 +145,52 @@ export default class Nav extends PureComponent {
                     <span class={cx(s.border, s.subLeftBottomBorder)} />
                     <span class={cx(s.border, s.subBottomRightBorder)} />
                     <div class={s.content}>
+                      {lastMessageSent &&
+                      <p class={s.lastMessageSent}>
+                        {t('contact-form.last-message-sent').replace('{{date}}', formatDateByLang(parseInt(lastMessageSent, 10), lang))}
+                      </p> }
+
                       <h5 class={s.title} dangerouslySetInnerHTML={{ __html: t('contact-form.title') }} />
 
-                      <form>
-                        <div class={cx(s.inputGroup, s.required)}>
+                      <form onSubmit={this.sendForm} action="/" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="contact" />
+
+                        <p class={s.hidden}>Do not fill this: <input type="text" name="bot-field" onChange={this.setData} /></p>
+
+                        <div class={cx(s.inputGroup, s.required, errors && errors.name && s.error)}>
                           <label htmlFor="name">{t('contact-form.your-name-label')}</label>
-                          <input ref="name" type="text" name="name" placeholder={t('contact-form.your-name-placeholder')} />
+                          <input ref="name" type="text" name="name" placeholder={t('contact-form.your-name-placeholder')} onChange={this.setData} value={name} disabled={shouldDisable} />
                         </div>
 
                         <div class="row">
                           <div class="col-xs-6">
-                            <div class={cx(s.inputGroup, s.required)}>
+                            <div class={cx(s.inputGroup, s.required, errors && errors.email && s.error)}>
                               <label htmlFor="email">{t('contact-form.your-email-label')}</label>
-                              <input type="text" name="email" placeholder={t('contact-form.your-email-placeholder')} />
+                              <input type="text" name="email" placeholder={t('contact-form.your-email-placeholder')} onChange={this.setData} value={email} disabled={shouldDisable} />
                             </div>
                           </div>
                           <div class="col-xs-6">
                             <div class={s.inputGroup}>
                               <label htmlFor="phone">{t('contact-form.your-phone-label')}</label>
-                              <input type="text" name="phone" placeholder={t('contact-form.your-phone-placeholder')} />
+                              <input type="text" name="phone" placeholder={t('contact-form.your-phone-placeholder')} onChange={this.setData} value={phone} disabled={shouldDisable} />
                             </div>
                           </div>
                         </div>
 
-                        <div class={cx(s.inputGroup, s.required)}>
+                        <div class={cx(s.inputGroup, s.required, errors && errors.message && s.error)}>
                           <label htmlFor="message">{t('contact-form.your-message-label')}</label>
-                          <textarea name="message" placeholder={t('contact-form.your-message-placeholder')} />
+                          <textarea name="message" placeholder={t('contact-form.your-message-placeholder')} onChange={this.setData} value={message} disabled={shouldDisable} />
                         </div>
 
-                        <button type="submit" class={s.send}>
-                          <img src={sendSVG} />
-                          {t('contact-form.send-button')}
+                        <button type="submit" class={cx(s.send, sent && s.sent)} disabled={shouldDisable}>
+                          {sending &&
+                          t('contact-form.send-button-sending')}
+                          
+                          {sent &&
+                          [<img src={okSVG} />, t('contact-form.send-button-sent')]}
+
+                          {!sending && !sent &&
+                          [<img src={sendSVG} />, t('contact-form.send-button')]}
                         </button>
                         <p class={cx(s.helpText, 'muted')}>{t('contact-form.help-text')}</p>
 
@@ -142,7 +246,21 @@ export default class Nav extends PureComponent {
   }
 }
 
-function prefetchImg(src) {
-  const i = new Image();
-  i.src = src;
+function sendForm(data, callback) {
+  let xhr = new XMLHttpRequest();
+  xhr.open('POST', '/', true);
+  xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == XMLHttpRequest.DONE && xhr.status === 200) {
+      callback();
+    } else if (xhr.readyState == XMLHttpRequest.DONE && xhr.status !== 200) {
+      callback(xhr.statusText);
+    }
+  };
+
+  const params = Object.keys(data).map(key => `${key}=${encodeURIComponent(data[key])}`);
+
+  xhr.send(params.join('&'));
 }
+

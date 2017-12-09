@@ -157,11 +157,21 @@ $submenu-extra-width: 60px;
 
               padding: 15px;
 
+              .lastMessageSent {
+                background-color: #c6ffd5;
+                @extend %ms0;
+                padding: 6px;
+                margin-bottom: 8px;
+                border-radius: 4px;
+              }
+
               .title { margin-bottom: 20px; }
 
               form {
                 @extend %ms1;
 
+                .hidden { display: none; }
+                
                 .inputGroup {
                   margin-bottom: 15px;
                   
@@ -181,6 +191,18 @@ $submenu-extra-width: 60px;
 
                     &:focus {
                       border-color: darken(#cceeff, 40%);
+                    }
+
+                    &[disabled] {
+                      background-color: white;
+                      opacity: .7;
+                      border-color: #ccc;
+                    }
+                  }
+
+                  &.error {
+                    input, textarea {
+                      border-color: red;
                     }
                   }
                 }
@@ -205,6 +227,14 @@ $submenu-extra-width: 60px;
 
                   &:active {
                     background-color: darken(#bbeffd, 10%);
+                  }
+
+                  &[disabled] {
+                    background-color: rgba(187, 239, 253, 0.5);
+                  }
+
+                  &.sent {
+                    background-color: #c6ffd5;
                   }
                 }
               }

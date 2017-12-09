@@ -3,7 +3,10 @@
     "home": "Home",
     "projects": "Projects",
     "services": "Services",
-    "rate-and-more": "Rate & How I Collaborate"
+    "rate-and-more": "Rate & How I Collaborate",
+    "contact-form": {
+      "last-message-sent": "You sent me a message on {{date}}."
+    }
   },
   "fr": {
     "home": "Accueil",
@@ -11,6 +14,7 @@
     "services": "Services",
     "rate-and-more": "Tarif & Comment je collabore",
     "contact-form": {
+      "last-message-sent": "Vous m'avez envoyé un message le {{date}}.",
       "title": "Une question, des mots doux ?<br/>Envoyez-moi un message 👇",
       "your-name-label": "Nom",
       "your-name-placeholder": "Jean Bernard",
@@ -21,7 +25,9 @@
       "your-message-label": "Message",
       "your-message-placeholder": "Salut Ilyes, j'adore ce que tu fais",
       "help-text": "Je réponds aux messages en moins de 24 heures.",
-      "send-button": "Envoyer"
+      "send-button": "Envoyer",
+      "send-button-sending": "Envoi en cours...",
+      "send-button-sent": "Message envoyé"
     }
   }
 }
