@@ -46,6 +46,7 @@ export default class Nav extends PureComponent {
     contactMenuExpanded: true,
 
     data: {
+      'form-name': 'contact',
       name: null,
       email: null,
       phone: null,
@@ -98,10 +99,7 @@ export default class Nav extends PureComponent {
 
     this.setState({ sending: true });
 
-    sendForm({
-      ...this.state.data,
-      'form-name': 'contact',
-    }, (errorStatusText) => {
+    sendForm(this.state.data, (errorStatusText) => {
       if (errorStatusText) {
         this.setState({ sending: false, errorSending: errorStatusText });
       } else {
@@ -155,7 +153,7 @@ export default class Nav extends PureComponent {
 
                       <h5 class={s.title} dangerouslySetInnerHTML={{ __html: t('contact-form.title') }} />
 
-                      <form onSubmit={this.sendForm} data-netlify="true" data-netlify-honeypot="bot-field" name="contact">
+                      <form onSubmit={this.sendForm} data-netlify="true" data-netlify-honeypot="bot-field" name={this.state.data['form-name']}>
 
                         <p class={s.hidden}>Do not fill this: <input type="text" name="bot-field" onChange={this.setData} /></p>
 
@@ -250,7 +248,7 @@ export default class Nav extends PureComponent {
 
 function sendForm(data, callback) {
   let xhr = new XMLHttpRequest();
-  xhr.open('POST', '/', true);
+  xhr.open('POST', '/fr', true);
   xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
 
   xhr.onreadystatechange = function () {
