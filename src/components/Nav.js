@@ -43,7 +43,7 @@ const formatDateByLang = (time, lang) => {
 
 export default class Nav extends PureComponent {
   state = {
-    contactMenuExpanded: true,
+    contactMenuExpanded: false,
 
     data: {
       'form-name': 'contact',
