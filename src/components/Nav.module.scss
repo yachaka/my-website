@@ -4,8 +4,8 @@
 $nav-link-height: 50px;
 $nav-link-vertical-margin: 10px;
 $nav-height: $nav-link-height + $nav-link-vertical-margin * 2;
-$nav-margin-bottom: 25px;
-$nav-link-border-width: 2px;
+$nav-margin-bottom: 30px;
+$nav-link-border-width: 1px;
 
 $submenu-extra-width: 60px;
 
@@ -23,6 +23,11 @@ $submenu-extra-width: 60px;
   right: 0;
   z-index: 5;
   overflow: visible;
+  transition: box-shadow 300ms ease;
+
+  &.shadowy {
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.16);
+  }
 
   & > div > ul {
     overflow: visible;
@@ -34,11 +39,11 @@ $submenu-extra-width: 60px;
       &.leftmost a { padding: 0 30px 0 0; }
       // &.rightmost a { padding: 0 0 0 30px; }
 
-      $contact-link-size: 50px;
+      $contact-link-size: 136px;
       $contact-link-border-width: 2px;
-      $contact-link-padding: 1px;
+      $contact-link-padding: 2px;
       $contact-link-inner-gray-box-size: $contact-link-size - ($contact-link-border-width * 2) - ($contact-link-padding * 2);
-      $contact-svg-size: 28px;
+      $contact-svg-size: 22px;
       $contact-form-width: 500px;
       $contact-form-height: 400px;
 
@@ -65,28 +70,31 @@ $submenu-extra-width: 60px;
       $subBottomLeftMiddleToLeftDuration: $animationDuration * ($contact-form-width / 2) / $total-px-border-travel-length;
       
       &.contact {
-
-        .border { position: absolute; display: block; pointer-events: none; border: 0px solid black; transition-timing-function: linear; }
+        margin-left: 30px;
+        .border { position: absolute; display: block; pointer-events: none; border: 0px solid #0080F7; transition-timing-function: linear; }
 
         & > a {
           border-width: $contact-link-border-width;
           width: $contact-link-size;
           padding: $contact-link-padding;
           position: relative;
+          line-height: $nav-link-height - ($nav-link-border-width * 2) - ($contact-link-padding * 2);
 
           &:hover {
             color: inherit;
           }
 
           & > .inner {
+            background-color: #0080F7;
             width: $contact-link-inner-gray-box-size; text-align: center;  display: inline-block; height: 100%; border-radius: 4px;
             cursor: pointer;
+            color: white;
             &:hover {
-              background-color: #ddd;
+              background-color: #2997FF;
             }
 
           }
-          svg { vertical-align: text-bottom; width: $contact-svg-size; height: $contact-svg-size; }
+          svg { vertical-align: text-bottom; width: $contact-svg-size; height: $contact-svg-size; margin-left: 12px; }
 
           .topLeftBorder {
             $start-delay: $subLeftBottomMiddleToBottomDuration + $subTopLeftTopToMiddleDuration + $subTopLeftRightToLeftDuration;
@@ -304,7 +312,7 @@ $submenu-extra-width: 60px;
         }
 
         & > .inner {
-          background-color: #999;
+          background-color: #5AAFFF;
         }
 
         .contactForm {
@@ -325,7 +333,7 @@ $submenu-extra-width: 60px;
         position: relative;
         display: block;
         height: $nav-link-height;
-        line-height: $nav-link-height - $nav-link-border-width;
+        line-height: $nav-link-height - ($nav-link-border-width * 2);
         text-decoration: none;
         margin: $nav-link-vertical-margin 0;
         padding: 0 30px;

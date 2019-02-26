@@ -3,7 +3,7 @@ import Link from '../components/Link'
 // import Helmet from 'react-helmet'
 
 import 'reset-css';
-import '../bootstrap/css/bootstrap.min.css';
+// import '../bootstrap/css/bootstrap.min.css';
 // import 'bootstrap-grid';
 
 import s from './index.module.scss';

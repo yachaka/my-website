@@ -61,12 +61,26 @@ export default class Nav extends PureComponent {
 
   componentDidMount() {
     window.openContact = () => this.setState({ contactMenuExpanded: true });
+    window.addEventListener('scroll', this.onWindowScroll)
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onWindowScroll)
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (!prevState.contactMenuExpanded
       && this.state.contactMenuExpanded) {
       this.refs.name.focus();
+    }
+  }
+
+  onWindowScroll = () => {
+    const top = (window.pageYOffset || document.documentElement.scrollTop)  - (document.documentElement.clientTop || 0)
+
+    if (top !== 0 && !this.state.showShadow) {
+      this.setState({ showShadow: true })
+    } else if (top === 0 && this.state.showShadow) {
+      this.setState({ showShadow: false })
     }
   }
 
@@ -111,6 +125,7 @@ export default class Nav extends PureComponent {
 
   render() {
     const {
+      showShadow,
       contactMenuExpanded,
       data: {
         name,
@@ -131,12 +146,14 @@ export default class Nav extends PureComponent {
     const shouldDisable = sending || sent;
 
     return (
-      <nav id={s.nav}>
+      <nav id={s.nav} class={cx(showShadow && s.shadowy)}>
         <div class="container" style="margin: auto;">
           <ul>
             <li class={cx(s.rightmost, s.contact)}>
               <a class={contactMenuExpanded && s.active}>
-                <span class={s.inner} onClick={this.toggleContactMenu}><svg width="28" height="28" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 17.000002"><path d="M2.5 17a.5.5 0 0 1-.5-.5l-.4-4A7.34 7.34 0 0 1 0 8c0-4.41 4-8 9-8s9 3.59 9 8-4 8-9 8a10 10 0 0 1-2.67-.36l-3.66 1.33a.49.49 0 0 1-.17.03zM9 1C4.59 1 1 4.14 1 8a6.37 6.37 0 0 0 1.47 4 .5.5 0 0 1 .11.26l.35 3.51 3.21-1.17a.5.5 0 0 1 .31 0A9 9 0 0 0 9 15c4.41 0 8-3.14 8-7s-3.59-7-8-7z"/><path d="M9.5 10a.5.5 0 0 1-.47-.33l-.81-2.32-3.5 1.74a.5.5 0 1 1-.45-.89l4-2a.5.5 0 0 1 .73.3l.82 2.34 3.5-1.62a.50112374.50112374 0 0 1 .42.91l-4 1.86a.5.5 0 0 1-.24.01z"/></svg></span>
+                <span class={s.inner} onClick={this.toggleContactMenu}>
+                  Contact<svg version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>messenger</title> <g fill="none" fill-rule="evenodd"> <g transform="translate(-1228 -23)" fill="#fff" fill-rule="nonzero"> <g transform="translate(1138 13)"> <g transform="translate(90 10)"> <path d="m3.3333 24c-0.36819 0-0.66667-0.31603-0.66667-0.70588l-0.53333-5.6471c-1.3601-1.8066-2.111-4.0427-2.1333-6.3529 0-6.2259 5.3333-11.294 12-11.294 6.6667 0 12 5.0682 12 11.294 0 6.2259-5.3333 11.294-12 11.294-1.2029 0.0013954-2.4004-0.16957-3.56-0.50824l-4.88 1.8776c-0.072593 0.028209-0.14934 0.04255-0.22667 0.042353zm8.6667-22.588c-5.88 0-10.667 4.4329-10.667 9.8824 0.021651 2.0648 0.71374 4.0588 1.96 5.6471 0.081174 0.1049 0.13209 0.23233 0.14667 0.36706l0.46667 4.9553 4.28-1.6518c0.1343-0.046366 0.27903-0.046366 0.41333 0 1.1018 0.36023 2.2469 0.55042 3.4 0.56471 5.88 0 10.667-4.4329 10.667-9.8824 0-5.4494-4.7867-9.8824-10.667-9.8824z"/> <path d="m12.667 14.118c-0.28069-1.265e-4 -0.53123-0.18639-0.62667-0.46588l-1.08-3.2753-4.6667 2.4565c-0.21412 0.13642-0.48231 0.13459-0.69476-0.0047323-0.21245-0.13932-0.33346-0.39275-0.3135-0.6565 0.019966-0.26375 0.17756-0.49353 0.40825-0.59524l5.3333-2.8235c0.17853-0.10815 0.39422-0.12298 0.58446-0.040199s0.33375 0.25391 0.38887 0.46373l1.0933 3.3035 4.6667-2.2871c0.33504-0.16369 0.73197-0.0088217 0.8866 0.34591s0.0084088 0.77503-0.3266 0.93879l-5.3333 2.6259c-0.104 0.032168-0.21383 0.037014-0.32 0.014118z"/> </g> </g> </g> </g> </svg>
+                </span>
                 <span class={cx(s.border, s.topLeftBorder)} />
                 <span class={cx(s.border, s.topRightBorder)} />
                 <div class={s.contactForm}>
@@ -200,42 +217,8 @@ export default class Nav extends PureComponent {
                 </div>
               </a>
             </li>
-            <script> </script>
-            {/*<li>
-              <Link to="/services" class={s.withSubmenu}>
-                <span class={cx(s.hider, s.topLeftHider)}></span>
-                <span class={cx(s.hider, s.topRightHider)}></span>
-
-                {t('services')}
-                <div class={s.submenu}>
-                  <div class={s.inner}>
-                    <span class={cx(s.hider, s.subTopLeftHider)}></span>
-                    <span class={cx(s.hider, s.subTopRightHider)}></span>
-                    <span class={cx(s.hider, s.subLeftBottomHider)}></span>
-                    <span class={cx(s.hider, s.subBottomLeftHider)}></span>
-                    <span class={cx(s.hider, s.subBottomRightHider)}></span>
-                    <ul>
-                      <li>
-                        <Link to={pageSaasUrls[lang]}>
-                          {t('cta-saas-text')}
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/developpement-d-application-mobile">
-                          {t('cta-mobile-text')}
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/cours-de-javascript-moderne">
-                          {t('cta-learn-text')}
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </Link>
-            </li>*/}
-            <li><Link to={pageRateAndProcessUrls[lang]}>{t('rate-and-more')}</Link></li>
+            
+            {/* <li><Link to={pageRateAndProcessUrls[lang]}>{t('rate-and-more')}</Link></li> */}
             <li><Link to={pageProjectsUrls[lang]}>{t('projects')}</Link></li>
             <li class={cx(s.home, s.leftmost)}><Link to="/">{t('home')}</Link></li>
           </ul>
