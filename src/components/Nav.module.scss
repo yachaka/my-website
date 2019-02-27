@@ -44,8 +44,8 @@ $submenu-extra-width: 60px;
       $contact-link-padding: 2px;
       $contact-link-inner-gray-box-size: $contact-link-size - ($contact-link-border-width * 2) - ($contact-link-padding * 2);
       $contact-svg-size: 22px;
-      $contact-form-width: 500px;
-      $contact-form-height: 400px;
+      $contact-form-width: 700px;
+      $contact-form-height: 440px;
 
       $total-px-border-travel-length: $contact-link-size * 3 + ($contact-form-width - $contact-link-size) + $contact-form-width + $contact-form-height * 2;
 
@@ -175,17 +175,34 @@ $submenu-extra-width: 60px;
 
               .title { margin-bottom: 20px; }
 
+              .viewSentMessageLink {
+                color: #0080f7;
+                margin-left: 7px;
+              }
+
               form {
                 @extend %ms1;
 
+
                 .hidden { display: none; }
                 
+                .inputRow {
+                  margin: 0 -5px;
+                }
+
+                .oneThirdInput {
+                  float: left;
+                  width: 33%;
+                  padding: 0 5px;
+                }
+
                 .inputGroup {
                   margin-bottom: 15px;
                   
                   label {
-                    @extend %ms0;
-                    display: none;
+                    @extend %ms1;
+                    margin-bottom: 7px;
+                    display: inline-block;
                   }
 
                   input, textarea {
@@ -208,9 +225,16 @@ $submenu-extra-width: 60px;
                     }
                   }
 
+                  textarea {
+                    height: 117px;
+                  }
+
                   &.error {
                     input, textarea {
                       border-color: red;
+                    }
+                    label {
+                      color: red;
                     }
                   }
                 }
@@ -222,9 +246,10 @@ $submenu-extra-width: 60px;
                 .send {
                   float: right;
                   margin-left: 8px;
-                  background-color: rgba(187, 239, 253, 0.5);
+                  background-color: rgba(187, 239, 253, 0.9);
                   border: none;
-                  padding: 6px 8px;
+                  padding: 8px 12px;
+                  border-radius: 4px;
                   @extend %ms1;
 
                   img { width: 18px; height: 18px; display: inline-block; vertical-align: middle; margin-right: 8px; }

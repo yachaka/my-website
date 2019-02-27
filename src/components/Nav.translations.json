@@ -15,6 +15,7 @@
     "rate-and-more": "Tarif & Comment je collabore",
     "contact-form": {
       "last-message-sent": "Vous m'avez envoyé un message le {{date}}.",
+      "view-message-link": "En détails [+]",
       "title": "Une question, un besoin ?<br/>Envoyez-moi un message 👇",
       "your-name-label": "Nom",
       "your-name-placeholder": "Thomas Dupont",
@@ -27,7 +28,14 @@
       "help-text": "Je réponds aux messages en moins de 24 heures.",
       "send-button": "Envoyer",
       "send-button-sending": "Envoi en cours...",
-      "send-button-sent": "Message envoyé"
+      "send-button-sent": "Message envoyé",
+      "last-message-popup": {
+        "details": "Détails renseignés",
+        "name": "Nom",
+        "email": "Email",
+        "phone": "Téléphone",
+        "message": "Message"
+      }
     }
   }
 }

@@ -119,8 +119,25 @@ export default class Nav extends PureComponent {
       } else {
         this.setState({ sending: false, sent: true });
         Cookies.set('lastMessageSent', (new Date()).getTime(), { expires: 365 });
+        Cookies.set('lastMessageSentData', JSON.stringify(this.state.data), { expires: 365 })
       }
     });
+  }
+
+  viewMessageContent = () => {
+    const { lang } = this.context;
+    const t = i18n(lang, translations);
+
+    const lastMessageSentData = JSON.parse(Cookies.get('lastMessageSentData') || '""')
+    window.alert(`
+** ${t('contact-form.last-message-popup.details')} **
+${t('contact-form.last-message-popup.name')}: ${lastMessageSentData.name}
+${t('contact-form.last-message-popup.email')}: ${lastMessageSentData.email}
+${lastMessageSentData.phone ? `${t('contact-form.last-message-popup.phone')}: ${lastMessageSentData.phone}` : ''}
+
+** ${t('contact-form.last-message-popup.message')} **
+${lastMessageSentData.message}
+`)
   }
 
   render() {
@@ -141,7 +158,7 @@ export default class Nav extends PureComponent {
     const { lang } = this.context;
     const t = i18n(lang, translations);
 
-    const lastMessageSent = Cookies.get('lastMessageSent');
+    const lastMessageSent = Cookies.get('lastMessageSent')
 
     const shouldDisable = sending || sent;
 
@@ -166,6 +183,7 @@ export default class Nav extends PureComponent {
                       {lastMessageSent &&
                       <p class={s.lastMessageSent}>
                         {t('contact-form.last-message-sent').replace('{{date}}', formatDateByLang(parseInt(lastMessageSent, 10), lang))}
+                        <a class={s.viewSentMessageLink} href="javascript:;" onClick={this.viewMessageContent}>{t('contact-form.view-message-link')}</a>
                       </p> }
 
                       <h5 class={s.title} dangerouslySetInnerHTML={{ __html: t('contact-form.title') }} />
@@ -174,29 +192,32 @@ export default class Nav extends PureComponent {
 
                         <p class={s.hidden}>Do not fill this: <input type="text" name="bot-field" onChange={this.setData} /></p>
 
-                        <div class={cx(s.inputGroup, s.required, errors && errors.name && s.error)}>
-                          <label htmlFor="name">{t('contact-form.your-name-label')}</label>
-                          <input ref="name" type="text" name="name" placeholder={t('contact-form.your-name-placeholder')} onChange={this.setData} value={name} disabled={shouldDisable} />
-                        </div>
-
-                        <div class="row">
-                          <div class="col-xs-6">
-                            <div class={cx(s.inputGroup, s.required, errors && errors.email && s.error)}>
-                              <label htmlFor="email">{t('contact-form.your-email-label')}</label>
-                              <input type="text" name="email" placeholder={t('contact-form.your-email-placeholder')} onChange={this.setData} value={email} disabled={shouldDisable} />
-                            </div>
+                        <div class={cx(s.inputRow)}>
+                          <div class={cx(s.inputGroup, s.oneThirdInput, s.required, errors && errors.name && s.error)}>
+                            <label htmlFor="name">{t('contact-form.your-name-label')}</label>
+                            <input ref="name" type="text" name="name" placeholder={t('contact-form.your-name-placeholder')} onChange={this.setData} value={name} disabled={shouldDisable} />
                           </div>
-                          <div class="col-xs-6">
-                            <div class={s.inputGroup}>
-                              <label htmlFor="phone">{t('contact-form.your-phone-label')}</label>
-                              <input type="text" name="phone" placeholder={t('contact-form.your-phone-placeholder')} onChange={this.setData} value={phone} disabled={shouldDisable} />
-                            </div>
+
+                          <div class={cx(s.inputGroup, s.oneThirdInput, s.emailInput, s.required, errors && errors.email && s.error)}>
+                            <label htmlFor="emailInput">{t('contact-form.your-email-label')}</label>
+                            <input id="emailInput "type="text" name="email" placeholder={t('contact-form.your-email-placeholder')} onChange={this.setData} value={email} disabled={shouldDisable} />
+                          </div>
+
+                          <div class={cx(s.inputGroup, s.oneThirdInput, s.phoneInput)}>
+                            <label htmlFor="phone">{t('contact-form.your-phone-label')}</label>
+                            <input type="text" name="phone" placeholder={t('contact-form.your-phone-placeholder')} onChange={this.setData} value={phone} disabled={shouldDisable} />
                           </div>
                         </div>
 
                         <div class={cx(s.inputGroup, s.required, errors && errors.message && s.error)}>
                           <label htmlFor="message">{t('contact-form.your-message-label')}</label>
-                          <textarea name="message" placeholder={t('contact-form.your-message-placeholder')} onChange={this.setData} value={message} disabled={shouldDisable} />
+                          <textarea
+                            name="message"
+                            placeholder={t('contact-form.your-message-placeholder')}
+                            onChange={this.setData}
+                            value={message}
+                            disabled={shouldDisable}
+                          />
                         </div>
 
                         <button type="submit" class={cx(s.send, sent && s.sent)} disabled={shouldDisable}>

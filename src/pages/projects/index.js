@@ -34,52 +34,7 @@ export default class ProjectsPage extends PureComponent {
         </div></div></div>
 
 
-        <Project
-          id={s.spendeskWork}
-          name="Spendesk"
-          url="https://www.spendesk.com"
-          monthDuration={10}
-          wasFreelanceWork={false}
-          technologies={['Node.js', 'React', 'React-Native', 'GraphQL', 'Relay']}
-          productBrief={t('spendesk.product-brief')}
-          laptopScreens={[
-            this.props.data.requestsScreenImg.childImageSharp.sizes,
-            this.props.data.paymentsScreenImg.childImageSharp.sizes,
-            this.props.data.cardsScreenImg.childImageSharp.sizes,
-            this.props.data.cardOrder3ScreenImg.childImageSharp.sizes,
-            this.props.data.settingsTeamScreenImg.childImageSharp.sizes,
-            this.props.data.branchsMenuScreenImg.childImageSharp.sizes,
-          ]}
-          mobileScreens={[
-            InAppApprovalVideo,
-            PaymentEditionVideo,
-            TopUpVideo,
-            LoginVideo,
-          ]}
-          role={t('spendesk.role')}
-          team={t('spendesk.team')}
-          testimonial={{
-            picture: this.props.data.guilhem.childImageSharp.sizes,
-            name: 'Guilhem Bellion',
-            external: 'https://www.linkedin.com/in/guilhembellion/',
-            role: t('spendesk.testimonial.role'),
-            text: `Ilyes a le don de conjuguer parfaitement créativité et pragmatisme !<br/><br/>
-J'ai eu l'occasion de travailler étroitement avec lui pendant 10 mois chez Spendesk, durant lesquels il a participé avec succès à de nombreux projets. Il a notamment été intégralement responsable du développement et de la maintenance de notre application mobile en React Native, et a posé les bases de notre nouvelle API GraphQL. [...]<br/><br/>Son expertise technique et sa bonne humeur sont de vrais atouts dans une équipe !`,
-          }}
-        />
-
-        <Project
-          id={s.speakenWork}
-          name="Speaken"
-          url="https://speaken.com"
-          monthDuration={4}
-          wasFreelanceWork={true}
-          technologies={['React', 'Redux']}
-          productBrief={t('speaken.product-brief')}
-          laptopScreens={['green']}
-          role={t('speaken.role')}
-          team={t('speaken.team')}
-        />
+        
         {/*<SpendeskWork data={this.props.data} />*/}
 
 
@@ -391,41 +346,3 @@ class mapSizesToProps extends PureComponent {
 }
 
 const MobileAndLaptopMockups = windowSize(mapSizesToProps);
-
-export const query = graphql`
-  query ProjectsImages {
-    cardsScreenImg:file(relativePath: { eq: "data/Spendesk/webapp/Cards.png" }) {
-      ...ImageForLaptopMockup
-    }
-    requestsScreenImg:file(relativePath: { eq: "data/Spendesk/webapp/Requests.png" }) {
-      ...ImageForLaptopMockup
-    }
-    paymentsScreenImg:file(relativePath: { eq: "data/Spendesk/webapp/Payments.png" }) {
-      ...ImageForLaptopMockup
-    }
-    cardOrder3ScreenImg:file(relativePath: { eq: "data/Spendesk/webapp/CardOrder-Step3.png" }) {
-      ...ImageForLaptopMockup
-    }
-    settingsTeamScreenImg:file(relativePath: { eq: "data/Spendesk/webapp/Settings-Team.png" }) {
-      ...ImageForLaptopMockup
-    }
-    branchsMenuScreenImg:file(relativePath: { eq: "data/Spendesk/webapp/Branchs-Menu.png" }) {
-      ...ImageForLaptopMockup
-    }
-    guilhem:file(relativePath: { eq: "data/Spendesk/guilhem.jpg" }) {
-      childImageSharp {
-        sizes(maxWidth: 64, maxHeight: 64) {
-          ...GatsbyImageSharpSizes
-        }
-      }
-    }
-  }
-
-  fragment ImageForLaptopMockup on File {
-    childImageSharp {
-      sizes(maxWidth: 800, quality: 35) {
-        ...GatsbyImageSharpSizes
-      }
-    }
-  }
-`;
