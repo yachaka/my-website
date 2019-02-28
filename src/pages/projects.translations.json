@@ -40,7 +40,11 @@
     "dailymotion": {
       "product-brief": "Dailymotion est une plateforme de partage de vidéos.",
       "role": "J'ai participé au développement d'un nouveau produit Dailymotion.<br/><br/>J'ai été résponsable du développement de composants front-end utilisés sur ce produit. Mon travail incluait l'écriture de tests unitaires, et suivait un processus de validation hiérarchisé.",
-      "team": "J'ai travaillé dans une équipe de 5 développeurs front-end. Le projet regroupait plus de 20 développeurs à temps plein."
+      "team": "J'ai travaillé dans une équipe de 5 développeurs front-end. Le projet regroupait plus de 20 développeurs à temps plein.",
+      "key-developments": {
+        "dev": "Développement unitaire de composants front-end",
+        "process": "Processus strict de qualité et de contrôle"
+      }
     },
     "spendesk": {
       "product-brief": "Spendesk est une plateforme intelligente de gestion des dépenses professionnelles.",
@@ -48,6 +52,10 @@
       "team": "J'ai d'abord travaillé au sein d'une équipe produit réduite : 1 chef de produit, et 2 autres développeurs (dont 1 lead). Via des recrutements fréquents, l'équipe s'est agrandie progressivement pour se constituer d'1 chef produit, 4 développeurs (dont 1 lead), 1 UX Designer et 1 Data Scientist. <br/><br/>J'échangeais également fréquemment directement avec l'équipe commerciale ou support client sur des problématiques spécifiques.",
       "testimonial": {
         "role": "Développeur en chef chez Spendesk"
+      },
+      "key-developments": {
+        "mobile-app": "Développement initial de l'application mobile en 3 mois, sur iOS et Android",
+        "dev-and-choice": "9ème employé, implication majeure sur les choix techniques"
       }
     },
     "speaken": {

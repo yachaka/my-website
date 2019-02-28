@@ -130,6 +130,10 @@ class IndexPage extends PureComponent {
             productBrief={tp('dailymotion.product-brief')}
             role={tp('dailymotion.role')}
             team={tp('dailymotion.team')}
+            keyPoints={[
+              { text: 'dailymotion.key-developments.dev' },
+              { text: 'dailymotion.key-developments.process'},
+            ]}
           />
 
           <Project
@@ -140,6 +144,10 @@ class IndexPage extends PureComponent {
             wasFreelanceWork={false}
             technologies={['Node.js', 'React', 'React-Native', 'GraphQL', 'Relay', 'Webpack']}
             productBrief={tp('spendesk.product-brief')}
+            keyPoints={[
+              { text: 'spendesk.key-developments.mobile-app' },
+              { text: 'spendesk.key-developments.dev-and-choice'},
+            ]}
             laptopScreens={[
               this.props.data.requestsScreenImg.childImageSharp.sizes,
               this.props.data.paymentsScreenImg.childImageSharp.sizes,
