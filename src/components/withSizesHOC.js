@@ -1,15 +1,12 @@
 import React, { PureComponent } from 'react'
 
-const getWidth = () => window.document.scrollingElement.clientWidth
-const getHeight = () => window.document.scrollingElement.clientHeight
 export default (mapSizesToProps) => (Component) => {
   class MapSizes extends PureComponent {
-    state = {
-      width: getWidth(),
-      height: getHeight(),
-    }
-
     componentDidMount() {
+      this.setState({
+        width: window.document.scrollingElement.clientWidth,
+        height: window.document.scrollingElement.clientHeight,
+      })
       window.addEventListener('resize', this.getSizes)
     }
     componentWillUnmount() {
