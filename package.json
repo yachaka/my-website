@@ -27,6 +27,7 @@
     "modularscale-sass": "^3.0.4",
     "raw-loader": "^0.5.1",
     "react-clone-referenced-element": "^1.0.1",
+    "react-transition-group": "^2.6.0",
     "react-visibility-sensor": "^3.11.0",
     "react-window-size": "^1.0.1",
     "reset-css": "^2.2.1",

@@ -11,8 +11,7 @@
   "fr": {
     "home": "Accueil",
     "projects": "Réalisations",
-    "services": "Services",
-    "rate-and-more": "Tarif & Comment je collabore",
+    "rate": "Tarif",
     "contact-form": {
       "last-message-sent": "Vous m'avez envoyé un message le {{date}}.",
       "view-message-link": "En détails [+]",
@@ -25,7 +24,7 @@
       "your-phone-placeholder": "07 33 11 40 45",
       "your-message-label": "Message",
       "your-message-placeholder": "Votre message...",
-      "help-text": "Je réponds aux messages en moins de 24 heures.",
+      "help-text": "Je réponds rapidement.",
       "send-button": "Envoyer",
       "send-button-sending": "Envoi en cours...",
       "send-button-sent": "Message envoyé",

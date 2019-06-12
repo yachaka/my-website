@@ -1,5 +1,8 @@
 
+@import '../vars';
+
 .footer {
+  border-top: 1px solid #eee;
   margin-bottom: 5px;
   
   a {
@@ -23,6 +26,7 @@
       &.rightmost a { padding: 0 0 0 30px; }
 
       a {
+        @extend %ms1;
         background-color: transparent;
         display: block;
         height: 70px;

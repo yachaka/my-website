@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import Link from '../components/Link'
-// import Helmet from 'react-helmet'
+ import Helmet from 'react-helmet'
 
 import 'reset-css';
 // import '../bootstrap/css/bootstrap.min.css';
@@ -23,10 +23,17 @@ class Layout extends PureComponent {
   }
 
   render() {
-    const { children } = this.props;
+    const { children, lang } = this.props;
+
+    const description = 'JavaScript Freelance web développeur.'
 
     return (
       <div>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>React.js, Node.js, JavaScript Fullstack Freelance web developer - Ilyes Hermellin</title>
+          <meta name="description" content={description} />
+        </Helmet>
         <Nav />
         {children()}
         <Footer />

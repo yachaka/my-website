@@ -5,8 +5,30 @@
 #home {
   
   .hero {
-    margin: 110px auto;
+    // margin: 110px auto;
+    padding-top: 40px; // equal half of nav height
+    height: 100vh;
+    max-height: 620px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+
+    @media (max-width: 767px) {
+      height: auto;
+      margin: 110px auto;
+      display: block;
+    }
+
+    .heroText {
+      .meSmallOval {
+        display: inline-block;
+        margin-right: 12px;
+        vertical-align: bottom;
+        width: 80px;
+      }
+    }
 
     .heroStatus {
       background-color: #DBF7FF;
@@ -15,6 +37,16 @@
 
     .heroLinks {
       margin-top: 30px;
+
+      @media (max-width: 767px) {
+        a {
+          display: block;
+          margin-bottom: 12px;
+        }
+        a:last-child {
+          margin-bottom: 0;
+        }
+      }
 
       a {
         @extend %ms3;
@@ -40,6 +72,7 @@
       }
     }
   }
+
   h1 {
     @extend %ms4;
   }
@@ -50,6 +83,27 @@
   }
 }
 
+.rate {
+  // margin-bottom: 110px;
+  p, ul {
+    @extend %ms2;
+  }
+
+  ul {
+    list-style-type: disc;
+    margin-left: 32px;
+
+    li.separator {
+      list-style-type: none;
+      border-top: 1px solid #ccc;
+      width: 400px;
+      margin: 16px 0;
+    }
+    .discount {
+      background-color: #e4ffc9;
+    }
+  }
+}
 
 #projects {
   @mixin work($color, $baseAlpha) {
@@ -65,6 +119,11 @@
     }
 
     .testimonial {
+      .quote {
+        path {
+          fill: rgba($color, $baseAlpha * 3);
+        }
+      }
       .text {
         background: rgba($color, $baseAlpha);
         border-color: rgba($color, $baseAlpha * 2);
@@ -99,23 +158,23 @@
 
   .workBlock {
     // margin-bottom: 220px;
-    padding: 55px 0; 
+    padding: 55px 0 25px; 
     margin-bottom: 110px;
 
     h2 { margin-bottom: 5px; }
     h3 { margin-bottom: 10px; }
     .brief {
       @extend %ms2;
+      margin-bottom: 30px;
     }
 
     .workMockups {
-      margin: 75px 0 0;
+      margin: 75px 0 75px;
       overflow: auto;
     }
 
     .keyPoints {
-      margin-top: 30px;
-      // margin-bottomL: ;
+      margin-bottom: 30px;
       margin-left: auto;
       margin-right: auto;
       @extend %ms1;
@@ -144,13 +203,25 @@
       width: 50%;
       margin-right: 8.33%;
     }
+
     .columnRight {
       width: 41.66%;
     }
 
+    @media (max-width: 767px) {
+      .columnLeft {
+        float: none;
+        width: 100%;
+        margin-right: 0;
+      }
+      .columnRight {
+        width: 100%;
+      }
+    }
+
     .column {
       overflow: hidden;
-      margin-bottom: 75px;
+      margin-bottom: 30px;
 
       p {
         @extend %ms1;
@@ -159,16 +230,32 @@
     }
 
     .columns {
-      margin-top: 75px;
       overflow: auto;
     }
 
     .testimonial {
+      position: relative;
       width: 83.33%;
       margin: auto;
+      margin-bottom: 30px;
       text-align: center;
       @extend %ms1;
 
+      .quote {
+        position: absolute;
+        width: 48px;
+        height: 48px;
+      }
+
+      .quoteLeft {
+        left: -22px;
+        top: 28px;
+
+      }
+      .quoteRight {
+        right: -25px;
+        bottom: 88px;
+      }
 
       .text {
         border-radius: 4px;
@@ -238,6 +325,45 @@
           }
         }
       }
+    }
+
+    @media (max-width: 767px) {
+      .testimonial {
+        width: 96%;
+      }
+    }
+  }
+}
+
+#contactCTABlock {
+  @extend %ms2;
+  height: 460px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  p {
+    margin-bottom: 12px;
+  }
+
+  .button {
+    background-color: #0080f7;
+    width: 128px;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    height: 44px;
+    line-height: 44px;
+    @extend %ms1;
+
+    svg {
+      width: 22px;
+      height: 22px;
+      vertical-align: text-bottom;
+      margin-left: 12px;
     }
   }
 }

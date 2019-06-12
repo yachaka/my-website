@@ -1,14 +1,20 @@
 {
   "en": {
-    "headline1": "Hi, I'm <strong>Ilyes Hermellin</strong>.",
-    "headline2": "I am a <strong>freelance fullstack developer</strong>.",
-    "presentation": "I can help you {{saas}}build SaaS{{/saas}}, {{mobile}}mobile applications{{/mobile}}<br/> and {{learn}}learn latest JS techs{{/learn}}.",
-    "ctas-title": "Get Started"
+    "hero-text": "Hello 👋<br/>I am a Fullstack developer (JavaScript oriented).",
+    "hero-status": "I am looking for a contract (as freelance),<br/> or a position in the environmental or creative field.",
+    "hero-work-link": "My work",
+    "work": "Work",
+    "link-see-in-image": "See in picture",
+    "link-see-in-video": "See in video"
   },
   "fr": {
-    "headline": "Bonjour, je m'appelle Ilyes Hermellin.<br/>Je suis un développeur fullstack JS freelance.",
-    "presentation": "Je peux vous aider à développer un SaaS, une application mobile ou apprendre le JS. Je code principalement en <abbr title=\"Node.js, React, Redux, React-Native, GraphQL, Relay\">JavaScript moderne</abbr>.",
-    "presentation2": "Je cherche à travailler en priorité avec des startups, sur des projets jeunes.<br/>Vous pourrez trouver ici {{projects}}mes précédentes réalisations{{/projects}}, ou<br/>le moyen de {{contact}}me contacter{{/contact}}.",
-    "ctas-title": "En savoir plus"
+    "hero-text": "Bonjour 👋 <br/>Je suis un développeur Fullstack (orienté JavaScript).",
+    "hero-status1": "Je cherche une mission (en tant que freelance),",
+    "hero-status2": "ou un poste dans le domaine environnemental ou créatif.",
+    "hero-work-link": "Mes réalisations",
+    "work": "Expérience",
+    "rate-title": "Tarif & Réductions",
+    "link-see-in-image": "Voir en image",
+    "link-see-in-video": "Voir en vidéo"
   }
 }

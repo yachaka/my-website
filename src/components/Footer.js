@@ -15,19 +15,15 @@ export default class Footer extends PureComponent {
     // const pathWithoutLang = window.location.pathname.substr(3);
 
     return (
-      <div class="container">
-        <hr style="margin-bottom: 5px; border-color: #aaa;" />
-        <footer class={s.footer}>
+      <footer class={s.footer}>
+        <div class="container">
           <ul>
             <li class={s.rightmost}><Link to="/credits">{t('icon-credits')}</Link></li>
-            <li><Link to="/contact">{t('contact')}</Link></li>
-            <li><Link to="/faq">{t('q-and-a')}</Link></li>
-            <li><Link to="/a-propos-de-moi">{t('about')}</Link></li>
             <li class={cx(s.left, s.leftmost)}><Link lang="en" to="/">English</Link></li>
             <li class={s.left}><Link lang="fr" to="/">Français</Link></li>
           </ul>
-        </footer>
-      </div>
-    );
+        </div>
+      </footer>
+    )
   }
 }
