@@ -2,6 +2,7 @@
 import React, { PureComponent } from 'react';
 import { CSSTransition } from 'react-transition-group'
 import cx from 'classnames';
+import debounce from 'lodash.debounce'
 import merge from 'lodash.merge';
 import Cookies from 'js-cookie';
 import smoothScrollTo from 'smooth-scroll-to'
@@ -65,9 +66,11 @@ export default class Nav extends PureComponent {
   componentDidMount() {
     window.openContact = () => this.setState({ contactMenuExpanded: true });
     window.addEventListener('scroll', this.onWindowScroll)
+    window.addEventListener('resize', this.onWindowResizeDebounced)
   }
   componentWillUnmount() {
     window.removeEventListener('scroll', this.onWindowScroll)
+    window.removeEventListener('resize', this.onWindowResizeDebounced)
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -76,6 +79,22 @@ export default class Nav extends PureComponent {
       this.refs.name.focus();
     }
   }
+
+  onWindowResize = () => {
+    if (this.formContentEl && this.formOuterEl) {
+      const maxHeight = window.document.scrollingElement.clientHeight - this.formOuterEl.offsetTop - 20
+
+      if (this.formOuterEl.offsetTop + this.formContentEl.offsetHeight > window.document.scrollingElement.clientHeight
+        || (this.formContentOriginalHeight !== undefined && this.formContentEl.offsetHeight < maxHeight && this.formContentEl.offsetHeight < this.formContentOriginalHeight)) {
+        if (!this.formContentOriginalHeight) {
+          this.formContentOriginalHeight = this.formContentEl.offsetHeight
+        }
+        this.formContentEl.style.height = Math.min(maxHeight, this.formContentOriginalHeight) + 'px'
+      }
+    }
+    
+  }
+  onWindowResizeDebounced = debounce(this.onWindowResize, 200)
 
   onWindowScroll = () => {
     const top = (window.pageYOffset || document.documentElement.scrollTop)  - (document.documentElement.clientTop || 0)
@@ -179,13 +198,13 @@ ${lastMessageSentData.message}
                   </span>
                   <span class={cx(s.border, s.topLeftBorder)} />
                   <span class={cx(s.border, s.topRightBorder)} />
-                  <div class={s.contactForm}>
+                  <div class={s.contactForm} ref={el => this.formOuterEl = el}>
                     <div class={s.inner}>
                       <span class={cx(s.border, s.subTopLeftBorder)} />
                       <span class={cx(s.border, s.subBottomLeftBorder)} />
                       <span class={cx(s.border, s.subLeftBottomBorder)} />
                       <span class={cx(s.border, s.subBottomRightBorder)} />
-                      <div class={s.content}>
+                      <div class={s.content} ref={el => this.formContentEl = el}>
                         {lastMessageSent &&
                         <p class={s.lastMessageSent}>
                           {t('contact-form.last-message-sent').replace('{{date}}', formatDateByLang(parseInt(lastMessageSent, 10), lang))}
