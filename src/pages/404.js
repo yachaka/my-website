@@ -1,9 +1,10 @@
 import React from 'react'
 
+import s from './404.module.scss'
+
 const NotFoundPage = () => (
-  <div>
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+  <div id={s.p404}>
+    <h1 id={s.title}>404</h1>
   </div>
 )
 

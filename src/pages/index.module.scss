@@ -61,9 +61,14 @@
         }
         &.workLink {
           margin-right: 30px;
+
           svg {
             margin-right: 7px;
             vertical-align: text-bottom;
+          }
+
+          @media (max-width: 767px) {
+            margin-right: 0;
           }
         }
         &.cvLink {

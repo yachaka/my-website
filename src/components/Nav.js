@@ -318,14 +318,6 @@ ${lastMessageSentData.message}
               </ul>
           </div>
         </CSSTransition>
-
-        <MobileOverlay
-          key="menu"
-          isOpen={showOverlayMenu}
-          onClose={this.toggleOverlayMenu}
-        >
-          
-        </MobileOverlay>
       </div>
     )
   }

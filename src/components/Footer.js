@@ -6,6 +6,8 @@ import Link from './Link';
 import s from './Footer.module.scss';
 import i18n from '../i18n';
 import translations from './Footer.translations.json';
+import githubSVG from '../img/github.svg'
+import linkedinSVG from '../img/linkedin.svg'
 
 export default class Footer extends PureComponent {
   render() {
@@ -18,7 +20,8 @@ export default class Footer extends PureComponent {
       <footer class={s.footer}>
         <div class="container">
           <ul>
-            <li class={s.rightmost}><Link to="/credits">{t('icon-credits')}</Link></li>
+            <li class={cx(s.github, s.rightmost)}><a href="https://github.com/yachaka" target="_blank"><img src={githubSVG} alt="Yachaka's profile on github" /></a></li>
+            <li class={cx(s.linkedin, s.rightmost)}><a href="https://www.linkedin.com/in/ilyeshermellin/" target="_blank"><img src={linkedinSVG} alt="Ilyes Hermellin profile on LinkedIn" /></a></li>
             <li class={cx(s.left, s.leftmost)}><Link lang="en" to="/">English</Link></li>
             <li class={s.left}><Link lang="fr" to="/">Français</Link></li>
           </ul>
