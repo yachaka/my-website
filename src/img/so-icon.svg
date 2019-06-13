@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="74px" height="88px" viewBox="0 0 74 88" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>so-icon</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="so-icon">
+            <polygon id="Path" fill="#6C6C6C" points="62.4 79.8 62.4 56.6 70.1 56.6 70.1 87.5 0.6 87.5 0.6 56.6 8.3 56.6 8.3 79.8"></polygon>
+            <path d="M16.8,54.4 L54.6,62.3 L56.2,54.7 L18.4,46.8 L16.8,54.4 Z M21.8,36.4 L56.8,52.7 L60,45.7 L25,29.3 L21.8,36.4 Z M31.5,19.2 L61.2,43.9 L66.1,38 L36.4,13.3 L31.5,19.2 Z M50.7,0.9 L44.5,5.5 L67.5,36.5 L73.7,31.9 L50.7,0.9 Z M16,72 L54.6,72 L54.6,64.3 L16,64.3 L16,72 Z" id="Shape" fill="#343433" fill-rule="nonzero"></path>
+        </g>
+    </g>
+</svg>

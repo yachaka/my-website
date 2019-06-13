@@ -44,6 +44,16 @@
           opacity: 0.4;
         }
       }
+      &.stackoverflow a {
+        &:hover img {
+          opacity: 1;
+        }
+        img {
+          width: 24px;
+          height: 24px;
+          opacity: 0.75;
+        }
+      }
 
       a {
         @extend %ms1;
