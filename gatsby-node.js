@@ -8,7 +8,7 @@ const capitalize = string => string.charAt(0).toUpperCase() + string.slice(1);
 
 exports.onCreatePage = ({ page, boundActionCreators: { createPage, deletePage } }) => {
   console.log('onCreatePage', page.pluginCreatorId)
-  if (page.pluginCreatorId === 'Plugin gatsby-plugin-page-creator') {
+  if (page.pluginCreatorId === 'Plugin component-page-creator') {
     console.log('PLUGIN CREATOR')
     const pathWithoutExt = page.componentPath.substring(0, page.componentPath.lastIndexOf('.'));
     const urlsForLangPath = `${pathWithoutExt}.urls.json`;

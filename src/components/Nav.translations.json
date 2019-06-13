@@ -15,7 +15,7 @@
     "contact-form": {
       "last-message-sent": "Vous m'avez envoyé un message le {{date}}.",
       "view-message-link": "En détails [+]",
-      "title": "Une question, un besoin ?<br/>Envoyez-moi un message 👇",
+      "title": "Une question, un besoin, une idée ?<br/>Envoyez-moi un message 👇",
       "your-name-label": "Nom",
       "your-name-placeholder": "Thomas Dupont",
       "your-email-label": "E-mail",
@@ -24,7 +24,7 @@
       "your-phone-placeholder": "07 33 11 40 45",
       "your-message-label": "Message",
       "your-message-placeholder": "Votre message...",
-      "help-text": "Je réponds rapidement.",
+      "help-text": "Votre message arrivera directement dans ma boite e-mail.",
       "send-button": "Envoyer",
       "send-button-sending": "Envoi en cours...",
       "send-button-sent": "Message envoyé",

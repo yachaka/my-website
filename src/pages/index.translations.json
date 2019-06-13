@@ -5,7 +5,17 @@
     "hero-work-link": "My work",
     "work": "Work",
     "link-see-in-image": "See in picture",
-    "link-see-in-video": "See in video"
+    "link-see-in-video": "See in video",
+    "contact-cta-text": "Do we talk the same language?",
+    "rate-block": {
+      "text": "Mon Tarif Journalier est {{rate}}€ HT.<br/>Je pratique des réductions :",
+      "discounts": [
+        [8, " (soit {{rate}}€ HT) après 30 jours de mission"],
+        [16, " (soit {{rate}}€ HT) après 90 jours de mission"],
+        "separator",
+        [20, " (soit {{rate}}€ HT) pour les projets environnementaux, sociaux, éducatifs, à but non-lucratif."]
+      ]
+    }
   },
   "fr": {
     "hero-text": "Bonjour 👋 <br/>Je suis un développeur Fullstack (orienté JavaScript).",
@@ -15,6 +25,16 @@
     "work": "Expérience",
     "rate-title": "Tarif & Réductions",
     "link-see-in-image": "Voir en image",
-    "link-see-in-video": "Voir en vidéo"
+    "link-see-in-video": "Voir en vidéo",
+    "contact-cta-text": "Est-ce qu'on parle le même language ?",
+    "rate-block": {
+      "text": "Mon Tarif Journalier est {{rate}}€ HT.<br/>Je pratique des réductions :",
+      "discounts": [
+        [8, " (soit {{rate}}€ HT) après 30 jours de mission"],
+        [16, " (soit {{rate}}€ HT) après 90 jours de mission"],
+        "separator",
+        [20, " (soit {{rate}}€ HT) pour les projets environnementaux, sociaux, éducatifs, à but non-lucratif."]
+      ]
+    }
   }
 }
