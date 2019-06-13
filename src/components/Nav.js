@@ -1,5 +1,6 @@
 
 import React, { PureComponent } from 'react';
+import { CSSTransition } from 'react-transition-group'
 import cx from 'classnames';
 import merge from 'lodash.merge';
 import Cookies from 'js-cookie';
@@ -11,6 +12,7 @@ import logoSVG from './logo.svg'
 import messengerSVG from '../img/messenger.svg';
 import sendSVG from '../img/send.svg';
 import okSVG from '../img/ok.svg';
+import closeSVG from '../img/close.svg';
 
 import s from './Nav.module.scss';
 import i18n from '../i18n';
@@ -271,7 +273,7 @@ ${lastMessageSentData.message}
               {/* Only in mobile > */}
               <li class={cx(s.burgerLink, s.leftmost)}>
                 <a href="javascript:;" onClick={this.toggleOverlayMenu}>
-                  <svg width="32" height="26" xmlns="http://www.w3.org/2000/svg"><g fill="#6E6E6E" fill-rule="evenodd"><path d="M1.677 3.355a1.678 1.678 0 0 1 0-3.355H29.63a1.677 1.677 0 0 1 0 3.355H1.677zM1.678 14.536a1.677 1.677 0 1 1 0-3.355h27.951a1.677 1.677 0 0 1 0 3.354H1.678zM1.678 25.716a1.678 1.678 0 1 1 0-3.354h27.951a1.677 1.677 0 1 1 0 3.354H1.678z"/></g></svg>
+                  <svg width="33" height="26" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink"><defs><linearGradient x1="3.335%" y1="3.033%" y2="100%" id="b"><stop stopColor="#0E83EF" offset="0%" /><stop stopColor="#C30CB4" offset="51.547%" /><stop stopColor="#DA0707" offset="100%" /></linearGradient><path d="M2.677 3.355a1.678 1.678 0 0 1 0-3.355H30.63a1.677 1.677 0 1 1 0 3.355H2.677zm.001 11.181a1.677 1.677 0 1 1 0-3.355h27.951a1.677 1.677 0 0 1 0 3.354H2.678v.001zm0 11.18a1.678 1.678 0 1 1 0-3.354h27.951a1.677 1.677 0 0 1 0 3.354H2.678z" id="a" /></defs><g fill="none" fillRule="evenodd"><use fill="#6E6E6E" xlinkHref="#a" /><use fill="url(#b)" xlinkHref="#a" /></g></svg>
                 </a>
               </li>
             </ul>
@@ -280,29 +282,30 @@ ${lastMessageSentData.message}
 
         </nav>
 
+        <CSSTransition
+          in={showOverlayMenu}
+          timeout={200}
+          classNames="overlay"
+        >
+          <div class={s.menuOverlay}>
+            <a href="javascript:;" class={s.close} onClick={this.toggleOverlayMenu}>
+              <img src={closeSVG} alt="Close" />
+            </a>
+
+              <ul>
+                <li class={s.logo}><img src={logoSVG} alt="Ilyes" width="90" /></li>
+                <li><a class={s.underline} href="#projects" onClick={this.toggleOverlayMenu}>{t('projects')}</a></li>
+                <li><a class={s.underline} href="#rate" onClick={this.toggleOverlayMenu}>{t('rate')}</a></li>
+              </ul>
+          </div>
+        </CSSTransition>
+
         <MobileOverlay
+          key="menu"
           isOpen={showOverlayMenu}
           onClose={this.toggleOverlayMenu}
         >
-          <ul>
-            <li><a>Réalisations</a></li>
-            <li>
-              <ul>
-                <li><a>Habx</a></li>
-                <li><a>Dailymotion</a></li>
-                <li><a>Spendesk</a></li>
-                <li><a>Speaken</a></li>
-              </ul>
-            </li>
-
-            <li>Contact Info</li>
-            <li>
-              <p class={s.contactInfo}>
-                Mail me at <a href="mailto:;">ilyes@hermellin.me</a>.<br/>
-                Phone me on <a href="phone:;">+33 7 81 12 12 12</a>.
-              </p>
-            </li>
-          </ul>
+          
         </MobileOverlay>
       </div>
     )

@@ -1,19 +1,21 @@
 {
   "en": {
     "hero-text": "Hello 👋<br/>I am a Fullstack developer (JavaScript oriented).",
-    "hero-status": "I am looking for a contract (as freelance),<br/> or a position in the environmental or creative field.",
+    "hero-status1": "I am looking for a contract (as a freelance),",
+    "hero-status2": "or a position in the environmental or creative field.",
     "hero-work-link": "My work",
-    "work": "Work",
-    "link-see-in-image": "See in picture",
-    "link-see-in-video": "See in video",
+    "work": "Experience",
+    "rate-title": "Rate & Discounts",
+    "link-see-in-image": "See a picture",
+    "link-see-in-video": "See a video",
     "contact-cta-text": "Do we talk the same language?",
     "rate-block": {
-      "text": "Mon Tarif Journalier est {{rate}}€ HT.<br/>Je pratique des réductions :",
+      "text": "My daily rate is {{rate}}€ HT.<br/>Discounts are available:",
       "discounts": [
-        [8, " (soit {{rate}}€ HT) après 30 jours de mission"],
-        [16, " (soit {{rate}}€ HT) après 90 jours de mission"],
+        [8, " ({{rate}}€ HT) after 30 days in mission"],
+        [16, " ({{rate}}€ HT) after 90 days in mission"],
         "separator",
-        [20, " (soit {{rate}}€ HT) pour les projets environnementaux, sociaux, éducatifs, à but non-lucratif."]
+        [20, " ({{rate}}€ HT) for environmental, social, educatif, non-profit projects."]
       ]
     }
   },

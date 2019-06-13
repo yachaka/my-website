@@ -39,6 +39,7 @@ $submenu-extra-width: 60px;
     overflow: visible;
 
     @media (max-width: 767px) {
+      .rateLink { display: none; }
       .projectLink { display: none; }
       .home { display: none; }
       .burgerLink {
@@ -207,6 +208,7 @@ $submenu-extra-width: 60px;
               opacity: 0;
               background-color: white;
               width: $contact-form-width;
+              max-width: 95vw;
               // height: $contact-form-height;
 
               padding: 15px;
@@ -273,6 +275,12 @@ $submenu-extra-width: 60px;
 
                   textarea {
                     height: 192px;
+                  }
+
+                  @media (max-width: 767px) {
+                    textarea {
+                      height: 160px;
+                    }
                   }
 
                   &.error {
@@ -557,7 +565,6 @@ $submenu-extra-width: 60px;
           //     transition-duration: $step + $half-step;
           //   }
           // }
-
         }
 
         & > .submenu {
@@ -608,7 +615,6 @@ $submenu-extra-width: 60px;
             }
           }
         }
-
       }
     }
   }
@@ -625,6 +631,8 @@ $submenu-extra-width: 60px;
   left: 0;
   right: 0;
   bottom: 0;
+  opacity: .4;
+  transform: translateY(120px);
 
   &:global(.overlay-enter) {
     opacity: .4;
@@ -663,20 +671,13 @@ $submenu-extra-width: 60px;
     padding-left: 22px;
 
     & > li {
-      @extend %ms3;
+      @extend %ms4;
       margin-bottom: 22px;
 
-      & > ul, & > p {
-        @extend %ms2;
-        padding-left: 22px;
+      a {
+        color: #0080f7;
 
-        & > li {
-          margin-bottom: 22px;
-        }
-      }
-
-      & > p.contactInfo a {
-        color: #0080F7;
+        &.underline { border-bottom: 1px solid; }
       }
     }
   }

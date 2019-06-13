@@ -7,7 +7,8 @@
   .hero {
     // margin: 110px auto;
     padding-top: 40px; // equal half of nav height
-    height: 100vh;
+    padding-bottom: 40px; // equal half of nav height
+    min-height: 100vh;
     max-height: 620px;
     display: flex;
     flex-direction: column;
@@ -17,6 +18,8 @@
 
     @media (max-width: 767px) {
       height: auto;
+      min-height: auto;
+      max-height: auto;
       margin: 110px auto;
       display: block;
     }
@@ -96,7 +99,7 @@
     li.separator {
       list-style-type: none;
       border-top: 1px solid #ccc;
-      width: 400px;
+      width: 300px;
       margin: 16px 0;
     }
     .discount {
@@ -257,6 +260,12 @@
         bottom: 88px;
       }
 
+      @media (max-width: 767px) {
+        .quoteRight {
+          right: -10px;
+        }
+      }
+
       .text {
         border-radius: 4px;
         margin-bottom: 35px;
@@ -350,7 +359,7 @@
 
   .button {
     background-color: #0080f7;
-    width: 128px;
+    width: 152px;
     border-radius: 4px;
     color: white;
     cursor: pointer;
