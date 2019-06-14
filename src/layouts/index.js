@@ -25,14 +25,16 @@ class Layout extends PureComponent {
   render() {
     const { children, lang } = this.props;
 
-    const description = 'JavaScript Freelance web développeur.'
+    const description = lang === 'fr'
+      ? 'Développeur freelance fullstack, JavaScript sur Paris (Node.js, React, React Native, AWS, GraphQL, SQL).'
+      : 'Freelance JavaScript fullstack developer, in London (Node.js, React, React Native, AWS, GraphQL, SQL).'
 
     return (
       <div>
         <Helmet>
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <title>React, Node.js, GraphQL, React Native, JavaScript Freelance Fullstack web developer - Ilyes Hermellin</title>
+          <title>React, Node.js, GraphQL, React Native, JavaScript Freelance Fullstack web developer - Ilyes Hermellin - Paris, London</title>
           <meta name="description" content={description} />
         </Helmet>
         <Nav />
