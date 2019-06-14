@@ -32,7 +32,7 @@ class Layout extends PureComponent {
         <Helmet>
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <title>React.js, Node.js, JavaScript Fullstack Freelance web developer - Ilyes Hermellin</title>
+          <title>React, Node.js, GraphQL, React Native, JavaScript Freelance Fullstack web developer - Ilyes Hermellin</title>
           <meta name="description" content={description} />
         </Helmet>
         <Nav />
