@@ -32,7 +32,7 @@ import UbuntuLaptopStats from '../components/DeviceMockup/skins/UbuntuLaptop/dim
 import { getTextForTechno } from '../technosToColors'
 
 const translations = merge(commonTranslations, specificTranslations);
-const freelanceRate = 510
+const freelanceRate = 470
 
 class IndexPage extends PureComponent {
   onContactLinkClick = () => {
