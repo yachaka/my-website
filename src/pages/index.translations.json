@@ -12,9 +12,6 @@
     "rate-block": {
       "text": "My daily rate is {{rate}}€ HT.<br/>Discounts are available:",
       "discounts": [
-        [8, " ({{rate}}€ HT) after 30 days in mission"],
-        [16, " ({{rate}}€ HT) after 90 days in mission"],
-        "separator",
         [20, " ({{rate}}€ HT) for environmental, social, educatif, non-profit projects."]
       ]
     }
@@ -32,9 +29,6 @@
     "rate-block": {
       "text": "Mon Tarif Journalier est {{rate}}€ HT.<br/>Je pratique des réductions :",
       "discounts": [
-        [8, " (soit {{rate}}€ HT) après 30 jours de mission"],
-        [16, " (soit {{rate}}€ HT) après 90 jours de mission"],
-        "separator",
         [20, " (soit {{rate}}€ HT) pour les projets environnementaux, sociaux, éducatifs, à but non-lucratif."]
       ]
     }
