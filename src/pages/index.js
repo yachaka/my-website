@@ -61,6 +61,9 @@ class IndexPage extends PureComponent {
           </h1>
           <h2 class={cx(s.heroStatus)} dangerouslySetInnerHTML={{ __html: t('hero-status1') }} />
           <h2 class={cx(s.heroStatus)} dangerouslySetInnerHTML={{ __html: t('hero-status2') }} />
+          {t('hero-status3') &&
+            <h2 class={cx(s.heroStatus)} dangerouslySetInnerHTML={{ __html: t('hero-status3') }} />
+          }
           <div class={s.heroLinks}>
             <a href="#" class={s.workLink} onClick={this.scrollToWork}>
               <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" stroke="#0080f7" fill="none" stroke-linecap="round" stroke-width="3"><path d="M6 16.672l9 9m9-9l-9 9m-9-19l9 9m9-9l-9 9"/></svg>

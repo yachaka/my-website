@@ -1,8 +1,9 @@
 {
   "en": {
     "hero-text": "Hello 👋<br/>I am a Fullstack developer (JavaScript oriented).",
-    "hero-status1": "I am looking for a contract (as a freelance),",
-    "hero-status2": "or a position in the environmental or creative field.",
+    "hero-status1": "I am currently working at Konbini,",
+    "hero-status2": "and will be available in October.",
+    "hero-status3": "I seek missions in the environmental or creative field.",
     "hero-work-link": "My work",
     "work": "Experience",
     "rate-title": "Rate & Discounts",
@@ -18,8 +19,9 @@
   },
   "fr": {
     "hero-text": "Bonjour 👋<br/>Je suis un développeur Fullstack (orienté JavaScript).",
-    "hero-status1": "Je cherche une mission (en tant que freelance),",
-    "hero-status2": "ou un poste dans le domaine environnemental ou créatif.",
+    "hero-status1": "Je suis actuellement en mission chez Konbini,",
+    "hero-status2": "et je serais disponible à partir d'octobre.",
+    "hero-status3": "Je cherche une mission dans le domaine environnemental ou créatif.",
     "hero-work-link": "Mes réalisations",
     "work": "Expérience",
     "rate-title": "Tarif & Réductions",
