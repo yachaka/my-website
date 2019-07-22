@@ -15,7 +15,7 @@ import specificTranslations from './index.translations.json';
 import projectTranslations from './projects.translations.json';
 import commonTranslations from '../common.translations.json';
 
-import meSmallOvalImg from './me-small-oval.png'
+import meSmallOvalImg from './me-small-oval-2019.png'
 import cvFrancais from './CV-2019-avril-Francais-min.pdf'
 import cvEnglish from './CV-2019-avril-Anglais-min.pdf'
 import DeviceMockup from '../components/DeviceMockup';
