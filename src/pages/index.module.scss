@@ -364,14 +364,18 @@
 
   .button {
     background-color: #0080f7;
-    width: 152px;
+    padding: 0 16px;
     border-radius: 4px;
     color: white;
     cursor: pointer;
     display: inline-block;
     height: 44px;
     line-height: 44px;
-    @extend %ms1;
+    @extend %ms0;
+
+    &:hover {
+      background-color: #2997FF;
+    }
 
     svg {
       width: 22px;

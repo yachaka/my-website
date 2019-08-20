@@ -14,6 +14,9 @@ import messengerSVG from '../img/messenger.svg';
 import sendSVG from '../img/send.svg';
 import okSVG from '../img/ok.svg';
 import closeSVG from '../img/close.svg';
+import githubSVG from '../img/github.svg'
+import linkedinSVG from '../img/linkedin.svg'
+import stackoverflowSVG from '../img/so-icon.svg'
 
 import s from './Nav.module.scss';
 import i18n from '../i18n';
@@ -267,6 +270,11 @@ ${lastMessageSentData.message}
               <li class={cx(s.rateLink)}><Link to="/#rate">{t('rate')}</Link></li>
               {/* Only in desktop > */}
               <li class={cx(s.projectLink)}><Link to="/#projects">{t('projects')}</Link></li>
+
+              <li class={cx(s.github, s.social)}><a href="https://github.com/yachaka" target="_blank"><img src={githubSVG} alt="yachaka's profile on github" /></a></li>
+              <li class={cx(s.linkedin, s.social)}><a href="https://www.linkedin.com/in/ilyeshermellin/" target="_blank"><img src={linkedinSVG} alt="Ilyes Hermellin profile on LinkedIn" /></a></li>
+              <li class={cx(s.stackoverflow, s.social)}><a href="https://stackoverflow.com/users/3076424/yachaka" target="_blank"><img src={stackoverflowSVG} alt="yachaka's profile on StackOverflow" /></a></li>
+
 
               <li class={cx(s.home, s.leftmost)}>
                 <Link to="/">

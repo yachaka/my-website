@@ -407,6 +407,10 @@ $submenu-extra-width: 60px;
 
       }
 
+      &.social > a {
+        padding: 0 14px;
+      }
+
       & > a {
         background-color: transparent;
         position: relative;
@@ -420,8 +424,18 @@ $submenu-extra-width: 60px;
         border: $nav-link-border-width solid transparent;
         @extend %ms1;
 
+        img {
+          height: 45%;
+          vertical-align: middle;
+          opacity: 0.5;
+        }
+
         &:hover {
           color: darken(#cceeff, 40%);
+
+          img {
+            opacity: 1;
+          }
         }
 
         &.withSubmenu {
