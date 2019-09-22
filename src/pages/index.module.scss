@@ -16,6 +16,11 @@
     align-items: center;
     text-align: center;
 
+    @media (max-width: 600px) {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+
     @media (max-width: 767px) {
       height: auto;
       min-height: auto;
@@ -30,6 +35,12 @@
         margin-right: 12px;
         vertical-align: bottom;
         width: 80px;
+      }
+
+      @media (max-width: 600px) {
+        .meSmallOval {
+          width: 58px;
+        }
       }
     }
 
@@ -83,6 +94,16 @@
 
   h1 {
     @extend %ms4;
+  }
+
+  @media (max-width: 600px) {
+    h1, h2 {
+      font-size: 2em;
+      line-height: 1.1;
+    }
+    h1 {
+      margin-bottom: 12px;
+    }
   }
 
   h3.sectionTitle {

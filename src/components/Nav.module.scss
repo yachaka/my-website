@@ -119,10 +119,18 @@ $submenu-extra-width: 60px;
       &.contact {
         margin-left: 30px;
         .border { position: absolute; display: block; pointer-events: none; border: 0px solid #0080F7; transition-timing-function: linear; }
+        @media (max-width: 500px) {
+          margin-left: 0;
+        }
 
         & > a {
           border-width: $contact-link-border-width;
           width: $contact-link-size;
+
+          @media (max-width: 500px) {
+            width: 46px;
+          }
+
           padding: $contact-link-padding;
           position: relative;
           line-height: $nav-link-height - ($nav-link-border-width * 2) - ($contact-link-padding * 2);
@@ -136,12 +144,28 @@ $submenu-extra-width: 60px;
             width: $contact-link-inner-gray-box-size; text-align: center;  display: inline-block; height: 100%; border-radius: 4px;
             cursor: pointer;
             color: white;
+
+            @media (max-width: 500px) {
+              width: 38px;
+              padding-left: 8px;
+              padding-right: 8px;
+
+              .contactText {
+                display: none;
+              }
+            }
+
             &:hover {
               background-color: #2997FF;
             }
 
           }
           svg { vertical-align: text-bottom; width: $contact-svg-size; height: $contact-svg-size; margin-left: 12px; }
+          @media (max-width: 500px) {
+            svg {
+              margin-left: 0;
+            }
+          }
 
           .topLeftBorder {
             $start-delay: $subLeftBottomMiddleToBottomDuration + $subTopLeftTopToMiddleDuration + $subTopLeftRightToLeftDuration;
@@ -164,6 +188,11 @@ $submenu-extra-width: 60px;
             $start-delay: $subLeftBottomMiddleToBottomDuration;
             $border-delay: $subLeftBottomMiddleToBottomDuration + $subTopLeftTopToMiddleDuration + $subTopLeftRightToLeftDuration;
             right: $contact-link-size - 2px; left: $contact-form-width - $contact-link-size; bottom: 100%; top: -2px; border-top-left-radius: 4px; border-left-width: 0; border-top-width: 0;
+
+            @media (max-width: 500px) {
+              right: 44px;
+            }
+
             transition-property: border-left-width, border-top-width, bottom, left;
             transition-delay: $border-delay, $border-delay, $start-delay, $start-delay + $subTopLeftTopToMiddleDuration;
             transition-duration: 0s, 0s, $subTopLeftTopToMiddleDuration, $subTopLeftRightToLeftDuration;
