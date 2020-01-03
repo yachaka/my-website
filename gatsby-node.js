@@ -7,45 +7,33 @@ const langs = ['en', 'fr'];
 const capitalize = string => string.charAt(0).toUpperCase() + string.slice(1);
 
 exports.onCreatePage = ({ page, boundActionCreators: { createPage, deletePage } }) => {
-  console.log('onCreatePage', page.pluginCreatorId)
-  if (page.pluginCreatorId === 'Plugin component-page-creator') {
-    console.log('PLUGIN CREATOR')
-    const pathWithoutExt = page.componentPath.substring(0, page.componentPath.lastIndexOf('.'));
-    const urlsForLangPath = `${pathWithoutExt}.urls.json`;
-    let urlsForLang;
-
-    if (fs.existsSync(urlsForLangPath)) {
-      urlsForLang = require(urlsForLangPath);
-    }
-
-    const langPages = langs.map(l => {
-      const path = urlsForLang && urlsForLang[l]
-        ? urlsForLang[l]
-        : page.path;
-
-      return Object.assign({}, page, {
-        layout: `${page.layout}.${l}`,
-        path: `/${l}${path}`,
-        context: Object.assign({}, page.context, {
-          lang: l,
-        }),
-      });
-    });
-
-    deletePage(page);
-    langPages.forEach(page => createPage(page));
+  if (page.path.match(/404/)) {
+    return;
   }
-};
 
+  const pathWithoutExt = page.componentPath.substring(0, page.componentPath.lastIndexOf('.'));
+  const urlsForLangPath = `${pathWithoutExt}.urls.json`;
+  let urlsForLang;
 
-exports.onPostBuild = () => {
-  const filesToCopy = [
-    path.resolve(__dirname, './_redirects'),
-  ];
+  if (fs.existsSync(urlsForLangPath)) {
+    urlsForLang = require(urlsForLangPath);
+  }
 
-  filesToCopy.forEach(filePath => {
-    fs.copyFileSync(filePath, path.join(__dirname, '/public', path.basename(filePath)))
+  const langPages = langs.map(l => {
+    const path = urlsForLang && urlsForLang[l]
+      ? urlsForLang[l]
+      : page.path;
+
+    return Object.assign({}, page, {
+      path: `/${l}${path}`,
+      context: Object.assign({}, page.context, {
+        lang: l,
+      }),
+    });
   });
+
+  deletePage(page);
+  langPages.forEach(page => createPage(page));
 };
 
 // exports.modifyBabelrc = ({ babelrc }) => {
@@ -54,6 +42,21 @@ exports.onPostBuild = () => {
 //     // { helpers: true, polyfill: false, regenerator: false, moduleName: 'babel-runtime' },
 //   ]);
 // };
+
+exports.onCreateWebpackConfig = ({ config }) => {
+  // config.node = Object.assign({}, config, {
+  //   node: Object.assign({}, config.node, {
+  //     module: 'empty',
+  //     dgram: 'empty',
+  //     dns: 'mock',
+  //     fs: 'empty',
+  //     http2: 'empty',
+  //     net: 'empty',
+  //     tls: 'empty',
+  //     child_process: 'empty',
+  //   }),
+  // });
+};
 
 // exports.modifyWebpackConfig = ({ config, stage }) => {
   // // config.merge()

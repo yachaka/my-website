@@ -1,48 +1,25 @@
-
-.arrows {
-  overflow: hidden;
-
-  .arrowBox {
-    border: none;
-    cursor: pointer;
+.mockup {
+  &:hover .screenTitle {
+    opacity: 1;
   }
+}
 
-  &.arrowsOnWhite {
-    .arrowBox {
-      background-color: transparent;
-      
-      &:hover {
-        background-color: #ddd;
-      }
-      &:active {
-        background-color: #bbb;
-      }
+.videoScreen {
+  position: relative;
+}
 
-      &[disabled] {
-        opacity: 0.15;
-        background-color: transparent !important;
-        cursor: default;
-      }
-    }
-  }
+.videoScreenOverlay {
+  background-color: rgba(0, 0, 0, .7);
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+}
 
-  &.arrowsOnBlack {
-    .arrowBox {
-      background-color: #ddd;
-
-      &:hover {
-      background-color: #fff;
-
-      }
-
-      &:active {
-      background-color: #888;
-
-      }
-      &[disabled] {
-        background-color: #555;
-        cursor: default;
-      }
-    }
-  }
+.videoScreenPlayPause {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%, -50%, 0);
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
 }

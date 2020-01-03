@@ -6,12 +6,4 @@ export default {
   startScreenY: 79,
   screenWidth: 1618,
   screenHeight: 1010,
-  arrowsTopSpacing: 12,
-  arrowsMiddleSpacing: 12,
-  arrowSvgWidth: 19.5,
-  arrowSvgHeight: 36,
-  arrowBoxHeight: 80,
-  arrowBoxWidth: 200,
-  arrowBoxCornerRadius: false,
-  arrowsOnBlack: true,
 };

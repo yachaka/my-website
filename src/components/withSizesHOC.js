@@ -4,6 +4,15 @@ let getWidth, getHeight
 
 export default (mapSizesToProps) => (Component) => {
   class MapSizes extends PureComponent {
+    constructor(props) {
+      super(props);
+
+      this.state = {
+        width: 1280,
+        height: 600,
+      };
+    }
+
     componentDidMount() {
       getWidth = () => window.document.scrollingElement.clientWidth
       getHeight = () => window.document.scrollingElement.clientHeight

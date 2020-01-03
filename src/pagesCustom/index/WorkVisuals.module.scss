@@ -1,0 +1,27 @@
+
+.mobileDisplay {
+  height: 80vh;
+  margin-bottom: 50px;
+}
+
+.mobileDisplay:last-child {
+  margin-bottom: 0;
+}
+
+.mockups {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  &.mobile {
+    display: block;
+  }
+}
+
+.mobile {
+  z-index: 2;
+}
+
+.desktop {
+  z-index: 1;
+}

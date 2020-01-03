@@ -1,0 +1,60 @@
+{
+  "en": {
+    "home": "Home",
+    "projects": "Projects",
+    "rate": "Rate",
+    "contact-form": {
+      "last-message-sent": "You sent me a message on {{date}}.",
+      "view-message-link": "See more [+]",
+      "title": "A question, a task, an idea ?<br/>Send me a message 👇",
+      "your-name-label": "Name",
+      "your-name-placeholder": "John Doe",
+      "your-email-label": "Email",
+      "your-email-placeholder": "john.doe@entreprise.io",
+      "your-phone-label": "Phone",
+      "your-phone-placeholder": "07 33 11 40 45",
+      "your-message-label": "Message",
+      "your-message-placeholder": "Your message...",
+      "help-text": "Your message lands in my inbox.",
+      "send-button": "Send",
+      "send-button-sending": "Sending...",
+      "send-button-sent": "Message sent",
+      "last-message-popup": {
+        "details": "Provided details",
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone",
+        "message": "Message"
+      }
+    }
+  },
+  "fr": {
+    "home": "Accueil",
+    "projects": "Réalisations",
+    "rate": "Tarif",
+    "contact-form": {
+      "last-message-sent": "Vous m'avez envoyé un message le {{date}}.",
+      "view-message-link": "En détails [+]",
+      "title": "Une question, une tâche, une idée ?<br/>Envoyez-moi un message 👇",
+      "your-name-label": "Nom",
+      "your-name-placeholder": "Thomas Dupont",
+      "your-email-label": "E-mail",
+      "your-email-placeholder": "thomas.dupont@entreprise.io",
+      "your-phone-label": "Téléphone",
+      "your-phone-placeholder": "07 33 11 40 45",
+      "your-message-label": "Message",
+      "your-message-placeholder": "Votre message...",
+      "help-text": "Votre message arrive dans ma boite e-mail.",
+      "send-button": "Envoyer",
+      "send-button-sending": "Envoi en cours...",
+      "send-button-sent": "Message envoyé",
+      "last-message-popup": {
+        "details": "Détails renseignés",
+        "name": "Nom",
+        "email": "Email",
+        "phone": "Téléphone",
+        "message": "Message"
+      }
+    }
+  }
+}

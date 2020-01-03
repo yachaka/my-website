@@ -22,13 +22,13 @@ class WorkPiece extends PureComponent {
       <div {...others} class={cx(className, s.workBlock)}>
         <div class="container">
           <div class="row"><div class="col-xs-12">
-            <h2 style="margin-bottom: 5px;">
+            <h2 style={{ marginBottom: 5 }}>
               <span class="external-link">
                 <a href="https://www.spendesk.com" target="_blank">
                   Spendesk
                 </a></span><span class="muted"> - 10 {t('months')} - {t('as-employee')}</span>
             </h2>
-            <h3 class="muted" style="margin-bottom: 30px;">
+            <h3 class="muted" style={{ marginBottom: 30 }}>
               {t('techs-used')} Node.js, React, React-Native, GraphQL, Relay
             </h3>
 

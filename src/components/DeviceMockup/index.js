@@ -1,31 +1,24 @@
 
 import React, { cloneElement, Component } from 'react';
 import cx from 'classnames';
-import Animated from 'animated/lib/targets/react-dom';
-import Easing from 'animated/lib/Easing';
+// import Animated from 'animated/lib/targets/react-dom';
+// import Easing from 'animated/lib/Easing';
 import memoize from 'memoizee';
 import Img from 'gatsby-image';
-import VisibilitySensor from 'react-visibility-sensor';
+// import VisibilitySensor from 'react-visibility-sensor';
 // import cloneReferencedElement from 'react-clone-referenced-element';
 
 import s from './index.module.scss';
 
-const isVideo = (file) => file.split('.').pop() === 'mp4';
-const isImage = (file) => file.split('.').pop() === 'png';
-
 class DeviceMockup extends Component {
-
   constructor(props) {
     super(props);
 
-    this.screenNodes = [];
+    this.state = {
+      selectedIndex: 0,
+    };
   }
 
-  state = {
-    index: 0,
-    left: new Animated.Value(0),
-    userInteracted: false,
-  };
 
   getSizesPure = memoize((widthNeeded, heightNeeded) => {
     const { skinDimensions: dimensions } = this.props;
@@ -39,54 +32,43 @@ class DeviceMockup extends Component {
       coeff = 1;
     }
 
+    const startScreenX = dimensions.startScreenX * coeff;
+    const startScreenY = dimensions.startScreenY * coeff;
+    const screenWidth = dimensions.screenWidth * coeff;
+    const screenHeight = dimensions.screenHeight * coeff;
+
     return {
       phoneWidth: dimensions.width * coeff,
       phoneHeight: dimensions.height * coeff,
-      startScreenX: dimensions.startScreenX * coeff,
-      startScreenY: dimensions.startScreenY * coeff,
-      screenWidth: dimensions.screenWidth * coeff,
-      screenHeight: dimensions.screenHeight * coeff,
-      arrowsTopSpacing: dimensions.arrowsTopSpacing * coeff,
-      arrowsMiddleSpacing: dimensions.arrowsMiddleSpacing * coeff,
-      arrowSvgWidth: dimensions.arrowSvgWidth * coeff,
-      arrowSvgHeight: dimensions.arrowSvgHeight * coeff,
-      arrowBoxHeight: dimensions.arrowBoxHeight * coeff,
-      arrowBoxWidth: dimensions.arrowBoxWidth * coeff,
-      arrowBoxCornerRadius: dimensions.arrowBoxCornerRadius * coeff,
+      startScreenX,
+      startScreenY,
+      screenWidth,
+      screenHeight,
+      leftArrowX: startScreenX,
+      leftArrowY: startScreenY + (screenHeight / 2),
+      rightArrowX: startScreenX + screenWidth,
+      rightArrowY: startScreenY + (screenHeight / 2),
     };
   })
 
   getSizes = () => this.getSizesPure(this.props.width, this.props.height)
 
-  previous = (isAutomatic) => {
-    this.changeScreen((this.state.index - 1) % this.props.screens.length, isAutomatic);
-  }
-
-  next = (isAutomatic) => {
-    this.changeScreen((this.state.index + 1) % this.props.screens.length, isAutomatic);
-  }
-
-  changeScreen = (toScreenIndex, isAutomatic) => {
+  previous = () => {
+    console.log('previous')
     this.setState({
-      index: toScreenIndex,
-      userInteracted: !isAutomatic || this.state.userInteracted,
-    }, this.animateToCurrentScreen);
+      selectedIndex: (this.state.selectedIndex - 1) % this.props.screens.length,
+    });
   }
 
-  animateToCurrentScreen = () => {
-    const { screensSpacing } = this.props;
-    const { screenWidth } = this.getSizes();
-    const newLeft = -((this.state.index * screenWidth) + this.state.index * screensSpacing);
-
-    Animated.timing(this.state.left, {
-      toValue: newLeft,
-      duration: 240,
-      easing: Easing.out(Easing.poly(2)),
-    }).start();
+  next = () => {
+    this.setState({
+      selectedIndex: (this.state.selectedIndex + 1) % this.props.screens.length,
+    });
   }
 
   render() {
     const {
+      class: className,
       style: styleFromProps,
       width,
       height,
@@ -94,140 +76,53 @@ class DeviceMockup extends Component {
       screensSpacing,
       skinBackground,
       skinDimensions,
+      render,
       ...others
     } = this.props;
 
     const {
-      index,
-      left,
+      selectedIndex,
     } = this.state;
 
-    const { arrowsOnBlack } = skinDimensions;
-    const { phoneWidth, phoneHeight, startScreenX, startScreenY, screenWidth, screenHeight, arrowsTopSpacing, arrowsMiddleSpacing, arrowSvgWidth, arrowSvgHeight, arrowBoxWidth, arrowBoxHeight, arrowBoxCornerRadius } = this.getSizes();
+    const {
+      phoneWidth,
+      phoneHeight,
+      startScreenX,
+      startScreenY,
+      screenWidth,
+      screenHeight,
+      leftArrowX,
+      leftArrowY,
+      rightArrowX,
+      rightArrowY,
+    } = this.getSizes();
 
     const PhoneStyle = {
-      overflow: 'hidden',
       backgroundImage: `url(${skinBackground})`,
       backgroundSize: 'contain',
       width: phoneWidth,
       height: phoneHeight,
+      position: 'relative',
     };
 
     const ScreenWrapperStyle = {
-      marginTop: startScreenY,
-      marginLeft: startScreenX,
-      width: screenWidth,
-      overflow: 'hidden',
-    };
-
-    const ScreenInnerStyle = {
-      width: ((screenWidth + 1) * screens.length) + ((screens.length - 1) * screensSpacing),
-      marginLeft: left,
-    };
-
-    const ScreenStyle = {
-      display: 'block',
-      float: 'left',
+      position: 'absolute',
+      top: startScreenY,
+      left: startScreenX,
       width: screenWidth,
       height: screenHeight,
-      marginBottom: arrowsTopSpacing,
-      marginLeft: screensSpacing,
     };
-
-    const FirstScreenStyle = {
-      marginLeft: 0,
-    };
-
-    const ArrowsStyle = {
-      marginLeft: startScreenX,
-    };
-
-    const ArrowBoxStyle = {
-      width: arrowBoxWidth,
-      height: arrowBoxHeight,
-      borderRadius: 6,
-      textAlign: 'center',
-      transition: 'background 150ms ease',
-      ...skinDimensions.arrowBoxAdditionalStyle,
-    };
-
-    const ArrowSvgStyle = {
-      display: 'inline-block',
-      width: arrowSvgWidth,
-      height: arrowSvgHeight,
-    };
-
-    const LeftArrowBoxStyle = {
-      float: 'left',
-      marginRight: arrowsMiddleSpacing,
-      borderBottomLeftRadius: arrowBoxCornerRadius ? arrowBoxCornerRadius : undefined,
-    };
-
-    const RightArrowBoxStyle = {
-      overflow: 'hidden',
-      borderBottomRightRadius: arrowBoxCornerRadius ? arrowBoxCornerRadius : undefined,
-    };
-
-    const Screens = screens.map((s, i) => {
-      let style = i === 0
-        ? { ...ScreenStyle, ...FirstScreenStyle }
-        : ScreenStyle;
-
-      return this.renderScreen(style, s, i);
-    });
 
     return (
-      <div style={{ ...PhoneStyle, ...styleFromProps }} {...others}>
-        <div style={ScreenWrapperStyle} onClick={() => false && this.next()}>
-          <Animated.div style={ScreenInnerStyle}>
-            {Screens}
-          </Animated.div>
-        </div>
-        <div className={cx(s.arrows, arrowsOnBlack && s.arrowsOnBlack, !arrowsOnBlack && s.arrowsOnWhite)} style={ArrowsStyle}>
-          <button style={{ ...ArrowBoxStyle, ...LeftArrowBoxStyle }} className={s.arrowBox} onClick={this.previous} disabled={index === 0}><img style={ArrowSvgStyle} src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTNweCIgaGVpZ2h0PSIyNHB4IiB2aWV3Qm94PSIwIDAgMTMgMjQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDQ3LjEgKDQ1NDIyKSAtIGh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaCAtLT4KICAgIDx0aXRsZT5TaGFwZTwvdGl0bGU+CiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4KICAgIDxkZWZzPjwvZGVmcz4KICAgIDxnIGlkPSJQYWdlLTEiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJHcm91cCIgZmlsbC1ydWxlPSJub256ZXJvIiBmaWxsPSIjMDAwMDAwIj4KICAgICAgICAgICAgPHBhdGggZD0iTTExLjg4MDE3NTYsMjQgQzExLjYzNzE0NDEsMjMuOTk5Nzg2IDExLjQwNDE0NDUsMjMuOTAzMDY5MyAxMS4yMzI0MDIyLDIzLjczMTExMjkgTDAuMjMyNDc3MDc4LDEyLjczMTE4NzggQy0wLjA5MTEyODEzOTIsMTIuMzY4MjU0OCAtMC4wNzUwMzY5NDQsMTEuODE1NzkwNCAwLjI2OTE0MzQ5NiwxMS40NzIzMDc1IEwxMS4yNjkwNjg3LDAuNDcyMzgyMzA0IEMxMS40NTkzNzg4LDAuMTI4OTc1MjcxIDExLjg0NzI1NDIsLTAuMDU1MTAzMTA0NSAxMi4yMzM2MjgzLDAuMDE0NjIwMzUxIEMxMi42MjAwMDI1LDAuMDg0MzQzODA2NCAxMi45MTkwNzIsMC4zOTIzODUzNTMgMTIuOTc3MzQ3NSwwLjc4MDY1MTEyNSBDMTMuMDM1NjIzMSwxLjE2ODkxNjkgMTIuODQwMTYzMywxLjU1MTE4MzMxIDEyLjQ5MTI4MjYsMS43MzEyNjI2MyBMMi4xNzU3OTcxOSwxMi4wODM0MTQ0IEwxMi40OTEyODI2LDIyLjQzNTU2NjIgQzEyLjc1MzEwNTYsMjIuNjk3NzE1IDEyLjgzMTM3MzYsMjMuMDkxNzAyMSAxMi42ODk2MzIsMjMuNDM0MDIxNSBDMTIuNTQ3ODkwMywyMy43NzYzNDA5IDEyLjIxNDAxMzEsMjMuOTk5Njc0MSAxMS44NDM1MDkyLDI0IEwxMS44ODAxNzU2LDI0IFoiIGlkPSJTaGFwZSI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+" /></button>
-          <button style={{ ...ArrowBoxStyle, ...RightArrowBoxStyle }} className={s.arrowBox} onClick={this.next} disabled={index + 1 === screens.length}>
-            <img style={ArrowSvgStyle} src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB3aWR0aD0iMTNweCIgaGVpZ2h0PSIyNHB4IiB2aWV3Qm94PSIwIDAgMTMgMjQiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8IS0tIEdlbmVyYXRvcjogU2tldGNoIDQ3LjEgKDQ1NDIyKSAtIGh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaCAtLT4KICAgIDx0aXRsZT5TaGFwZTwvdGl0bGU+CiAgICA8ZGVzYz5DcmVhdGVkIHdpdGggU2tldGNoLjwvZGVzYz4KICAgIDxkZWZzPjwvZGVmcz4KICAgIDxnIGlkPSJQYWdlLTEiIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgICAgIDxnIGlkPSJHcm91cC0yIiBmaWxsLXJ1bGU9Im5vbnplcm8iIGZpbGw9IiMwMDAwMDAiPgogICAgICAgICAgICA8cGF0aCBkPSJNMS4wNzU1Mjc3LDI0IEMwLjcxMTM4OTc3LDIzLjk4NTM5NDggMC4zOTA0Mjk5NCwyMy43NTY2MjU1IDAuMjU3ODMxNjMyLDIzLjQxNzE3MzggQzAuMTI1MjMzMzI1LDIzLjA3NzcyMjIgMC4yMDYxNDYyMDIsMjIuNjkxOTcxMyAwLjQ2Mzk3MDAyMiwyMi40MzQ0MTIzIEwxMC43ODcwNjM3LDEyLjA3NDYyNTIgTDAuNDYzOTcwMDIyLDEuNzE0ODM4MDQgQzAuMTMzMTAxMjE0LDEuNTI2NzE3NzYgLTAuMDQ3MjMzMzUyLDEuMTUzODIzMzQgMC4wMTA3NDEzOTE5LDAuNzc3NjU1MzgyIEMwLjA2ODcxNjEzNTgsMC40MDE0ODc0MjIgMC4zNTI5NTYyMjgsMC4xMDAxOTI5MjQgMC43MjUxMTIxODgsMC4wMjA0MjIzMzgxIEMxLjA5NzI2ODE1LC0wLjA1OTM0ODI0ODEgMS40ODAwMjY0NSwwLjA5ODk3NzAxNTQgMS42ODcwODUzOSwwLjQxODMzNTc0OSBMMTIuNjk1MTIzNywxMS40MjYzNzQgQzEzLjA1MjgyNzksMTEuNzg0NTIzNyAxMy4wNTI4Mjc5LDEyLjM2NDcyNjcgMTIuNjk1MTIzNywxMi43MjI4NzYzIEwxLjY4NzA4NTM5LDIzLjczMDkxNDYgQzEuNTI0MzA2ODEsMjMuODk0Mjk3OCAxLjMwNTk1ODIyLDIzLjk5MDM3MTIgMS4wNzU1Mjc3LDI0IFoiIGlkPSJTaGFwZSI+PC9wYXRoPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+" />
-          </button>
+      <div class={cx(className, s.mockup)} style={{ ...PhoneStyle, ...styleFromProps }} {...others}>
+        <div style={ScreenWrapperStyle}>
+          {render()}
         </div>
       </div>
     );
   }
 
-  renderScreen = (ScreenStyle, screen, index) => {
-    let Screen;
-
-    if (screen.base64) {
-      Screen = this.renderGatsbyImageScreen(ScreenStyle, screen);
-    } else if (isVideo(screen)) {
-      Screen = this.renderVideoScreen(ScreenStyle, screen);
-    } else if (isImage(screen)) {
-      Screen = this.renderImageScreen(ScreenStyle, screen);
-    } else {
-      Screen = (<div style={{ ...ScreenStyle, backgroundColor: screen }}></div>);
-    }
-
-    return Screen;
-  }
-
-  renderVideoScreen = (ScreenStyle, screen) => {
-    return (
-      <video width={ScreenStyle.width} height={ScreenStyle.height} controls style={ScreenStyle}>
-        <source type="video/mp4" src={screen} />
-      </video>
-    );
-  }
-
-  renderGatsbyImageScreen = (ScreenStyle, screen) => {
-    return (
-      <Img sizes={screen} style={ScreenStyle} />
-    );
-  }
-
-  renderImageScreen = (ScreenStyle, screen) => {
-    return (
-      <img src={screen} style={ScreenStyle} />
-    );
-  }
+  
 }
 
 export default DeviceMockup;

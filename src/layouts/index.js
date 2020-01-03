@@ -1,48 +1,36 @@
-import React, { PureComponent } from 'react'
-import Link from '../components/Link'
- import Helmet from 'react-helmet'
-
+import React, { memo } from 'react'
 import 'reset-css';
-// import '../bootstrap/css/bootstrap.min.css';
-// import 'bootstrap-grid';
+import Helmet from 'react-helmet'
 
-import s from './index.module.scss';
+import './index.module.scss';
+import LangContext from './LangContext';
+import Nav from '../components/Nav/Nav';
+import Footer from '../components/Footer/Footer';
 
-import Nav from '../components/Nav';
-import Footer from '../components/Footer';
+function Layout({
+  children,
+  lang,
+}) {
+  const description = lang === 'fr'
+    ? 'Développeur freelance fullstack, JavaScript sur Paris (Node.js, React, React Native, AWS, GraphQL, SQL).'
+    : 'Freelance JavaScript fullstack developer, in London (Node.js, React, React Native, AWS, GraphQL, SQL).'
 
-class Layout extends PureComponent {
-  defaultProps = {
-    lang: 'en',
-  };
+  return (
+    <LangContext.Provider value={lang}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>React, Node.js, GraphQL, React Native, JavaScript Freelance Fullstack web developer - Ilyes Hermellin - Paris, London</title>
+        <meta name="description" content={description} />
+      </Helmet>
 
-  getChildContext() {
-    return {
-      lang: this.props.lang,
-    };
-  }
+      <Nav />
 
-  render() {
-    const { children, lang } = this.props;
+      {children}
 
-    const description = lang === 'fr'
-      ? 'Développeur freelance fullstack, JavaScript sur Paris (Node.js, React, React Native, AWS, GraphQL, SQL).'
-      : 'Freelance JavaScript fullstack developer, in London (Node.js, React, React Native, AWS, GraphQL, SQL).'
-
-    return (
-      <div>
-        <Helmet>
-          <meta charSet="utf-8" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-          <title>React, Node.js, GraphQL, React Native, JavaScript Freelance Fullstack web developer - Ilyes Hermellin - Paris, London</title>
-          <meta name="description" content={description} />
-        </Helmet>
-        <Nav />
-        {children()}
-        <Footer />
-      </div>
-    );
-  }
+      <Footer />
+    </LangContext.Provider>
+  ) 
 }
 
-export default Layout
+export default memo(Layout);

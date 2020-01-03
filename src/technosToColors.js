@@ -15,4 +15,5 @@ const techsToColors = {
   'React-Native': '#6CDBF7',
 }
 
-export const getTextForTechno = (techno) => <span style={{ color: 'black' }}>{techno}</span> // techsToColors[techno]
+const style = { color: 'black' };
+export const getTextForTechno = (techno) => <span style={style}>{techno}</span> // techsToColors[techno]

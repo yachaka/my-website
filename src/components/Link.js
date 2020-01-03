@@ -1,14 +1,19 @@
 
-import React, { PureComponent } from 'react';
-import GatsbyLink from 'gatsby-link';
+import React, { memo, useContext } from 'react';
+import { Link as GatsbyLink } from 'gatsby';
 
-export default class Link extends PureComponent {
-  render() {
-    const { lang: contextLang } = this.context;
-    const { to, lang, ...others } = this.props;
+import LangContext from '../layouts/LangContext';
 
-    return (
-      <GatsbyLink to={`/${lang || contextLang}${to}`} {...others} />
-    );
-  }
+function Link({
+  to,
+  lang,
+  ...others
+}) {
+  const contextLang = useContext(LangContext);
+
+  return (
+    <GatsbyLink to={`/${lang || contextLang}${to}`} {...others} />
+  );
 }
+
+export default memo(Link);

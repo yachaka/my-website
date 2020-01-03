@@ -1,0 +1,69 @@
+
+@import '../../vars';
+
+.menuOverlay {
+  display: none;
+  transition: all 200ms ease;
+  z-index: 1000;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  &:global(.overlay-enter) {
+    opacity: .4;
+    transform: translateY(120px);
+    display: block;
+  }
+  &:global(.overlay-enter-active), &:global(.overlay-enter-done) {
+    opacity: 1;
+    transform: translateY(0);
+    display: block;
+  }
+  &:global(.overlay-exit)  {
+    opacity: 1;
+    transform: translateY(0);
+    display: block;
+  }
+  &:global(.overlay-exit-active) {
+    opacity: 0;
+    transform: translateY(120px);
+  }
+  &:global(.overlay-exit-done) {
+    display: none;
+  }
+  // &.enter {
+  //   transform: scale(1);
+  //   opacity: ;
+  // }
+
+  .close {
+    padding: 22px;
+    display: inline-block;
+    margin-bottom: 44px;
+  }
+
+  & > ul {
+    padding-left: 22px;
+
+    & > li {
+      @extend %ms3;
+      margin-bottom: 22px;
+
+      & > ul, & > p {
+        @extend %ms2;
+        padding-left: 22px;
+
+        & > li {
+          margin-bottom: 22px;
+        }
+      }
+
+      & > p.contactInfo a {
+        color: #0080F7;
+      }
+    }
+  }
+}
