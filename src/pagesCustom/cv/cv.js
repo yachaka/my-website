@@ -499,8 +499,8 @@ const MyDocument = () => (
             <Text>Octobre 16 - Août 17</Text>
           }
           keyPoints={[
-            'Force de proposition technique. Livraison de nouvelles fonctionnalités, côté serveur et côté client. Avec React, Redux et Node.js.',
-            'Direction du développement initial de l’application mobile sur iOS et Android, avec React Native, GraphQL et Relay.',
+            'Force de proposition technique. Livraison de nouvelles fonctionnalités, côté serveur et côté client. Avec React, Redux et Node.js',
+            'Développement de l’application mobile initiale sur iOS et Android, avec React Native, GraphQL et Relay',
             '9ème employé, l’entreprise grandit à 23 collaborateurs en l’espace de 10 mois',
           ]}
           experienceRecommendation={{

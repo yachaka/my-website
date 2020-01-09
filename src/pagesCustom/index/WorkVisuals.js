@@ -16,8 +16,8 @@ function WorkVisuals({
   width,
   color,
 
-  mobileScreens,
-  laptopScreens,
+  mobileScreenshots,
+  laptopScreenshots,
 }) {
   let mobileWidth;
   let mobileMargin;
@@ -42,22 +42,22 @@ function WorkVisuals({
   } else {
     return (
       <div class={cx(className, s.mockups, s.mobile)}>
-        {mobileScreens && (
+        {mobileScreenshots && (
           <div class={s.mobileDisplay}>
             <MediasCarousel
               mobileStyle
               color={color}
-              medias={mobileScreens}
+              medias={Object.values(mobileScreenshots)}
             />
           </div>
         )}
 
-        {laptopScreens && (
+        {laptopScreenshots && (
           <div class={s.mobileDisplay}>
             <MediasCarousel
               mobileStyle
               color={color}
-              medias={laptopScreens}
+              medias={Object.values(laptopScreenshots)}
             />
           </div>
         )}
@@ -74,7 +74,7 @@ function WorkVisuals({
 
   return (
     <div class={cx(className, s.mockups)}>
-      {mobileScreens && (
+      {mobileScreenshots && (
         <DeviceMockup
           class={s.mobile}
           style={mobileStyle}
@@ -85,13 +85,13 @@ function WorkVisuals({
           render={() => (
             <MediasCarousel
               color={color}
-              medias={mobileScreens}
+              medias={Object.values(mobileScreenshots)}
             />
           )}
         />
       )}
 
-      {laptopScreens && (
+      {laptopScreenshots && (
         <DeviceMockup
           class={s.desktop}
 
@@ -102,7 +102,7 @@ function WorkVisuals({
           render={() => (
             <MediasCarousel
               color={color}
-              medias={laptopScreens}
+              medias={Object.values(laptopScreenshots)}
             />
           )}
         />

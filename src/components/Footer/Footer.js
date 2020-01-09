@@ -4,7 +4,7 @@ import cx from 'classnames';
 import Link from '../Link';
 
 import s from './Footer.module.scss';
-import i18n from '../../i18n';
+import i18n from '../../lib/i18n/i18n';
 import translations from './Footer.translations.json';
 import githubSVG from '../../img/github.svg'
 import linkedinSVG from '../../img/linkedin.svg'

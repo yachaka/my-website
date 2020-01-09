@@ -5,9 +5,9 @@ import dayjs from 'dayjs';
 import Img from 'gatsby-image';
 
 import s from './ProjectFold.module.scss';
-import LangContext from '../../layouts/LangContext';
+import LangContext from '../../lib/i18n/LangContext';
 import WorkVisuals from './WorkVisuals';
-import i18n from '../../i18n';
+import i18n from '../../lib/i18n/i18n';
 import specificTranslations from './index.translations.json';
 import projectTranslations from './projects.translations.json';
 import { getTextForTechno } from '../../technosToColors'
@@ -19,14 +19,14 @@ function ProjectFold({
   
   dates,
   
-  wasFreelanceWork,
+  freelanceOrEmployee,
   technologiesUsed,
 
   productBrief,
-  mobileScreens,
-  laptopScreens,
+  mobileScreenshots,
+  laptopScreenshots,
   keyWork,
-  summaryText,
+  myWorkSummaryText,
   teamText,
   feedback,
   ...others
@@ -62,11 +62,11 @@ function ProjectFold({
 
   let statusStr;
 
-  if (wasFreelanceWork === true) {
+  if (freelanceOrEmployee === 'freelance') {
     statusStr = t('as-freelance');
-  } else if (wasFreelanceWork === false) {
+  } else if (freelanceOrEmployee === 'employee') {
     statusStr = t('as-employee');
-  } else {
+  } else if (freelanceOrEmployee === 'both') {
     statusStr = t('as-both');
   }
 
@@ -91,18 +91,15 @@ function ProjectFold({
           <span class="strong">{t('with')}</span> {technologiesStr}
         </h3>
 
-        <p class={s.brief} dangerouslySetInnerHTML={{ __html: productBrief }} />
+        <p class={s.brief} dangerouslySetInnerHTML={{ __html: productBrief[lang] }} />
 
-        {(!!laptopScreens || !!mobileScreens) && (
+        {(!!laptopScreenshots || !!mobileScreenshots) && (
           <WorkVisuals
             className={s.workMockups}
 
             color={color}
-            laptopScreens={laptopScreens}
-            mobileScreens={mobileScreens}
-            // mobileRef={el => this.mobileRef = el}
-            // desktopRef={el => this.desktopRef = el}
-            // divRef={el => this.mockupsDivRef = el}
+            laptopScreenshots={laptopScreenshots}
+            mobileScreenshots={mobileScreenshots}
           />
         )}
 
@@ -110,7 +107,7 @@ function ProjectFold({
           <div class={s.keyPoints}>
             <h3>{t('key-developments')}</h3>
 
-            <ul>
+            <ul class="key-points">
               {keyWork.map(point => {
                 let linkEl
 
@@ -137,8 +134,8 @@ function ProjectFold({
                 }
 
                 return (
-                  <li>
-                    {point[lang]}
+                  <li className="key-point">
+                    <span>{point[lang]}</span>
                     {linkEl}
                   </li>
                 )
@@ -151,11 +148,11 @@ function ProjectFold({
         <div class={s.columns}>
           <div class={cx(s.columnLeft, s.column)}>
             <h3>{t('summary')}</h3>
-            <p dangerouslySetInnerHTML={{ __html: summaryText }} />
+            <p dangerouslySetInnerHTML={{ __html: myWorkSummaryText[lang] }} />
           </div>
           <div class={cx(s.columnRight, s.column)}>
             <h3>{t('team')}</h3>
-            <p dangerouslySetInnerHTML={{ __html: teamText }} />
+            <p dangerouslySetInnerHTML={{ __html: teamText[lang] }} />
           </div>
         </div>
 
@@ -165,12 +162,12 @@ function ProjectFold({
             <svg class={cx('quote', s.quote, s.quoteRight)} viewBox="0 0 90 80" width="90" height="80" xmlns="http://www.w3.org/2000/svg"><path d="M90 51.791c0-28.809-26.598-46.362-30.729-48.55-2.992-1.63-5.762-2.725-7.66-2.725-1.653 0-2.747.804-2.747 2.189 0 1.384 1.385 3.015 2.747 4.109C55.43 9.561 66.15 23.831 66.15 37.275c0 3.551-1.921 6.834-4.109 7.95-2.479 1.362-14.002 3.841-14.002 18.357 0 8.509 6.856 15.9 16.459 15.9C77.114 79.483 90 69.903 90 51.791zm-48.014 0c0-28.809-26.621-46.362-30.73-48.55C8.24 1.611 5.494.516 3.574.516 1.922.516.849 1.32.849 2.705c0 1.384 1.361 3.015 2.725 4.109 3.84 2.747 14.537 17.017 14.537 30.461 0 3.551-1.92 6.834-4.109 7.95C11.523 46.588 0 49.066 0 63.583c0 8.509 6.879 15.9 16.482 15.9 12.596 0 25.504-9.58 25.504-27.692z" fill="#000" fill-rule="nonzero" /></svg>
             <h3>{t('feedback')}</h3>
             <div class={s.content}>
-              <div class={cx('text', s.text)}><p class={s.inner} dangerouslySetInnerHTML={{ __html: feedback.text }} /></div>
+              <div class={cx('text', s.text)}><p class={s.inner} dangerouslySetInnerHTML={{ __html: feedback.text[lang] }} /></div>
               <div class={s.who}>
                 <Img className={s.picture} sizes={feedback.picture} />
                 <div class={s.details}>
                   <p class={s.name}><a href={feedback.external} class="external-link" target="_blank">{feedback.name}</a></p>
-                  <p class={s.role}>{feedback.role}</p>
+                  <p class={s.role}>{feedback.role[lang]}</p>
                 </div>
               </div>
             </div>

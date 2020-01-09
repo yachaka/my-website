@@ -11,7 +11,7 @@ import Layout from '../../layouts/index';
 
 import s from './index.module.scss';
 
-import i18n from '../../i18n';
+import i18n from '../../lib/i18n/i18n';
 import specificTranslations from './index.translations.json';
 import projectTranslations from './projects.translations.json';
 import experiences from './experiences';
@@ -93,7 +93,7 @@ class IndexPage extends PureComponent {
 
             {Object.values(this.experiencesWebsite).map(exp => console.log(exp) || (
               <ProjectFold
-                id={`${exp.name}Work`}
+                id={s[`${exp.name.toLowerCase()}Work`]}
                 {...exp}
               />
             ))}

@@ -169,6 +169,12 @@
           border-top-color: rgba($color, $baseAlpha * 2);
         }
       }
+
+      .key-points {
+        .key-point span {
+          background-color: rgba($color, $baseAlpha * .80);
+        }
+      }
     }
   }
 

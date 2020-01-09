@@ -2,7 +2,7 @@
 import React, { memo, useContext } from 'react';
 import { Link as GatsbyLink } from 'gatsby';
 
-import LangContext from '../layouts/LangContext';
+import LangContext from '../lib/i18n/LangContext';
 
 function Link({
   to,

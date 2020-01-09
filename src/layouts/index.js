@@ -3,7 +3,7 @@ import 'reset-css';
 import Helmet from 'react-helmet'
 
 import './index.module.scss';
-import LangContext from './LangContext';
+import LangContext from '../lib/i18n/LangContext';
 import Nav from '../components/Nav/Nav';
 import Footer from '../components/Footer/Footer';
 

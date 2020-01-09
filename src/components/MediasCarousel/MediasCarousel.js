@@ -1,7 +1,8 @@
-import React, { useState, memo, PureComponent } from 'react';
+import React, { useState, memo, useContext } from 'react';
 import cx from 'classnames';
 import Img from 'gatsby-image';
 
+import LangContext from '../../lib/i18n/LangContext';
 import s from './MediasCarousel.module.scss';
 import Color from 'color';
 
@@ -16,6 +17,7 @@ function MediasCarousel({
   medias,
   ...others
 }) {
+  const lang = useContext(LangContext);
   const [selectedIndex, setIndex] = useState(0);
 
   function previous() {
@@ -41,7 +43,7 @@ function MediasCarousel({
       {...others}
     >
       <p class={s.screenTitle}>
-        ({selectedIndex + 1}/{medias.length}) {medias[selectedIndex].title}
+        ({selectedIndex + 1}/{medias.length}) {medias[selectedIndex].title[lang]}
       </p>
 
       <div class={s.screensWrapper}>

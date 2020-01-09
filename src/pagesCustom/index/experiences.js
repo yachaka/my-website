@@ -69,7 +69,7 @@ export default {
         "data": konbiniDesktopArticleLoad,
       },
     },
-    "mobileScreens": {
+    "mobileScreenshots": {
       homepageLoad: {
         title: {
           "fr": "Revue des nouveaux articles",
@@ -155,7 +155,7 @@ export default {
         "en": "Product owner at Habx",
       },
       "text": {
-        "fr": "",
+        "fr": "Ilyes a une forte motivation, et le don de rendre simple des problèmes d'abord compliqués. Il maitrise parfaitement les technologies les plus avancées en Javascript (GraphQL, Relay, React, etc) et sait s'adapter rapidement a son environement.<br/><br/>Chez Habx, nous avons fait confiance a Ilyes pour la conception des landing pages qu'il a su réaliser avec brio. [...]",
         "en": "Ilyes a une forte motivation, et le don de rendre simple des problèmes d'abord compliqués. Il maitrise parfaitement les technologies les plus avancées en Javascript (GraphQL, Relay, React, etc) et sait s'adapter rapidement a son environement.<br/><br/>Chez Habx, nous avons fait confiance a Ilyes pour la conception des landing pages qu'il a su réaliser avec brio. [...]",
       },
     },
@@ -264,7 +264,7 @@ export default {
         },
       },
     },
-    "mobileScreens": {
+    "mobileScreenshots": {
       approve: {
         title: {
           "fr": "Autorisation d'une dépense",

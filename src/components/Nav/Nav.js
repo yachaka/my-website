@@ -19,7 +19,7 @@ import linkedinSVG from '../../img/linkedin.svg'
 import stackoverflowSVG from '../../img/so-icon.svg'
 
 import s from './Nav.module.scss';
-import i18n from '../../i18n';
+import i18n from '../../lib/i18n/i18n';
 import specificTranslations from './Nav.translations.json';
 
 const translations = specificTranslations;
