@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import BreeSerifFont from './fonts/BreeSerif-Regular.ttf';
 import LatoRegular from './fonts/Lato/Lato-Regular.ttf';
 import LatoBold from './fonts/Lato/Lato-Bold.ttf';
 import pictureMeFace from './img/picture-me-face-400x-round.png';
 import { Page, Text, Image, Link, View, Document, StyleSheet, Font, PDFViewer } from '@react-pdf/renderer';
 
+import experiences from '../index/experiences';
+import translations from './cv.translations';
+import i18n from '../../lib/i18n/i18n';
+import LangContext from '../../lib/i18n/LangContext';
 import quoteLeft from './icons/quote-left@3x.png';
 import quoteRight from './icons/quote-right@3x.png';
 import mailIcon from './icons/mail@3x.png';
@@ -183,6 +187,15 @@ const styles = StyleSheet.create({
 
 });
 
+const shortMonths = {
+  fr: [`Jan`, `Fev`, 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'],
+  en: [`Jan`, `Feb`, 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+};
+
+function getRangeDateString(lang, dates) {
+  return `${shortMonths[lang][dates[0].month()]}. ${dates[0].year().toString().substr(2)} -> ${shortMonths[lang][dates[1].month()]} ${dates[1].year().toString().substr(2)}`;
+}
+
 const ExternalLink = ({ src, children, iconSize = 12, ...others }) => (
   <Link src={src} {...others}>
     {children}
@@ -221,6 +234,7 @@ const H2 = ({ style, children }) => (
 
 
 const ExperienceRecommendation = ({
+  lang,
   name,
   position,
   phone,
@@ -228,25 +242,29 @@ const ExperienceRecommendation = ({
   borderColor,
   backgroundColor,
   content,
-}) => (
-  <View style={{ position: 'relative', marginBottom: 5, width: '90%', marginLeft: 'auto', marginRight: 'auto', flexDirection: 'row', padding: 8, borderWidth: 1, borderRadius: 6, backgroundColor, borderColor }}>
-    <Image src={quoteLeft} style={{ position: 'absolute', top: -6, left: -14, width: 25, height: 25 }} />
-    <Image src={quoteRight} style={{ position: 'absolute', bottom: -3, right: -12, width: 25, height: 25 }} />
-    <View style={{ flexDirection: 'column', fontSize: 11, marginRight: 12, flex: 0 }}>
-      <BaseText style={{ fontWeight: 'bold' }}>{name}</BaseText>
-      <BaseText>{position}</BaseText>
-      <BaseText>{email}</BaseText>
-    </View>
+}) => {
+  const t = i18n(lang, translations);
 
-    <View style={{ flex: 1 }}>
-      <BaseText>{content}</BaseText>
+  return (
+    <View style={{ position: 'relative', marginBottom: 5, width: '90%', marginLeft: 'auto', marginRight: 'auto', flexDirection: 'row', padding: 8, borderWidth: 1, borderRadius: 6, backgroundColor, borderColor }}>
+      <Image src={quoteLeft} style={{ position: 'absolute', top: -6, left: -14, width: 25, height: 25 }} />
+      <Image src={quoteRight} style={{ position: 'absolute', bottom: -3, right: -12, width: 25, height: 25 }} />
+      <View style={{ flexDirection: 'column', fontSize: 11, marginRight: 12, flex: 0 }}>
+        <BaseText style={{ fontWeight: 'bold' }}>{name}</BaseText>
+        <BaseText>{position}</BaseText>
+        <BaseText>{email}</BaseText>
+      </View>
 
-      <ExternalLink src="https://www.linkedin.com/in/ilyeshermellin/" style={{ fontSize: 9 }}>
-        Lire la recommandation complète sur LinkedIn
-      </ExternalLink>
+      <View style={{ flex: 1 }}>
+        <BaseText>{content}</BaseText>
+
+        <ExternalLink src="https://www.linkedin.com/in/ilyeshermellin/" style={{ fontSize: 9 }}>
+          {t('readFullRecommendation')}
+        </ExternalLink>
+      </View>
     </View>
-  </View>
-);
+  );
+}
 
 const Experience = ({
   title,
@@ -256,6 +274,7 @@ const Experience = ({
   summary,
 
   experienceRecommendation,
+  lang,
 }) => (
   <View style={styles.experience}>
     <View style={[styles.experienceHeader, { backgroundColor: titleBgColor }]} wrap={false}>
@@ -286,7 +305,7 @@ const Experience = ({
     )}
 
     {experienceRecommendation && (
-      <ExperienceRecommendation {...experienceRecommendation} />
+      <ExperienceRecommendation  lang={lang} {...experienceRecommendation} />
     )}
   </View>
 )
@@ -319,280 +338,316 @@ const Reference = ({
 );
 
 // Create Document Component
-const MyDocument = () => (
-  <Document
-    title={`CV - Ilyes Hermellin - Chef de projet IT, développeur senior - ${(new Date()).getFullYear()}`}
-    author="Ilyes Hermellin"
-    subject="CV de Ilyes Hermellin, chef de projet IT et développeur fullstack senior"
-    keywords="developper, project manager, coding"
-  >
-    <Page size="A4" style={[styles.page]}>
-        <MainTitle style={{ marginBottom: 4 }}>Ilyes Hermellin</MainTitle>
-        <BaseText style={{ marginBottom: 20, fontSize: 13, color: '#8907e6', textAlign: 'center', fontFamily: 'BreeSerif' }}>
-          Chef de projet IT, développeur fullstack senior
-        </BaseText>
+const MyDocument = ({
+  lang,
+}) => {
+  const t = i18n(lang, translations);
 
-        {/********/}
-        {/* Hero */}
-        <View style={styles.hero}>
-          <View style={styles.heroColumn}>
-            <View style={[styles.heroContactDetail, styles.fontSize11]}>
-              <Image style={styles.heroContactDetailIcon} src={mailIcon} />
-              <BaseText style={styles.heroContactDetailText}>bonjour@ilyeshermellin.com</BaseText>
-            </View>
-
-            <View style={[styles.heroContactDetail, styles.fontSize11]}>
-              <Image style={styles.heroContactDetailIcon} src={locationIcon} />
-              <BaseText style={styles.heroContactDetailText}>Paris ou Londres</BaseText>
-            </View>
-
-            <View style={[styles.heroContactDetail, styles.fontSize11]}>
-              <Image style={[styles.heroContactDetailIcon]} src={phoneIcon} />
-              <BaseText style={styles.heroContactDetailText}>+33 7 81 33 99 46</BaseText>
-            </View>
-
-            <View style={[styles.heroContactDetail, { marginBottom: 0 }, styles.fontSize11]}>
-              <Image style={[styles.heroContactDetailIcon]} src={languagesIcon} />
-              <BaseText style={styles.heroContactDetailText}>Français & Anglais</BaseText>
-            </View>
-          </View>
-
-          <View style={[styles.heroColumn, styles.pictureMeColumn]}>
-            <Image style={styles.pictureMe} src={pictureMeFace} />
-          </View>
-
-          <View style={styles.heroColumn}>
-            <View style={styles.heroContactDetail}>
-              <ExternalLink src="https://ilyeshermellin.com/fr">ilyeshermellin.com</ExternalLink>
-            </View>
-
-            <View style={styles.heroContactDetail}>
-              <ExternalLink src="https://www.linkedin.com/in/ilyeshermellin/">LinkedIn profile</ExternalLink>
-            </View>
-
-            <View style={styles.heroContactDetail}>
-              <ExternalLink src="https://github.com/yachaka">GitHub @yachaka</ExternalLink>
-            </View>
-
-            <View style={[styles.heroContactDetail, { marginBottom: 0 }]}>
-              <ExternalLink src="https://stackoverflow.com/users/3076424/yachaka">StackOverflow @yachaka</ExternalLink>
-            </View>
-          </View>
-        </View>
-
-        <View style={styles.intro}>
-          <Image src={quoteCircleIcon} style={styles.introIcon} />
-          <BaseText style={styles.introText}>
-            Je suis un développeur autodidacte, autonome, et curieux. J'aime partager mes connaissances et apprendre des autres - je m'implique régulièrement dans la communauté open-source (sur StackOverflow ou GitHub). J'aimerais continuer d'apporter de la valeur via mon expertise (le développement informatique), soit : la gestion de projets informatiques, l'écriture de code et la création visuelle/pratique de produits informatiques.
+  return (
+    <Document
+      title={t('document.title')}
+      author="Ilyes Hermellin"
+      subject={t('document.subject')}
+      keywords={t('document.keywords')}
+    >
+      <Page size="A4" style={[styles.page]}>
+          <MainTitle style={{ marginBottom: 4 }}>Ilyes Hermellin</MainTitle>
+          <BaseText style={{ marginBottom: 20, fontSize: 13, color: '#8907e6', textAlign: 'center', fontFamily: 'BreeSerif' }}>
+            {t('headline')}
           </BaseText>
-        </View>
 
-        <H2 style={styles.h2}>Points forts</H2>
+          {/********/}
+          {/* Hero */}
+          <View style={styles.hero}>
+            <View style={styles.heroColumn}>
+              <View style={[styles.heroContactDetail, styles.fontSize11]}>
+                <Image style={styles.heroContactDetailIcon} src={mailIcon} />
+                <BaseText style={styles.heroContactDetailText}>{t('hero.email')}</BaseText>
+              </View>
 
-        <View style={{ marginBottom: 5 }}>
-          <View style={styles.highlight}>
-            <BaseText style={styles.highlightText}>
-              <BaseText style={styles.highlightTextBold}>
-                J’ai développé la première version de l’application mobile Spendesk, sur iOS et Android, avec React-Native, GraphQL et Relay en moins de 3 mois.{"\n"}
+              <View style={[styles.heroContactDetail, styles.fontSize11]}>
+                <Image style={styles.heroContactDetailIcon} src={locationIcon} />
+                <BaseText style={styles.heroContactDetailText}>{t('hero.location')}</BaseText>
+              </View>
+
+              <View style={[styles.heroContactDetail, styles.fontSize11]}>
+                <Image style={[styles.heroContactDetailIcon]} src={phoneIcon} />
+                <BaseText style={styles.heroContactDetailText}>+33 7 81 33 99 46</BaseText>
+              </View>
+
+              <View style={[styles.heroContactDetail, { marginBottom: 0 }, styles.fontSize11]}>
+                <Image style={[styles.heroContactDetailIcon]} src={languagesIcon} />
+                <BaseText style={styles.heroContactDetailText}>{t('hero.languages')}</BaseText>
+              </View>
+            </View>
+
+            <View style={[styles.heroColumn, styles.pictureMeColumn]}>
+              <Image style={styles.pictureMe} src={pictureMeFace} />
+            </View>
+
+            <View style={styles.heroColumn}>
+              <View style={styles.heroContactDetail}>
+                <ExternalLink src="https://ilyeshermellin.com/fr">ilyeshermellin.com</ExternalLink>
+              </View>
+
+              <View style={styles.heroContactDetail}>
+                <ExternalLink src="https://www.linkedin.com/in/ilyeshermellin/">{t('hero.linkedinText')}</ExternalLink>
+              </View>
+
+              <View style={styles.heroContactDetail}>
+                <ExternalLink src="https://github.com/yachaka">GitHub @yachaka</ExternalLink>
+              </View>
+
+              <View style={[styles.heroContactDetail, { marginBottom: 0 }]}>
+                <ExternalLink src="https://stackoverflow.com/users/3076424/yachaka">StackOverflow @yachaka</ExternalLink>
+              </View>
+            </View>
+          </View>
+
+          <View style={styles.intro}>
+            <Image src={quoteCircleIcon} style={styles.introIcon} />
+            <BaseText style={styles.introText}>
+              {t('intro')}
+            </BaseText>
+          </View>
+
+          <H2 style={styles.h2}>{t('highlights.title')}</H2>
+
+          <View style={{ marginBottom: 5 }}>
+            <View style={styles.highlight}>
+              <BaseText style={styles.highlightText}>
+                <BaseText style={styles.highlightTextBold}>
+                  {t('highlights.1')}{"\n"}
+                </BaseText>
+                <ExternalLink style={styles.highlightLink} src="https://play.google.com/store/apps/details?id=com.spendesk.spendesk">
+                  {t('highlights.1-linkText')}
+                </ExternalLink>, <ExternalLink style={styles.highlightLink} src="https://apps.apple.com/us/app/spendesk/id1189271166">ou l'Apple Store</ExternalLink>
               </BaseText>
-              <ExternalLink style={styles.highlightLink} src="https://play.google.com/store/apps/details?id=com.spendesk.spendesk">
-                Voir l'application Spendesk sur le Play Store
-              </ExternalLink>, <ExternalLink style={styles.highlightLink} src="https://apps.apple.com/us/app/spendesk/id1189271166">ou l'Apple Store</ExternalLink>
-            </BaseText>
+            </View>
+
+            <View style={styles.highlight}>
+              <BaseText style={styles.highlightText}>
+                <BaseText style={styles.highlightTextBold}>
+                  {t('highlights.2')}{"\n"}
+                </BaseText>&nbsp;
+            
+                <ExternalLink style={styles.highlightLink} src="https://stackoverflow.com/a/44568365/3076424">
+                  {t('highlights.2-linkText')}
+                </ExternalLink>
+              </BaseText>
+            </View>
+
+            <View style={styles.highlight}>
+              <BaseText style={styles.highlightText}>
+                <BaseText style={styles.highlightTextBold}>
+                  {t('highlights.3')}
+                </BaseText>&nbsp;
+              </BaseText>
+            </View>
           </View>
 
-          <View style={styles.highlight}>
-            <BaseText style={styles.highlightText}>
-              <BaseText style={styles.highlightTextBold}>
-                Je code depuis plus de 10 ans. Je suis auto-didacte, ce qui exprime ma curiosité quotidienne, qui elle m'a permis de comprendre en profondeur les sujets dont je m'occupe.
-                Je m'implique au sein de la communauté open-source.{"\n"}
-              </BaseText>&nbsp;
-          
-              <ExternalLink style={styles.highlightLink} src="https://stackoverflow.com/a/44568365/3076424">
-                Ici une de mes réponses populaires, à propos de GraphQL, sur StackOverflow
-              </ExternalLink>
-            </BaseText>
-          </View>
+          <H2 style={styles.h2}>{t('workTitle')}</H2>
 
-          <View style={styles.highlight}>
-            <BaseText style={styles.highlightText}>
-              <BaseText style={styles.highlightTextBold}>
-                J'ai un profil polyvalent, me permettant de jouer le rôle de chef de projet ou de développeur senior.
-              </BaseText>&nbsp;
-            </BaseText>
-          </View>
-        </View>
+          {Object.values(experiences).map(exp => {
+            let fullDateString = '';
+            if (typeof exp.dates[0][0] === 'object') {
+              fullDateString = exp.dates.map(dates => {
+                return getRangeDateString(lang, dates);
+              }).join(', ');
+            } else {
+              fullDateString = getRangeDateString(lang, exp.dates);
+            }
 
-        <H2 style={styles.h2}>Expérience professionnelle</H2>
+            return (
+              <Experience
+                lang={lang}
+                title={
+                  <Text>{exp.roleTitle[lang]} {t('role-title-at-word')} <ExternalLink src={exp.url}>{exp.name}   </ExternalLink></Text>
+                }
+                titleBgColor={exp.color}
+                summary={exp.productBrief[lang]}
+                date={
+                  <Text>{fullDateString}</Text>
+                }
+                keyPoints={
+                  exp.keyWork.map(k => k[lang])
+                }
+                experienceRecommendation={exp.feedback}
+              />
+            );
+          })}
+          {/*
+          <Experience
+            title={
+            <Text>Développeur en chef/gestion de projet chez <ExternalLink src="https://www.konbini.com/fr">Konbini   </ExternalLink></Text>
+            }
+            titleBgColor="#ffeeed"
+            summary="Konbini est un média d'info-divertissement. 5 millions de visiteurs visitent leur site web chaque mois."
+            date={
+              <Text>Juill. 19 -> Déc. 19 (freelance, 5 mois)</Text>
+            }
+            keyPoints={[
+              'Gestion des projets d\'évolution de la publicité, notamment le développement d\'un format publicitaire vidéo fonctionnant avec un tag VAST générique',
+              'Développpement de la nouvelle page d\'accueil du site pour PC, avec un nouveau fil d\'actualités infini',
+              'Ré-écriture complète de la page d\'accueil mobile, en visant la performance, qui est un carousel permettant de naviguer entre les articles récents',
+              'Collaboration avec un prestataire externe pour la gestion et l\'amélioration de l\'infrastructure serveur',
+              'Amélioration globale de la performance du site web, notamment via la réduction de la taille totale du code (réduction de 50%)',
+            ]}
+          />
 
-        <Experience
-          title={
-          <Text>Développeur en chef/gestion de projet chez <ExternalLink src="https://www.konbini.com/fr">Konbini   </ExternalLink></Text>
-          }
-          titleBgColor="#ffeeed"
-          summary="Konbini est un média d'info-divertissement. 5 millions de visiteurs visitent leur site web chaque mois."
-          date={
-            <Text>Juill. 19 -> Déc. 19 (freelance, 5 mois)</Text>
-          }
-          keyPoints={[
-            'Gestion des projets d\'évolution de la publicité, notamment le développement d\'un format publicitaire vidéo fonctionnant avec un tag VAST générique',
-            'Développpement de la nouvelle page d\'accueil du site pour PC, avec un nouveau fil d\'actualités infini',
-            'Ré-écriture complète de la page d\'accueil mobile, en visant la performance, qui est un carousel permettant de naviguer entre les articles récents',
-            'Collaboration avec un prestataire externe pour la gestion et l\'amélioration de l\'infrastructure serveur',
-            'Amélioration globale de la performance du site web, notamment via la réduction de la taille totale du code (réduction de 50%)',
-          ]}
-        />
+          <Experience
+            title={
+              <Text>Développeur fullstack JavaScript chez <ExternalLink src="https://habx.fr">habx.fr   </ExternalLink></Text>
+            }
+            titleBgColor="#fff3e3"
+            summary="Habx propose la customisation et la vente d'appartements sur plan (VEFA)."
+            date={
+              <Text>Sep. 18 -> Fév. 19 (employé, 6 mois){"\n"}
+                Fév. puis Avr. -> Juin 18 (freelancer, 3 mois)</Text>
+            }
+            keyPoints={[
+              'Avec React, Node, GraphQL, Apollo, Webpack, AWS, MongoDB, PostGres, TypeScript',
+              'Développement de la plateforme principale et d’un CRM maison',
+              'Responsable de fonctionnalités : landings (99/100 PageSpeed, tps affichage < 100ms), indexation des prix de l’immobilier, librairie d’outils SQS, intégration des tierces parties',
+            ]}
+            experienceRecommendation={{
+              name: 'Guillaume Badi',
+              position: 'Chef produit chez Habx',
+              phone: '+33 7 68 39 68 79',
+              email: 'guillaume.badi@gmail.com',
+              backgroundColor: '#FFF8EF',
+              borderColor: '#FDE9CF',
+              content: '[...] Il [Ilyes] maitrise parfaitement les technologies les plus avancées en JavaScript (GraphQL, Relay, React) et sait s\'adapter rapidement à son environnement. [...]',
+            }}
+          />
 
-        <Experience
-          title={
-            <Text>Développeur fullstack JavaScript chez <ExternalLink src="https://habx.fr">habx.fr   </ExternalLink></Text>
-          }
-          titleBgColor="#fff3e3"
-          summary="Habx propose la customisation et la vente d'appartements sur plan (VEFA)."
-          date={
-            <Text>Sep. 18 -> Fév. 19 (employé, 6 mois){"\n"}
-              Fév. puis Avr. -> Juin 18 (freelancer, 3 mois)</Text>
-          }
-          keyPoints={[
-            'Avec React, Node, GraphQL, Apollo, Webpack, AWS, MongoDB, PostGres, TypeScript',
-            'Développement de la plateforme principale et d’un CRM maison',
-            'Responsable de fonctionnalités : landings (99/100 PageSpeed, tps affichage < 100ms), indexation des prix de l’immobilier, librairie d’outils SQS, intégration des tierces parties',
-          ]}
-          experienceRecommendation={{
-            name: 'Guillaume Badi',
-            position: 'Chef produit chez Habx',
-            phone: '+33 7 68 39 68 79',
-            email: 'guillaume.badi@gmail.com',
-            backgroundColor: '#FFF8EF',
-            borderColor: '#FDE9CF',
-            content: '[...] Il [Ilyes] maitrise parfaitement les technologies les plus avancées en JavaScript (GraphQL, Relay, React) et sait s\'adapter rapidement à son environnement. [...]',
-          }}
-        />
+          <Experience
+            title="Voyage au Chili et en Colombie"
+            titleBgColor="#efedf0"
+            date="Mars 18, puis Juin - Août 18"
+          />
 
-        <Experience
-          title="Voyage au Chili et en Colombie"
-          titleBgColor="#efedf0"
-          date="Mars 18, puis Juin - Août 18"
-        />
+          <Experience
+            summary="Dailymotion est une plateforme de lecture de contenu vidéo."
+            title={
+              <Text>Développeur front-end JavaScript chez <ExternalLink src="https://www.dailymotion.fr">Dailymotion   </ExternalLink></Text>
+            }
+            titleBgColor="#ebf0ff"
+            date={
+              <Text>Août 17 - Décembre 17</Text>
+            }
+            keyPoints={[
+              'Avec React, Redux, Webpack. J’ai travaillé en collaboration avec 4 autres développeurs front-end, dans une équipe de 20 personnes.',
+            ]}
+          />
 
-        <Experience
-          summary="Dailymotion est une plateforme de lecture de contenu vidéo."
-          title={
-            <Text>Développeur front-end JavaScript chez <ExternalLink src="https://www.dailymotion.fr">Dailymotion   </ExternalLink></Text>
-          }
-          titleBgColor="#ebf0ff"
-          date={
-            <Text>Août 17 - Décembre 17</Text>
-          }
-          keyPoints={[
-            'Avec React, Redux, Webpack. J’ai travaillé en collaboration avec 4 autres développeurs front-end, dans une équipe de 20 personnes.',
-          ]}
-        />
+          <Experience
+            summary="Spendesk est une solution de gestion des dépenses professionnelles."
+            title={
+              <Text>Développeur fullstack JavaScript chez <ExternalLink src="https://www.spendesk.com">Spendesk   </ExternalLink></Text>
+            }
+            titleBgColor="#fbf5ff"
+            date={
+              <Text>Octobre 16 - Août 17</Text>
+            }
+            keyPoints={[
+              'Force de proposition technique. Livraison de nouvelles fonctionnalités, côté serveur et côté client. Avec React, Redux et Node.js',
+              'Développement de l’application mobile initiale sur iOS et Android, avec React Native, GraphQL et Relay',
+              '9ème employé, l’entreprise grandit à 23 collaborateurs en l’espace de 10 mois',
+            ]}
+            experienceRecommendation={{
+              name: 'Guilhem Bellion',
+              position: 'CTO chez Spendesk',
+              email: 'guilhem@spendesk.com',
+              backgroundColor: '#fbf5ff',
+              borderColor: '#ebdcf5',
+              content: '[...] Ilyes m\'a impressionné par sa forte capacité d\'adaptation et sa faculté à mettre en place des solutions globales, simples et efficaces pour répondre à des problématiques compliquées. [...]',
+            }}
+          />
 
-        <Experience
-          summary="Spendesk est une solution de gestion des dépenses professionnelles."
-          title={
-            <Text>Développeur fullstack JavaScript chez <ExternalLink src="https://www.spendesk.com">Spendesk   </ExternalLink></Text>
-          }
-          titleBgColor="#fbf5ff"
-          date={
-            <Text>Octobre 16 - Août 17</Text>
-          }
-          keyPoints={[
-            'Force de proposition technique. Livraison de nouvelles fonctionnalités, côté serveur et côté client. Avec React, Redux et Node.js',
-            'Développement de l’application mobile initiale sur iOS et Android, avec React Native, GraphQL et Relay',
-            '9ème employé, l’entreprise grandit à 23 collaborateurs en l’espace de 10 mois',
-          ]}
-          experienceRecommendation={{
-            name: 'Guilhem Bellion',
-            position: 'CTO chez Spendesk',
-            email: 'guilhem@spendesk.com',
-            backgroundColor: '#fbf5ff',
-            borderColor: '#ebdcf5',
-            content: '[...] Ilyes m\'a impressionné par sa forte capacité d\'adaptation et sa faculté à mettre en place des solutions globales, simples et efficaces pour répondre à des problématiques compliquées. [...]',
-          }}
-        />
+          <Experience
+            title={
+              <BaseText>Développeur front-end freelance chez <Text style={{ textDecoration: 'underline' }}>Speaken</Text></BaseText>
+            }
+            titleBgColor="#e7f2e6"
+            date={
+              <BaseText>Juin 16 - Octobre 16</BaseText>
+            }
+            keyPoints={[
+              'Fonctionnalités clés : appel vidéo en direct (WebRTC), messagerie privée, profil, agenda.',
+              'Avec React et Redux.',
+            ]}
+          />
 
-        <Experience
-          title={
-            <BaseText>Développeur front-end freelance chez <Text style={{ textDecoration: 'underline' }}>Speaken</Text></BaseText>
-          }
-          titleBgColor="#e7f2e6"
-          date={
-            <BaseText>Juin 16 - Octobre 16</BaseText>
-          }
-          keyPoints={[
-            'Fonctionnalités clés : appel vidéo en direct (WebRTC), messagerie privée, profil, agenda.',
-            'Avec React et Redux.',
-          ]}
-        />
+          <Experience
+            title={
+              <View><BaseText>Étudiant à l'école </BaseText><ExternalLink src="https://42.fr">42   </ExternalLink></View>
+            }
+            titleBgColor="#efedf0"
+            date="Octobre 14 - Juin 16"
+          />*/}
 
-        <Experience
-          title={
-            <View><BaseText>Étudiant à l'école </BaseText><ExternalLink src="https://42.fr">42   </ExternalLink></View>
-          }
-          titleBgColor="#efedf0"
-          date="Octobre 14 - Juin 16"
-        />
+          <BaseText style={{ fontSize: 9, position: 'absolute', bottom: 39, left: 150, 'transform:translateX': '-50%' }}>
+            CV généré le {getDate()} avec <ExternalLink src="https://react-pdf.org/" iconSize={10}>react-pdf</ExternalLink>. Plus de détails sur <ExternalLink src="https://ilyeshermellin.com/fr" iconSize={10}>mon site web !</ExternalLink>
+          </BaseText>
+          {/*<H2 style={[styles.h2, { marginTop: 5 }]}>Références</H2>
 
-        <BaseText style={{ fontSize: 9, position: 'absolute', bottom: 39, left: 150, 'transform:translateX': '-50%' }}>
-          CV généré le {getDate()} avec <ExternalLink src="https://react-pdf.org/" iconSize={10}>react-pdf</ExternalLink>. Plus de détails sur <ExternalLink src="https://ilyeshermellin.com/fr" iconSize={10}>mon site web !</ExternalLink>
-        </BaseText>
-        {/*<H2 style={[styles.h2, { marginTop: 5 }]}>Références</H2>
+          <Reference
+            style={{ marginBottom: 15 }}
+            personName="Guillaume Badi"
+            personRole="Chef Produit chez habx.fr"
+            personPhone="+33 7 68 39 68 79"
+            personEmail="guillaume.badi@gmail.com"
+            text="Il [Ilyes] maitrise parfaitement les technologies les plus avancées en JavaScript (GraphQL, Relay, React) et sait s'adapter rapidement à son environnement."
+            externalLinkText="Lire la recommandation complète sur LinkedIn"
+            externalLinkUrl="https://www.google.com"
+          />
 
-        <Reference
-          style={{ marginBottom: 15 }}
-          personName="Guillaume Badi"
-          personRole="Chef Produit chez habx.fr"
-          personPhone="+33 7 68 39 68 79"
-          personEmail="guillaume.badi@gmail.com"
-          text="Il [Ilyes] maitrise parfaitement les technologies les plus avancées en JavaScript (GraphQL, Relay, React) et sait s'adapter rapidement à son environnement."
-          externalLinkText="Lire la recommandation complète sur LinkedIn"
-          externalLinkUrl="https://www.google.com"
-        />
+          <Reference
+            style={{ marginBottom: 15 }}
+            personName="Guilhem Bellion"
+            personRole="CTO chez Spendesk"
+            personEmail="guilhem@spendesk.com"
+            text="Ilyes impressed me with his strong adaptability and his ability to implement comprehensive, simple and effective solutions to solve complex issues."
+            externalLinkText="Lire la recommandation complète sur LinkedIn"
+            externalLinkUrl="https://www.google.com"
+          />*/}
 
-        <Reference
-          style={{ marginBottom: 15 }}
-          personName="Guilhem Bellion"
-          personRole="CTO chez Spendesk"
-          personEmail="guilhem@spendesk.com"
-          text="Ilyes impressed me with his strong adaptability and his ability to implement comprehensive, simple and effective solutions to solve complex issues."
-          externalLinkText="Lire la recommandation complète sur LinkedIn"
-          externalLinkUrl="https://www.google.com"
-        />*/}
+          {/*<View style={{ marginTop: 5, flexDirection: 'row', fontSize: 11 }}>
+            <View style={{ width: 120, flex: 0, marginRight: 15 }}>
+              <H2 style={styles.h2}>Langues</H2>
 
-        {/*<View style={{ marginTop: 5, flexDirection: 'row', fontSize: 11 }}>
-          <View style={{ width: 120, flex: 0, marginRight: 15 }}>
-            <H2 style={styles.h2}>Langues</H2>
+              <Text>
+                🇫🇷 Francais - Natif{"\n"}
+                🏴󠁧󠁢󠁥󠁮󠁧󠁿 Anglais - Courant{"\n"}
+                🇪🇸 Espagnol - Pratique
+              </Text>
+            </View>
 
-            <Text>
-              🇫🇷 Francais - Natif{"\n"}
-              🏴󠁧󠁢󠁥󠁮󠁧󠁿 Anglais - Courant{"\n"}
-              🇪🇸 Espagnol - Pratique
-            </Text>
-          </View>
+            <View style={{ flex: 1, marginRight: 15 }}>
+              <H2 style={styles.h2}>Intérêts</H2>
 
-          <View style={{ flex: 1, marginRight: 15 }}>
-            <H2 style={styles.h2}>Intérêts</H2>
+              <Text style={{ flex: 1 }}>Voyages, natation, escalade, sorties sociales, jeux vidéos, danse, aider les autres, communauté open-source, entrepreunariat</Text>
+            </View>
 
-            <Text style={{ flex: 1 }}>Voyages, natation, escalade, sorties sociales, jeux vidéos, danse, aider les autres, communauté open-source, entrepreunariat</Text>
-          </View>
+            <View style={{ flex: 1 }}>
+              <H2 style={styles.h2}>Éducation</H2>
+              <BaseText style={{ flex: 1 }}>
+                J'ai étudié à l'école 42 de 2014 à 2016. J'ai arrêté mon cursus après 2 ans (normalement 3) pour rentrer dans la vie active, constatant que j'avais les compétences nécessaires.
+              </BaseText>
+            </View>
+          </View>*/}
+      </Page>
+    </Document>
+  );
+}
 
-          <View style={{ flex: 1 }}>
-            <H2 style={styles.h2}>Éducation</H2>
-            <BaseText style={{ flex: 1 }}>
-              J'ai étudié à l'école 42 de 2014 à 2016. J'ai arrêté mon cursus après 2 ans (normalement 3) pour rentrer dans la vie active, constatant que j'avais les compétences nécessaires.
-            </BaseText>
-          </View>
-        </View>*/}
-    </Page>
-  </Document>
-);
-
-function CVPage() {
+function CVPage({
+  pageContext,
+}) {
   return (
     <PDFViewer style={{ width: '100%', height: '100%' }}>
-      <MyDocument />
+      <MyDocument lang={pageContext.lang} />
     </PDFViewer>
   );
 }

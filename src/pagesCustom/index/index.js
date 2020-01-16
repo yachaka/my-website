@@ -69,11 +69,8 @@ class IndexPage extends PureComponent {
               <img class={cx(s.meSmallOval)} src={meSmallOvalImg} />
               <span dangerouslySetInnerHTML={{ __html: t('hero-text') }} />
             </h1>
-            <h2 class={cx(s.heroStatus)} dangerouslySetInnerHTML={{ __html: t('hero-status1') }} />
-            <h2 class={cx(s.heroStatus)} dangerouslySetInnerHTML={{ __html: t('hero-status2') }} />
-            {t('hero-status3') &&
-              <h2 class={cx(s.heroStatus)} dangerouslySetInnerHTML={{ __html: t('hero-status3') }} />
-            }
+            <h2 class={cx(s.heroStatus)} dangerouslySetInnerHTML={{ __html: t('hero-status') }} />
+
             <div class={s.heroLinks}>
               <a href="#" class={s.workLink} onClick={this.scrollToWork}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="31" height="31" stroke="#0080f7" fill="none" stroke-linecap="round" stroke-width="3"><path d="M6 16.672l9 9m9-9l-9 9m-9-19l9 9m9-9l-9 9"/></svg>
@@ -103,20 +100,7 @@ class IndexPage extends PureComponent {
             <h3 id="rateTitle" class={cx('container', s.sectionTitle)}>{t('rate-title')}</h3>
 
             <div class="container">
-              <p dangerouslySetInnerHTML={{ __html: t('rate-block.text').replace('{{rate}}', freelanceRate) }} />
-              <ul class={s.discountsList}>
-                {lang && translations && translations[lang]['rate-block'].discounts.map(discount => {
-                  if (discount === 'separator') {
-                    return (<li class={s.separator}></li>)
-                  }
-
-                  return (
-                    <li>
-                      <span class={s.discount}>{discount[0]}%</span> {discount[1].replace('{{rate}}', Math.floor(freelanceRate * (1 - (parseInt(discount[0], 10) / 100))))}
-                    </li>
-                  )
-                })}
-              </ul>
+              <p dangerouslySetInnerHTML={{ __html: t('rate-block').replace('{{rate}}', freelanceRate) }} />
             </div>
           </aside>
 

@@ -42,6 +42,10 @@
       list-style-type: decimal;
       padding-left: 40px;
 
+      @media screen and (max-width: 767px) {
+        padding-left: 20px;
+      }
+
       li {
         span {
           display: inline-block;

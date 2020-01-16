@@ -8,6 +8,7 @@ import Cookies from 'js-cookie';
 import smoothScrollTo from 'smooth-scroll-to'
 import Link from '../Link';
 import MobileOverlay from '../MobileOverlay/MobileOverlay'
+import LangContext from '../../lib/i18n/LangContext';
 
 import logoSVG from './logo.svg'
 import messengerSVG from '../../img/messenger.svg';
@@ -46,7 +47,7 @@ const formatDateByLang = (time, lang) => {
   }
 };
 
-export default class Nav extends PureComponent {
+class Nav extends PureComponent {
   state = {
     contactMenuExpanded: false,
     showOverlayMenu: false,
@@ -69,6 +70,7 @@ export default class Nav extends PureComponent {
     window.openContact = () => this.setState({ contactMenuExpanded: true });
     window.addEventListener('scroll', this.onWindowScroll)
     window.addEventListener('resize', this.onWindowResizeDebounced)
+    this.onWindowResizeDebounced();
   }
   componentWillUnmount() {
     window.removeEventListener('scroll', this.onWindowScroll)
@@ -150,7 +152,7 @@ export default class Nav extends PureComponent {
   }
 
   viewMessageContent = () => {
-    const { lang } = this.context;
+    const { lang } = this.props;
     const t = i18n(lang, translations);
 
     const lastMessageSentData = JSON.parse(Cookies.get('lastMessageSentData') || '""')
@@ -181,7 +183,7 @@ ${lastMessageSentData.message}
       sent,
     } = this.state;
 
-    const { lang } = this.context;
+    const { lang } = this.props;
     const t = i18n(lang, translations);
 
     const lastMessageSent = Cookies.get('lastMessageSent')
@@ -348,3 +350,10 @@ function sendForm(data, callback) {
   xhr.send(params.join('&'));
 }
 
+export default (props) => (
+  <LangContext.Consumer>
+    {lang => (
+      <Nav lang={lang} {...props} />
+    )}
+  </LangContext.Consumer>
+);

@@ -13,15 +13,19 @@ import konbiniDesktopHomepageLoad from '../../data/konbini/desktop-homepage.mp4'
 export default {
   konbini: {
     "color": "#F52635",
+    "cv-color": "#ffeeed",
     "name": "Konbini",
     "url": "https://www.konbini.com/",
     "dates": [dayjs('2019-07-10'), dayjs('2019-12-12')],
     "freelanceOrEmployee": "freelance",
     "technologiesUsed": ['Next.js', 'WordPress', 'PWA', 'React', 'Varnish Cache'],
-    "roleTitle": "Développeur en chef/gestion de projet",
+    "roleTitle": {
+      "fr": "Développeur en chef/gestion de projet",
+      "en": "Lead developpper/project manager",
+    },
     "productBrief": {
       "fr": "Konbini est un média d'info-divertissement. 5 millions de visiteurs visitent leur site web chaque mois.",
-      "en": "Konbini est un média d'info-divertissement. 5 millions de visiteurs visitent leur site web chaque mois.",
+      "en": "Konbini is a fun-news website. 5 million users visit their website each month.",
     },  
     "myWorkSummaryText": {
       "fr": "Après que Konbini ait commencé à transformer leur site en une <br /><a href=\"https://developers.google.com/web/progressive-web-apps\" target=\"_blank\" rel=\"noopener noreferrer\">Progressive Web App</a>, le code a souffert d'une importante dette technique, et l'expérience utilisateur a souffert de nombreux bugs.<br /><br />Pendant ma mission, j'ai pris le poste flexible de chef de projet/développeur en chef. Mon objectif était d'abord de refactoriser le code, éliminer les bugs, améliorer l'expérience utilisateur et développer la nouvelle page d'accueil (un fil d'actualités infini).<br /><br />J'ai aussi géré certains projets d'évolution de la publicité sur le site (besoins, planification, éxécution), ré-écrit la page d'accueil mobile (un carousel), et amélioré les performances globales du site (réduction de la taille du code interne de 50%).",
@@ -89,6 +93,7 @@ export default {
 
   habx: {
     "color": "#F52635",
+    "cv-color": "#fff3e3",
     "name": "HabX",
     "url": "https://habx.fr/",
     "dates": [
@@ -98,7 +103,10 @@ export default {
     ],
     "freelanceOrEmployee": "both",
     "technologiesUsed": ['React', 'Apollo', 'GraphQL', 'AWS', 'Message queues', 'Redux', 'Webpack', 'Node.js'],
-    "roleTitle": "Développeur fullstack JavaScript",
+    "roleTitle": {
+      "fr": "Développeur fullstack JavaScript",
+      "en": "Fullstack JavaScript developper",
+    },
     "productBrief": {
       "fr": "Habx vend des appartements sur plan (VEFA) et sur-mesure.",
       "en": "Habx vend des appartements sur plan (VEFA) et sur-mesure.",
@@ -150,6 +158,7 @@ export default {
     "feedback": {
       "name": "Guillaume Badi",
       "external": "https://www.linkedin.com/in/guillaume-badi-a06008b9/",
+      "email": "guillaume.badi@gmail.com",
       "role": {
         "fr": "Chef Produit chez Habx",
         "en": "Product owner at Habx",
@@ -163,10 +172,15 @@ export default {
 
   dailymotion: {
     "color": "rgb(4, 184, 251)",
+    "cv-color": "#ebf0ff",
     "name": "dailymotion",
     "url": "https://www.dailymotion.com/",
-    "dates": [dayjs('2016-10-10'), dayjs('2017-08-11')],
+    "dates": [dayjs('2017-08-16'), dayjs('2017-12-31')],
     "freelanceOrEmployee": "employee",
+    "roleTitle": {
+      "fr": "Développeur front-end JavaScript",
+      "en": "Front-end JavaScript developper",
+    },
     "technologiesUsed": ['React', 'Redux', 'Webpack'],
     "productBrief": {
       "fr": "Dailymotion est une plateforme de partage de vidéos.",
@@ -199,7 +213,10 @@ export default {
     "dates": [dayjs('2016-10-10'), dayjs('2017-08-11')],
     "freelanceOrEmployee": "employee",
     "technologiesUsed": ['Node.js', 'React', 'React-Native', 'iOS/Swift', 'Android/Java', 'GraphQL', 'Relay', 'Webpack'],
-    "roleTitle": "Développeur fullstack JavaScript",
+    "roleTitle": {
+      "fr": "Développeur fullstack JavaScript",
+      "en": "Fullstack JavaScript developper",
+    },
     "productBrief": {
       "fr": "Spendesk est une carte bancaire et une plateforme pour gérer les dépenses professionnelles.",
       "en": "Spendesk is a company card and a platform to manage professional expenses.",
@@ -296,6 +313,7 @@ export default {
     },
     "feedback": {
       "name": "Guilhem Bellion",
+      "email": "guilhem@spendesk.com",
       "external": "https://www.linkedin.com/in/guilhembellion/",
       "role": {
         "fr": "CTO chez Spendesk",

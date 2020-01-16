@@ -1,38 +1,30 @@
 {
-  "en": {
-    "hero-text": "Hello 👋<br/>I am a Fullstack developer (JavaScript oriented).",
-    "hero-status1": "I am currently working at Konbini,",
-    "hero-status2": "and will be available in late November.",
-    "hero-status3": "I seek missions in the environmental or creative field.",
-    "hero-work-link": "My work",
-    "work": "Experience",
-    "rate-title": "Rate & Discounts",
-    "link-see-in-image": "See a picture",
-    "link-see-in-video": "See a video",
-    "contact-cta-text": "Do we talk the same language?",
-    "rate-block": {
-      "text": "My daily rate is {{rate}}€ HT.<br/>Discounts are available:",
-      "discounts": [
-        [20, " ({{rate}}€ HT) for environmental, social, educatif, non-profit projects."]
-      ]
-    }
+  "hero-text": {
+    "en": "Hello 👋<br/>I am a Fullstack developer (JavaScript oriented).",
+    "fr": "Bonjour 👋<br/>Je suis un développeur Fullstack (orienté JavaScript)."
   },
-  "fr": {
-    "hero-text": "Bonjour 👋<br/>Je suis un développeur Fullstack (orienté JavaScript).",
-    "hero-status1": "Je suis actuellement en mission chez Konbini,",
-    "hero-status2": "et je serais disponible à partir de fin novembre.",
-    "hero-status3": "Je cherche une mission dans le domaine environnemental ou créatif.",
-    "hero-work-link": "Mes réalisations",
-    "work": "Expérience",
-    "rate-title": "Tarif & Réductions",
-    "link-see-in-image": "Voir en image",
-    "link-see-in-video": "Voir en vidéo",
-    "contact-cta-text": "Est-ce qu'on parle le même language ?",
-    "rate-block": {
-      "text": "Mon Tarif Journalier est {{rate}}€ HT.<br/>Je pratique des réductions :",
-      "discounts": [
-        [20, " (soit {{rate}}€ HT) pour les projets environnementaux, sociaux, éducatifs, à but non-lucratif."]
-      ]
-    }
+  "hero-status": {
+    "en": "I am currently working at Shotgun, and is not looking for new opportunities.",
+    "fr": "Je travaille actuellement chez Shotgun, et je ne recherche pas de nouvelles opportunités."
+  },
+  "hero-work-link": {
+    "en": "My work",
+    "fr": "Mes réalisations"
+  },
+  "work": {
+    "en": "Experience",
+    "fr": "Expérience"
+  },
+  "rate-title": {
+    "en": "Rate & Discounts",
+    "fr": "Tarif & Réductions"
+  },
+  "contact-cta-text": {
+    "en": "Do we talk the same language?",
+    "fr": "Est-ce qu'on parle le même language ?"
+  },
+  "rate-block": {
+    "en": "My daily rate is {{rate}}€ HT.<br/>Discounts are available:",
+    "fr": "Mon Tarif Journalier est {{rate}}€ HT.<br/>Je pratique des réductions :"
   }
 }
