@@ -1,8 +1,7 @@
 {
-  "name": "gatsby-starter-default",
-  "description": "Gatsby default starter",
+  "name": "my-website",
+  "description": "My website !",
   "version": "1.0.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@react-pdf/renderer": "^1.6.7",
     "animated": "^0.2.1",
@@ -31,6 +30,7 @@
     "memoizee": "^0.4.11",
     "modularscale-sass": "^3.0.4",
     "node-sass": "^4.13.0",
+    "outside-click": "^2.0.0",
     "preact": "^10.0.4",
     "raw-loader": "^0.5.1",
     "react": "^16.11.0",
@@ -45,11 +45,6 @@
     "smooth-scroll-to": "^0.2.0",
     "webpack-babel-external-helpers-2": "^3.0.2"
   },
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "MIT",
-  "main": "n/a",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",

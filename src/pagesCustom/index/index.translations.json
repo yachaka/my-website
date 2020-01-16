@@ -1,11 +1,11 @@
 {
   "hero-text": {
-    "en": "Hello 👋<br/>I am a Fullstack developer (JavaScript oriented).",
-    "fr": "Bonjour 👋<br/>Je suis un développeur Fullstack (orienté JavaScript)."
+    "en": "Hello 👋<br/>I am an IT project manager/fullstack developer (JavaScript oriented).",
+    "fr": "Bonjour 👋<br/>Je suis un chef de projet IT/développeur fullstack (orienté JavaScript)."
   },
   "hero-status": {
-    "en": "I am currently working at Shotgun, and is not looking for new opportunities.",
-    "fr": "Je travaille actuellement chez Shotgun, et je ne recherche pas de nouvelles opportunités."
+    "en": "I am currently working with Shotgun, and is not looking for new opportunities.",
+    "fr": "Je travaille actuellement avec Shotgun, et je ne recherche pas de nouvelles opportunités."
   },
   "hero-work-link": {
     "en": "My work",
@@ -16,15 +16,79 @@
     "fr": "Expérience"
   },
   "rate-title": {
-    "en": "Rate & Discounts",
-    "fr": "Tarif & Réductions"
+    "en": "Rate",
+    "fr": "Tarif"
   },
   "contact-cta-text": {
     "en": "Do we talk the same language?",
     "fr": "Est-ce qu'on parle le même language ?"
   },
   "rate-block": {
-    "en": "My daily rate is {{rate}}€ HT.<br/>Discounts are available:",
-    "fr": "Mon Tarif Journalier est {{rate}}€ HT.<br/>Je pratique des réductions :"
+    "en": "As a freelance, my daily rate is {{rate}}€ HT.",
+    "fr": "En tant que freelance, mon Tarif Journalier est {{rate}}€ HT."
+  },
+  "projects": {
+    "en": "Projects",
+    "fr": "Projets"
+  },
+  "summary": {
+    "en": "Summary",
+    "fr": "Résumé"
+  },
+  "team": {
+    "en": "Team",
+    "fr": "Équipe"
+  },
+  "key-developments": {
+    "en": "Main work",
+    "fr": "Développpements principaux"
+  },
+  "feedback": {
+    "en": "Recommendation",
+    "fr": "Recommandation"
+  },
+  "month": {
+    "en": "month",
+    "fr": "mois"
+  },
+  "months": {
+    "en": "months",
+    "fr": "mois"
+  },
+  "as-employee": {
+    "en": "as an employee",
+    "fr": "en tant qu'employé"
+  },
+  "as-freelance": {
+    "en": "as a freelance",
+    "fr": "en tant que freelance"
+  },
+  "as-both": {
+    "en": "as a freelance and as an employee",
+    "fr": "en tant que freelance et qu'employé"
+  },
+  "techs-used": {
+    "en": "Techs used:",
+    "fr": "Techs utilisées :"
+  },
+  "with": {
+    "en": "With",
+    "fr": "Avec"
+  },
+  "sort": {
+    "fr": "Tri :",
+    "en": "Sort:"
+  },
+  "experiences-sort-recommended": {
+    "fr": "Recommandé - experiences significatives en premier",
+    "en": "Recommended - significant experiences first"
+  },
+  "experiences-sort-asc": {
+    "fr": "Ancien à récent",
+    "en": "Oldest to newest"
+  },
+  "experiences-sort-desc": {
+    "fr": "Récent à ancien",
+    "en": "Newest to oldest"
   }
 }

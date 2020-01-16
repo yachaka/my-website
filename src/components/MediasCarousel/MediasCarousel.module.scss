@@ -58,6 +58,10 @@
 .screens {
   height: 100%;
   transition: margin-left 250ms ease;
+
+  video {
+    background-color: #333;
+  }
 }
 
 .arrow {

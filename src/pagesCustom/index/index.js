@@ -1,22 +1,18 @@
 
 import React, { PureComponent } from 'react'
 import cx from 'classnames';
-import merge from 'lodash.merge';
-import dayjs from 'dayjs';
 import Link from '../../components/Link';
-import { graphql } from 'gatsby';
-import windowSize from 'react-window-size';
 import smoothScrollTo from 'smooth-scroll-to'
 import Layout from '../../layouts/index';
 
 import s from './index.module.scss';
 
 import i18n from '../../lib/i18n/i18n';
+import experiences from '../../data/experiences';
 import specificTranslations from './index.translations.json';
-import projectTranslations from './projects.translations.json';
-import experiences from './experiences';
+import Dropdown from '../../components/Dropdown/Dropdown';
 
-import meSmallOvalImg from './me-small-oval-2019.png'
+import meSmallOvalImg from '../../img/me-small-oval-2019.png'
 
 import ProjectFold from './ProjectFold';
 
@@ -46,6 +42,17 @@ class IndexPage extends PureComponent {
     this.experiencesWebsite.spendesk.laptopScreenshots.members.data = props.data.settingsTeamScreenImg.childImageSharp.sizes;
     this.experiencesWebsite.spendesk.laptopScreenshots.branches.data = props.data.branchsMenuScreenImg.childImageSharp.sizes;
     this.experiencesWebsite.spendesk.feedback.picture = props.data.guilhem.childImageSharp.sizes;
+
+    const t = i18n(props.pageContext.lang, translations);
+    this.sorts = [
+      { key: 'recommended', text: t('experiences-sort-recommended') },
+      { key: 'date-asc', text: t('experiences-sort-asc') },
+      { key: 'date-desc', text: t('experiences-sort-desc') },
+    ];
+
+    this.state = {
+      experiencesSort: this.sorts[0],
+    };
   }
 
   onContactLinkClick = () => {
@@ -59,7 +66,27 @@ class IndexPage extends PureComponent {
   render() {
     const { pageContext: { lang } } = this.props;
     const t = i18n(lang, translations);
-    const tp = i18n(lang, projectTranslations)
+    const { experiencesSort } = this.state;
+
+
+    let experiencesFinal = Object.values(this.experiencesWebsite);
+    if (experiencesSort.key === 'recommended') {
+      // no-op
+    } else if (experiencesSort.key === 'date-asc') {
+      experiencesFinal.sort((a, b) => {
+        const date1 = a.dates[0][0] ? a.dates[0][0] : a.dates[0];
+        const date2 = b.dates[0][0] ? b.dates[0][0] : b.dates[0];
+
+        return date1.isBefore(date2) ? -1 : 1;
+      });
+    } else if (experiencesSort.key === 'date-desc') {
+      experiencesFinal.sort((a, b) => {
+        const date1 = a.dates[0][0] ? a.dates[0][0] : a.dates[0];
+        const date2 = b.dates[0][0] ? b.dates[0][0] : b.dates[0];
+
+        return date2.isBefore(date1) ? -1 : 1;
+      });
+    }
 
     return (
       <Layout lang={lang}>
@@ -88,7 +115,17 @@ class IndexPage extends PureComponent {
               {t('work')}
             </h3>
 
-            {Object.values(this.experiencesWebsite).map(exp => console.log(exp) || (
+            <div className="container">
+              <span id={s.sortText}>{t('sort')}</span>
+              <Dropdown
+                id={s.sortExperiencesDropdown}
+                options={this.sorts}
+                selected={experiencesSort}
+                onSelect={(o) => this.setState({ experiencesSort: o })}
+              />
+            </div>
+
+            {experiencesFinal.map(exp => (
               <ProjectFold
                 id={s[`${exp.name.toLowerCase()}Work`]}
                 {...exp}

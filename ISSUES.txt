@@ -1,5 +1,0 @@
-
-- sur le package gatbsy + gatsby-plugin-preact:
-
-Quand on est en `yarn develop`, les methodes lifecycle 'componentWillReceiveProps' 'componentWillUpdate' ne sont pas appelées
-A la place c'est seulement `componentWillMount` :/

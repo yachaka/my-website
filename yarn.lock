@@ -8696,6 +8696,11 @@ modularscale-sass@^3.0.4:
   resolved "https://registry.yarnpkg.com/modularscale-sass/-/modularscale-sass-3.0.10.tgz#3a596b090360129dd2375bee81b9318085cb47b3"
   integrity sha512-ppbMfcXC+ESpqk1s8BfqsuY85DTAJdoPLxrYFohAUjg3r9eh2CBm2Wn7+JAh26DbRpAHynRt3a8ma2FOfk7JGA==
 
+module-exporter@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/module-exporter/-/module-exporter-1.0.1.tgz#ac7f18b23d296bdfe8c43999039e841c8e39c806"
+  integrity sha1-rH8Ysj0pa9/oxDmZA56EHI45yAY=
+
 moment@^2.24.0:
   version "2.24.0"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
@@ -9333,6 +9338,13 @@ osenv@0:
   dependencies:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.0"
+
+outside-click@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/outside-click/-/outside-click-2.0.0.tgz#9fef68a6c8e27ae5b8871da71ff9053744b89ef3"
+  integrity sha1-n+9opsjieuW4hx2nH/kFN0S4nvM=
+  dependencies:
+    module-exporter "^1.0.1"
 
 p-cancelable@^0.3.0:
   version "0.3.0"

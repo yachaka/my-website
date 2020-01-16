@@ -1,33 +1,17 @@
 
-@import '../../vars';
+@import '../../lib/css/vars';
 
 
 #home {
-  
   .hero {
     // margin: 110px auto;
-    padding-top: 40px; // equal half of nav height
-    padding-bottom: 40px; // equal half of nav height
     min-height: 100vh;
-    max-height: 620px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-
-    @media (max-width: 600px) {
-      padding-top: 20px;
-      padding-bottom: 20px;
-    }
-
-    @media (max-width: 767px) {
-      height: auto;
-      min-height: auto;
-      max-height: auto;
-      margin: 110px auto;
-      display: block;
-    }
+    padding-top: 30px;
 
     .heroText {
       .meSmallOval {
@@ -113,6 +97,16 @@
     @extend %ms5;
     margin-bottom: 55px;
   }
+}
+
+#sortText {
+  font-size: 18px;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+#sortExperiencesDropdown {
+  margin-bottom: 55px;
 }
 
 .rate {
@@ -227,7 +221,7 @@
     display: inline-block;
     height: 44px;
     line-height: 44px;
-    @extend %ms0;
+    @extend %ms2;
 
     &:hover {
       background-color: #2997FF;

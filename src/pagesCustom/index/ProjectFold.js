@@ -10,7 +10,7 @@ import WorkVisuals from './WorkVisuals';
 import i18n from '../../lib/i18n/i18n';
 import specificTranslations from './index.translations.json';
 import projectTranslations from './projects.translations.json';
-import { getTextForTechno } from '../../technosToColors'
+import { getTextForTechno } from '../../lib/technosToColors'
 
 function ProjectFold({
   name,

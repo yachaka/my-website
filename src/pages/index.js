@@ -1,4 +1,6 @@
 import IndexPage from '../pagesCustom/index/index';
+import { graphql } from 'gatsby';
+
 export default IndexPage;
 
 export const query = graphql`

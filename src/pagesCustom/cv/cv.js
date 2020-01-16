@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
+import Color from 'color';
 import BreeSerifFont from './fonts/BreeSerif-Regular.ttf';
 import LatoRegular from './fonts/Lato/Lato-Regular.ttf';
 import LatoBold from './fonts/Lato/Lato-Bold.ttf';
 import pictureMeFace from './img/picture-me-face-400x-round.png';
 import { Page, Text, Image, Link, View, Document, StyleSheet, Font, PDFViewer } from '@react-pdf/renderer';
 
-import experiences from '../index/experiences';
+import experiences from '../../data/experiences';
 import translations from './cv.translations';
 import i18n from '../../lib/i18n/i18n';
-import LangContext from '../../lib/i18n/LangContext';
 import quoteLeft from './icons/quote-left@3x.png';
 import quoteRight from './icons/quote-right@3x.png';
 import mailIcon from './icons/mail@3x.png';
@@ -457,6 +457,7 @@ const MyDocument = ({
             } else {
               fullDateString = getRangeDateString(lang, exp.dates);
             }
+            console.log((new Color(exp.color)).lighten(0.5).hex())
 
             return (
               <Experience
@@ -464,7 +465,7 @@ const MyDocument = ({
                 title={
                   <Text>{exp.roleTitle[lang]} {t('role-title-at-word')} <ExternalLink src={exp.url}>{exp.name}   </ExternalLink></Text>
                 }
-                titleBgColor={exp.color}
+                titleBgColor={(new Color(exp.color)).lighten(0.7).desaturate(0.5).hex()}
                 summary={exp.productBrief[lang]}
                 date={
                   <Text>{fullDateString}</Text>
