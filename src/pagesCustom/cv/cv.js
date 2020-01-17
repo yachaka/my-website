@@ -353,6 +353,15 @@ const MyDocument = ({
 }) => {
   const t = i18n(lang, translations);
 
+  const experiencesSorted = Object.values(experiences);
+
+  experiencesSorted.sort((a, b) => {
+    const date1 = a.dates[0][0] ? a.dates[0][0] : a.dates[0];
+    const date2 = b.dates[0][0] ? b.dates[0][0] : b.dates[0];
+
+    return date2.isBefore(date1) ? -1 : 1;
+  });
+
   return (
     <Document
       title={t('document.title')}
@@ -458,7 +467,7 @@ const MyDocument = ({
 
           <H2 style={styles.h2}>{t('workTitle')}</H2>
 
-          {Object.values(experiences).map(exp => {
+          {experiencesSorted.map(exp => {
             let fullDateString = '';
             if (typeof exp.dates[0][0] === 'object') {
               fullDateString = exp.dates.map(dates => {
