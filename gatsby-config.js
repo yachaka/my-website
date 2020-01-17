@@ -3,7 +3,7 @@ module.exports = {
     title: `Gatsby Default Starter`,
   },
   plugins: [
-    `gatsby-plugin-preact`,
+    // `gatsby-plugin-preact`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,
@@ -20,12 +20,12 @@ module.exports = {
       options: {
         logo: './src/img/favicon2.png',
         icons: {
-          android: true,
-          appleIcon: true,
-          appleStartup: true,
+          android: false,
+          appleIcon: false,
+          appleStartup: false,
           coast: false,
           favicons: true,
-          firefox: true,
+          firefox: false,
           yandex: false,
           windows: false
         },
