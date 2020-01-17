@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import Color from 'color';
 import Helmet from 'react-helmet';
 import BreeSerifFont from './fonts/BreeSerif-Regular.ttf';
@@ -658,12 +658,20 @@ const MyDocument = ({
 function CVPage({
   pageContext: { lang },
 }) {
+  const [isClient, setIsClient] = useState(false);
   const t = i18n(lang, translations);
 
   const genText = {
     fr: `Création du CV en cours...`,
     en: `CV creation ongoing...`,
   };
+
+  useEffect(
+    function () {
+      setIsClient(true);
+    },
+    [],
+  );
 
   return (
     <div style={{ width: '100%', height: '100%', position: 'relative' }}>
@@ -680,11 +688,13 @@ function CVPage({
       <p style={{ zIndex: 1, position: 'absolute', top: '45%', left: 0, right: 0, textAlign: 'center', fontSize: 14, color: '#333' }}>
         {genText[lang]}
       </p>
-      <div style={{ width: '100%', height: '100%', position: 'relative', zIndex: 2 }}>
-        <PDFViewer style={{ width: '100%', height: '100%' }}>
-          <MyDocument lang={lang} />
-        </PDFViewer>
-      </div>
+      {isClient && (
+        <div style={{ width: '100%', height: '100%', position: 'relative', zIndex: 2 }}>
+          <PDFViewer style={{ width: '100%', height: '100%' }}>
+            <MyDocument lang={lang} />
+          </PDFViewer>
+        </div>
+      )}
     </div>
   );
 }
