@@ -4,8 +4,8 @@
     "fr": "Bonjour 👋<br/>Je suis un chef de projet IT/développeur fullstack (orienté JavaScript)."
   },
   "hero-status": {
-    "en": "I am currently working with Shotgun, and is not looking for new opportunities.",
-    "fr": "Je travaille actuellement avec Shotgun, et je ne recherche pas de nouvelles opportunités."
+    "en": "I am currently working with <a href=\"https://shotgun.live/\" target=\"_blank\" class=\"external-link\">Shotgun</a>, and is not looking for new opportunities.",
+    "fr": "Je travaille actuellement avec <a href=\"https://shotgun.live/\" target=\"_blank\" class=\"external-link\">Shotgun</a>, et je ne recherche pas de nouvelles opportunités."
   },
   "hero-work-link": {
     "en": "My work",
@@ -80,7 +80,7 @@
     "en": "Sort:"
   },
   "experiences-sort-recommended": {
-    "fr": "Recommandé - experiences significatives en premier",
+    "fr": "Recommandé - expériences significatives en premier",
     "en": "Recommended - significant experiences first"
   },
   "experiences-sort-asc": {

@@ -10,7 +10,7 @@ import Link from '../Link';
 import MobileOverlay from '../MobileOverlay/MobileOverlay'
 import LangContext from '../../lib/i18n/LangContext';
 
-import logoSVG from './logo.svg'
+import logoSVG from '../../img/logo2.svg'
 import messengerSVG from '../../img/messenger.svg';
 import sendSVG from '../../img/send.svg';
 import okSVG from '../../img/ok.svg';
@@ -279,22 +279,7 @@ ${lastMessageSentData.message}
 
               <li class={cx(s.home, s.leftmost)}>
                 <Link to="/">
-                  <svg width="66px" height="30px" viewBox="0 0 66 30" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                      <defs>
-                          <linearGradient x1="0%" y1="24.6637714%" x2="100%" y2="79.4397005%" id="linearGradient-1">
-                              <stop stop-color="#0E83EF" offset="0%"></stop>
-                              <stop stop-color="#C30CB4" offset="51.7837789%"></stop>
-                              <stop stop-color="#DA0707" offset="100%"></stop>
-                          </linearGradient>
-                      </defs>
-                      <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-family="Chalkboard" font-size="31" font-weight="normal">
-                          <g id="Desktop-HD" transform="translate(-181.000000, -23.000000)" fill="url(#linearGradient-1)">
-                              <text id="Ilyes">
-                                  <tspan x="180" y="45">Ilyes</tspan>
-                              </text>
-                          </g>
-                      </g>
-                  </svg>
+                  <img src={logoSVG} alt="Ilyes" />
                 </Link>
               </li>
 

@@ -9,12 +9,6 @@ $nav-link-border-width: 1px;
 
 $submenu-extra-width: 60px;
 
-// :global {
-//   body {
-//     padding-top: $nav-height + $nav-margin-bottom;
-//   }
-// }
-
 #nav {
   position: fixed;
   background-color: white;
@@ -77,8 +71,9 @@ $submenu-extra-width: 60px;
       }
       &.home {
         float: left;
-        svg {
-          width: 68px;
+        img {
+          height: 100%;
+          opacity: .8;
           vertical-align: middle;
           display: inline-block;
         }

@@ -2,16 +2,16 @@
 export default {
   document: {
     title: {
-      fr: `CV - Ilyes Hermellin - Chef de projet IT, développeur senior - ${(new Date()).getFullYear()}`,
-      en: `CV - Ilyes Hermellin - IT Project Manager, Senior Developper - ${(new Date()).getFullYear()}`,
+      fr: `CV - Ilyes Hermellin - Chef de projet IT, développeur senior fullstack - ${(new Date()).getFullYear()}`,
+      en: `CV - Ilyes Hermellin - IT Project Manager, Senior Fullstack Developper - ${(new Date()).getFullYear()}`,
     },
     subject: {
       fr: `CV de Ilyes Hermellin, chef de projet IT et développeur fullstack senior`,
       en: `Ilyes Hermellin's CV, an IT project manager and senior fullstack developper`,
     },
     keywords: {
-      fr: `développeur, chef de projet, IT, code`,
-      en: `developper, project manager, coding, IT`,
+      fr: `développeur, chef de projet, IT, code, javascript`,
+      en: `developper, project manager, coding, IT, javascript`,
     },
   },
 
@@ -84,5 +84,22 @@ export default {
   'role-title-at-word': {
     fr: `chez`,
     en: `at`,
+  },
+
+  'cv-generated-at': {
+    fr: 'CV généré le',
+    en: 'CV generated on',
+  },
+  'with': {
+    fr: 'avec',
+    en: 'with',
+  },
+  'more-info-on': {
+    fr: 'Plus d\'infos sur',
+    en: 'More infos on',
+  },
+  'my-website': {
+    fr: 'mon site web',
+    en: 'my website',
   },
 };

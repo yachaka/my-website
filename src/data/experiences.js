@@ -17,6 +17,7 @@ import konbiniDesktopHomepageLoad from './konbini/desktop-homepage.mp4';
 export default {
   konbini: {
     "color": "#F52635",
+    "color-fx-ratio": 0.65,
     "name": "Konbini",
     "url": "https://www.konbini.com/",
     "dates": [dayjs('2019-07-10'), dayjs('2019-12-12')],
@@ -208,14 +209,19 @@ export default {
         "en": "CTO at Spendesk",
       },
       "text": {
-        "fr": "Ilyes a le don de conjuguer parfaitement créativité et pragmatisme !<br/><br/>J'ai eu l'occasion de travailler étroitement avec lui pendant 10 mois chez Spendesk, durant lesquels il a participé avec succès à de nombreux projets. Il a notamment été intégralement responsable du développement et de la maintenance de notre application mobile en React Native, et a posé les bases de notre nouvelle API GraphQL. [...]<br/><br/>Son expertise technique et sa bonne humeur sont de vrais atouts dans une équipe !",
-        "en": "Ilyes has the gift of perfectly combining creativity and pragmatism!<br/><br/>I had the opportunity to work closely with him for 10 months at Spendesk, during which he participated successfully in many projects. In particular, he was fully responsible for the development and maintenance of our React Native mobile application and laid the foundation for our new GraphQL API. [...]<br/><br/>His technical expertise and his good mood are real assets in a team!",
+        "fr": `Ilyes a le don de conjuguer parfaitement créativité et pragmatisme !<br /><br />J'ai eu l'occasion de travailler étroitement avec lui pendant 10 mois chez Spendesk, durant lesquels il a participé avec succès à de nombreux projets. Il a notamment été intégralement responsable du développement et de la maintenance de notre application mobile en React Native, et a posé les bases de notre nouvelle API GraphQL.Ilyes m'a impressionné par sa forte capacité d'adaptation et sa faculté à mettre en place des solutions globales, simples et efficaces pour répondre à des problématiques compliquées. Il a toujours fait preuve d'autonomie et a été force de proposition sur chaque projet qui lui a été confié.<br /><br />Son expertise technique et sa bonne humeur sont de vrais atouts dans une équipe !`,
+        "en": `Ilyes has the gift of perfectly combining creativity and pragmatism!<br/><br/>I had the opportunity to work closely with him for 10 months at Spendesk, during which he participated successfully in many projects. In particular, he was fully responsible for the development and maintenance of our React Native mobile application and laid the foundation for our new GraphQL API. <br/><br/>Ilyes impressed me with his strong adaptability and his ability to put in place global, simple and effective solutions to solve complicated issues. He has always demonstrated autonomy and has been suggesting solutions on each project entrusted to him.<br /><br />His technical expertise and his good mood are real assets in a team!`,
+      },
+      "shortText": {
+        "fr": `[...] Il a notamment été intégralement responsable du développement et de la maintenance de notre application mobile en React Native, [...].<br />Ilyes m'a impressionné par sa forte capacité d'adaptation et sa faculté à mettre en place des solutions globales, simples et efficaces pour répondre à des problématiques compliquées. [...]`,
+        "en": `[...] In particular, he was fully responsible for the development and maintenance of our React Native mobile application and [...].<br />Ilyes impressed me with his strong adaptability and his ability to put in place global, simple and effective solutions to solve complicated issues. [...]`,
       },
     },
   },
 
   habx: {
     "color": "#ffce00",
+    "color-fx-ratio": 0.9,
     "name": "HabX",
     "url": "https://habx.fr/",
     "dates": [
@@ -286,8 +292,12 @@ export default {
         "en": "Product owner at Habx",
       },
       "text": {
-        "fr": "Ilyes a une forte motivation, et le don de rendre simple des problèmes d'abord compliqués. Il maitrise parfaitement les technologies les plus avancées en Javascript (GraphQL, Relay, React, etc) et sait s'adapter rapidement a son environement.<br/><br/>Chez Habx, nous avons fait confiance a Ilyes pour la conception des landing pages qu'il a su réaliser avec brio. [...]",
-        "en": "Ilyes a une forte motivation, et le don de rendre simple des problèmes d'abord compliqués. Il maitrise parfaitement les technologies les plus avancées en Javascript (GraphQL, Relay, React, etc) et sait s'adapter rapidement a son environement.<br/><br/>Chez Habx, nous avons fait confiance a Ilyes pour la conception des landing pages qu'il a su réaliser avec brio. [...]",
+        "fr": "Ilyes a une forte motivation, et le don de rendre simple des problèmes d'abord compliqués. Il maitrise parfaitement les technologies les plus avancées en Javascript (GraphQL, Relay, React, etc) et sait s'adapter rapidement a son environement.<br/><br/>Chez Habx, nous avons fait confiance a Ilyes pour la conception des landing pages qu'il a su réaliser avec brio.",
+        "en": "Ilyes has a strong will, and the gift of changing complicated issues into simple ones. He perfectly masters the most advanced technologies in Javascript (GraphQL, Relay, React, etc.) and knows how to adapt quickly to his environment. <br/> <br/> At Habx, we trusted Ilyes for the design of the landing pages that he was able to achieve brilliantly.",
+      },
+      "shortText": {
+        "fr": "Ilyes a une forte motivation, et le don de rendre simple des problèmes d'abord compliqués. [...]",
+        "en": "Ilyes has a strong will, and the gift of changing complicated issues into simple ones. [...]",
       },
     },
   },

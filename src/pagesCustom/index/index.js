@@ -1,12 +1,15 @@
 
 import React, { PureComponent } from 'react'
 import cx from 'classnames';
-import Link from '../../components/Link';
+import Helmet from 'react-helmet'
 import smoothScrollTo from 'smooth-scroll-to'
-import Layout from '../../layouts/index';
 
 import s from './index.module.scss';
 
+import Link from '../../components/Link';
+import Nav from '../../components/Nav/Nav';
+import Footer from '../../components/Footer/Footer';
+import LangContext from '../../lib/i18n/LangContext';
 import i18n from '../../lib/i18n/i18n';
 import experiences from '../../data/experiences';
 import specificTranslations from './index.translations.json';
@@ -88,8 +91,31 @@ class IndexPage extends PureComponent {
       });
     }
 
+    const page = {
+      title: {
+        fr: `Chef de projet IT/développeur fullstack freelance sur Paris - Ilyes Hermellin (React, Node.js, GraphQL, React Native, JavaScript, AWS et plus)`,
+        en: `Freelance IT Project Manager/Senior Fullstack Developer in London - Ilyes Hermellin (React, Node.js, GraphQL, React Native, JavaScript, AWS and more)`,
+      },
+      description: {
+        fr: 'Je suis freelance, basé à Paris et Londres, soit en tant que chef de projet IT, soit en tant que développeur fullstack senior (principalement en JavaScript). Mes expériences professionnelles/mon CV, ma disponibilité et mon TJM sont sur mon site web !',
+        en: `I am a freelance, in Paris or London, either as an IT project manager or a senior fullstack developer (mainly in JavaScript). Work experience/CV, avaibility and rate are on my website!`,
+      },
+    };
+
     return (
-      <Layout lang={lang}>
+      <LangContext.Provider value={lang}>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <title>{page.title[lang]}</title>
+          <meta name="description" content={page.description[lang]} />
+          {lang === 'fr'
+            ? <link rel="alternate" href="/en" hreflang="en" />
+            : <link rel="alternate" href="/fr" hreflang="fr" />}
+        </Helmet>
+
+        <Nav />
+
         <div id={s.home}>
           <header class={cx('container', s.hero)}>
             <h1 class={cx(s.heroText)}>
@@ -127,6 +153,7 @@ class IndexPage extends PureComponent {
 
             {experiencesFinal.map(exp => (
               <ProjectFold
+                key={exp.name}
                 id={s[`${exp.name.toLowerCase()}Work`]}
                 {...exp}
               />
@@ -150,7 +177,8 @@ class IndexPage extends PureComponent {
             </a>
           </div>
         </div>
-      </Layout>
+        <Footer />
+      </LangContext.Provider>
     );
   }
 };

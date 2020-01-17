@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import Color from 'color';
+import Helmet from 'react-helmet';
 import BreeSerifFont from './fonts/BreeSerif-Regular.ttf';
 import LatoRegular from './fonts/Lato/Lato-Regular.ttf';
 import LatoBold from './fonts/Lato/Lato-Bold.ttf';
@@ -236,14 +237,16 @@ const H2 = ({ style, children }) => (
 const ExperienceRecommendation = ({
   lang,
   name,
-  position,
-  phone,
+  role,
   email,
-  borderColor,
-  backgroundColor,
-  content,
+  shortText,
+  color,
+  colorFxRatio,
 }) => {
   const t = i18n(lang, translations);
+
+  const borderColor = (new Color(color)).lighten(0.75 * colorFxRatio).hex();
+  const backgroundColor = (new Color(color)).lighten(0.93 * colorFxRatio).hex();
 
   return (
     <View style={{ position: 'relative', marginBottom: 5, width: '90%', marginLeft: 'auto', marginRight: 'auto', flexDirection: 'row', padding: 8, borderWidth: 1, borderRadius: 6, backgroundColor, borderColor }}>
@@ -251,12 +254,12 @@ const ExperienceRecommendation = ({
       <Image src={quoteRight} style={{ position: 'absolute', bottom: -3, right: -12, width: 25, height: 25 }} />
       <View style={{ flexDirection: 'column', fontSize: 11, marginRight: 12, flex: 0 }}>
         <BaseText style={{ fontWeight: 'bold' }}>{name}</BaseText>
-        <BaseText>{position}</BaseText>
+        <BaseText>{role[lang]}</BaseText>
         <BaseText>{email}</BaseText>
       </View>
 
       <View style={{ flex: 1 }}>
-        <BaseText>{content}</BaseText>
+        <BaseText>{shortText[lang].replace(/<br ?\/>/g, "\n")}</BaseText>
 
         <ExternalLink src="https://www.linkedin.com/in/ilyeshermellin/" style={{ fontSize: 9 }}>
           {t('readFullRecommendation')}
@@ -269,6 +272,8 @@ const ExperienceRecommendation = ({
 const Experience = ({
   title,
   titleBgColor,
+  color,
+  colorFxRatio,
   date,
   keyPoints,
   summary,
@@ -305,7 +310,12 @@ const Experience = ({
     )}
 
     {experienceRecommendation && (
-      <ExperienceRecommendation  lang={lang} {...experienceRecommendation} />
+      <ExperienceRecommendation
+        lang={lang}
+        color={color}
+        colorFxRatio={colorFxRatio}
+        {...experienceRecommendation}
+      />
     )}
   </View>
 )
@@ -457,15 +467,15 @@ const MyDocument = ({
             } else {
               fullDateString = getRangeDateString(lang, exp.dates);
             }
-            console.log((new Color(exp.color)).lighten(0.5).hex())
 
+            const colorFxRatio = exp["color-fx-ratio"] || 1;
             return (
               <Experience
                 lang={lang}
                 title={
                   <Text>{exp.roleTitle[lang]} {t('role-title-at-word')} <ExternalLink src={exp.url}>{exp.name}   </ExternalLink></Text>
                 }
-                titleBgColor={(new Color(exp.color)).lighten(0.7).desaturate(0.5).hex()}
+                titleBgColor={(new Color(exp.color)).lighten(0.8 * colorFxRatio).hex()}
                 summary={exp.productBrief[lang]}
                 date={
                   <Text>{fullDateString}</Text>
@@ -474,6 +484,8 @@ const MyDocument = ({
                   exp.keyWork.map(k => k[lang])
                 }
                 experienceRecommendation={exp.feedback}
+                color={exp.color}
+                colorFxRatio={colorFxRatio}
               />
             );
           })}
@@ -589,7 +601,7 @@ const MyDocument = ({
           />*/}
 
           <BaseText style={{ fontSize: 9, position: 'absolute', bottom: 39, left: 150, 'transform:translateX': '-50%' }}>
-            CV généré le {getDate()} avec <ExternalLink src="https://react-pdf.org/" iconSize={10}>react-pdf</ExternalLink>. Plus de détails sur <ExternalLink src="https://ilyeshermellin.com/fr" iconSize={10}>mon site web !</ExternalLink>
+            {t('cv-generated-at')} {getDate()} {t('with')} <ExternalLink src="https://react-pdf.org/" iconSize={10}>react-pdf</ExternalLink>. {t('more-info-on')} <ExternalLink src="https://ilyeshermellin.com/fr" iconSize={10}>{t('my-website')} !</ExternalLink>
           </BaseText>
           {/*<H2 style={[styles.h2, { marginTop: 5 }]}>Références</H2>
 
@@ -644,12 +656,36 @@ const MyDocument = ({
 }
 
 function CVPage({
-  pageContext,
+  pageContext: { lang },
 }) {
+  const t = i18n(lang, translations);
+
+  const genText = {
+    fr: `Création du CV en cours...`,
+    en: `CV creation ongoing...`,
+  };
+
   return (
-    <PDFViewer style={{ width: '100%', height: '100%' }}>
-      <MyDocument lang={pageContext.lang} />
-    </PDFViewer>
+    <div style={{ width: '100%', height: '100%', position: 'relative' }}>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{t('document.title')}</title>
+        <meta name="description" content={t('document.subject')} />
+        {lang === 'fr'
+          ? <link rel="alternate" href="/en/cv" hreflang="en" />
+          : <link rel="alternate" href="/fr/cv" hreflang="fr" />}
+      </Helmet>
+
+      <p style={{ zIndex: 1, position: 'absolute', top: '45%', left: 0, right: 0, textAlign: 'center', fontSize: 14, color: '#333' }}>
+        {genText[lang]}
+      </p>
+      <div style={{ width: '100%', height: '100%', position: 'relative', zIndex: 2 }}>
+        <PDFViewer style={{ width: '100%', height: '100%' }}>
+          <MyDocument lang={lang} />
+        </PDFViewer>
+      </div>
+    </div>
   );
 }
 

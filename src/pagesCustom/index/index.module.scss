@@ -32,6 +32,16 @@
       // box-shadow: 0.5em 0 0 #fff6db,-0.5em 0 0 #fff6db;
       background-color: #fcd3ca;
       display: inline-block;
+
+      a {
+        background-color: darken(#fcd3ca, 8%);
+        border-bottom: 1px solid darken(#fcd3ca, 20%);
+
+        &:hover {
+        background-color: darken(#fcd3ca, 14%);
+
+        }
+      }
     }
 
     .heroLinks {
@@ -180,22 +190,13 @@
   }
 
   #habxWork {
-    @include work(rgb(0, 111, 211), .1);
+    @include work(#ffce00, .1);
   }
   #dailymotionWork {
     @include work(rgb(4, 184, 251), .12);
   }
   #spendeskWork {
     @include work(rgb(97, 0, 255), .07);
-  }
-  #speakenWork {
-    @include work(rgb(63, 200, 214), .1);
-  }
-
-  #spendeskMobileMockup {
-    overflow: hidden;
-  }
-  #spendeskUbuntuMockup {
   }
 }
 
