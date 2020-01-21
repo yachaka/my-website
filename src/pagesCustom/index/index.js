@@ -22,7 +22,7 @@ import ProjectFold from './ProjectFold';
 
 
 const translations = specificTranslations;
-const freelanceRate = 440
+const freelanceRate = 400
 
 class IndexPage extends PureComponent {
   constructor(props) {

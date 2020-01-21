@@ -1,1 +1,13 @@
-<svg width="530" height="530" xmlns="http://www.w3.org/2000/svg"><g stroke="#000" stroke-width="42" fill="none" fill-rule="evenodd"><path d="M459.077524 74.828041c-95.9758 4.041714-143.9637 34.882136-143.9637 92.521267 0 86.458696 47.116474 133.170893-40.63879 171.477755-87.755264 38.306863-87.755264-76.827063-149.053503 0C64.123292 415.654126 80.005902 282.4845 90.619872 249c10.613969-33.4845 32.011804-62.411971 80.217288-40.705986C219.042645 230 239.760188 267.969 247.880094 282.4845 256 297 283.853135 395.357405 219.042645 464.245377" stroke-linecap="round"/><path d="M410 216c18 65.333333 3 110.333333-45 135"/><path d="M224 151V70" stroke-linecap="round" stroke-linejoin="round"/></g></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512px" height="512px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>Desktop HD</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
+        <g id="Desktop-HD" transform="translate(-392.000000, -280.000000)" stroke="#000000" stroke-width="42">
+            <path d="M819,377 C788.333333,378.333333 762,385.333333 740,398 C721,408 707,429 702,444 C689,490 732,557.5 670,577 C597.946236,596 581,534.558059 491,587 C433,621 462.364027,534.558059 471,504 C484,458 513.794515,446.294014 562,468 C610.205485,489.705986 650,547 651,577 C652,605 616,676 515,735" id="Shape"></path>
+            <path d="M769,488 C790.916972,593 736,607 747.597389,607 C772.532463,601 802.19913,617.666667 836.597389,657" id="Path-2" stroke-linejoin="round"></path>
+            <polyline id="Path-3" stroke-linejoin="round" transform="translate(637.000000, 372.000000) scale(-1, 1) translate(-637.000000, -372.000000) " points="637 408 637 336 637 363.105882"></polyline>
+        </g>
+    </g>
+</svg>
