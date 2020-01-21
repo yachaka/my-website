@@ -245,11 +245,11 @@ const ExperienceRecommendation = ({
 }) => {
   const t = i18n(lang, translations);
 
-  const borderColor = (new Color(color)).lighten(0.75 * colorFxRatio).hex();
+  const borderColor = (new Color(color)).lighten(0.70 * colorFxRatio).hex();
   const backgroundColor = (new Color(color)).lighten(0.93 * colorFxRatio).hex();
 
   return (
-    <View style={{ position: 'relative', marginBottom: 5, width: '90%', marginLeft: 'auto', marginRight: 'auto', flexDirection: 'row', padding: 8, borderWidth: 1, borderRadius: 6, backgroundColor, borderColor }}>
+    <View wrap={false} style={{ position: 'relative', marginBottom: 5, width: '90%', marginLeft: 'auto', marginRight: 'auto', flexDirection: 'row', padding: 8, borderWidth: 1, borderRadius: 6, backgroundColor, borderColor }}>
       <Image src={quoteLeft} style={{ position: 'absolute', top: -6, left: -14, width: 25, height: 25 }} />
       <Image src={quoteRight} style={{ position: 'absolute', bottom: -3, right: -12, width: 25, height: 25 }} />
       <View style={{ flexDirection: 'column', fontSize: 11, marginRight: 12, flex: 0 }}>

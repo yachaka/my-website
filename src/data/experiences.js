@@ -17,7 +17,7 @@ import konbiniDesktopHomepageLoad from './konbini/desktop-homepage.mp4';
 export default {
   konbini: {
     "color": "#F52635",
-    "color-fx-ratio": 0.65,
+    "color-fx-ratio": 0.70,
     "name": "Konbini",
     "url": "https://www.konbini.com/",
     "dates": [dayjs('2019-07-10'), dayjs('2019-12-12')],
@@ -93,6 +93,24 @@ export default {
         "data": konbiniMobileArticleLoad,
       },
     },
+
+    "feedback": {
+      "name": "Laurence Colombie",
+      "external": "https://www.linkedin.com/in/laurence-colombie-00937721/",
+      "email": "laurence.colombie@konbini.com",
+      "role": {
+        "fr": "Cheffe de la publicité senior",
+        "en": "Senior Advertising Manager",
+      },
+      "text": {
+        "fr": `Ilyes a travaillé en tant que développeur fullstack afin de refactoriser le code du site de Konbini. Il est assidu et sur de lui. J'ai collaboré directement avec lui afin d'intégrer la stack technologique publicitaire. Il m'a impressionné par sa capacité à comprendre les différents sujets rapidement. Il a engrangé une connaissance approfondie de la librairie de tagging publicitaire (Google Publisher Tag) pour Google Ad Manager (GAM) et de son intégration à la RGPD.`,
+        "en": `Ilyes has worked as a fullstack developer to refactor the code of Konbini website. He is diligent and confident. I worked closely with him to integrate thoroughly the ad technology stack. He has impressed me with his ability to pick things very quickly. He has gained in-depth experience working with the ad tag library (Google Publisher Tag) for Google Ad Manager (GAM) and ad tech integration with GDPR.`,
+      },
+      "shortText": {
+        "fr": `[...] J'ai collaboré directement avec lui afin d'intégrer la stack technologique publicitaire. Il m'a impressionné par sa capacité à comprendre les différents sujets rapidement. [...]`,
+        "en": `[...] I worked closely with him to integrate thoroughly the ad technology stack. He has impressed me with his ability to pick things very quickly. [...]`,
+      },
+    },
   },
 
   spendesk: {
@@ -124,7 +142,7 @@ export default {
         "en": "Major implication in technical choices. Delivery of new features, fullstack, with React, Redux, and Node.js",
       },
       {
-        "fr": "Développement de l’application mobile initiale sur iOS et Android, avec React Native, GraphQL et Relay",
+        "fr": "Développement de l’application mobile initiale sur iOS/Android, avec React Native/GraphQL/Relay",
         "en": "Initial development of the mobile application on iOS and Android, with React Native, GraphQL and Relay",
       },
       {

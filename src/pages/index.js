@@ -48,6 +48,14 @@ export const query = graphql`
       }
     }
 
+    laurence:file(relativePath: { eq: "data/konbini/laurence.jpg" }) {
+      childImageSharp {
+        sizes(maxWidth: 64, maxHeight: 64) {
+          ...GatsbyImageSharpSizes
+        }
+      }
+    }
+
     habxConfigurateur:file(relativePath: { eq: "data/habx/screenshots/Configurateur-pieces.png" }) {
       ...ImageForLaptopMockup
     }
