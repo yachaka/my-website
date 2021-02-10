@@ -96,12 +96,12 @@ class IndexPage extends PureComponent {
 
     const page = {
       title: {
-        fr: `Chef de projet IT/développeur fullstack freelance sur Paris - Ilyes Hermellin (React, Node.js, GraphQL, React Native, JavaScript, AWS et plus)`,
-        en: `Freelance IT Project Manager/Senior Fullstack Developer in London - Ilyes Hermellin (React, Node.js, GraphQL, React Native, JavaScript, AWS and more)`,
+        fr: `Développeur fullstack freelance sur Paris - Ilyes Hermellin (React, Node.js, GraphQL, React Native, JavaScript, AWS et plus)`,
+        en: `Freelance Senior Fullstack Developer in Paris - Ilyes Hermellin (React, Node.js, GraphQL, React Native, JavaScript, AWS and more)`,
       },
       description: {
-        fr: 'Je suis freelance, basé à Paris et Londres, soit en tant que chef de projet IT, soit en tant que développeur fullstack senior (principalement en JavaScript). Mes expériences professionnelles/mon CV, ma disponibilité et mon TJM sont sur mon site web !',
-        en: `I am a freelance, in Paris or London, either as an IT project manager or a senior fullstack developer (mainly in JavaScript). Work experience/CV, avaibility and rate are on my website!`,
+        fr: 'Je suis freelance, basé à Paris, en tant que développeur fullstack senior (principalement en JavaScript). Je sais également gérer un projet (estimation, planification, déléguation), ou créer des designs basiques. Mes expériences professionnelles/mon CV, ma disponibilité et mon TJM sont sur mon site web !',
+        en: `I am a freelance, in Paris, as a senior fullstack developer (mainly in JavaScript). I also know how to manage a project (estimate, plan, delegate), and create basic designs. Work experience/CV, avaibility and rate are on my website!`,
       },
     };
 
@@ -123,7 +123,7 @@ class IndexPage extends PureComponent {
           <header class={cx('container', s.hero)}>
             <h1 class={cx(s.heroText)}>
               <img class={cx(s.meSmallOval)} src={meSmallOvalImg} />
-              <span dangerouslySetInnerHTML={{ __html: t('hero-text') }} />
+              <p dangerouslySetInnerHTML={{ __html: t('hero-text') }} />
             </h1>
             <h2 class={cx(s.heroStatus)} dangerouslySetInnerHTML={{ __html: t('hero-status') }} />
 
@@ -154,20 +154,23 @@ class IndexPage extends PureComponent {
               />
             </div>
 
-            {experiencesFinal.map(exp => (
-              <ProjectFold
-                key={exp.name}
-                id={s[`${exp.name.toLowerCase()}Work`]}
-                {...exp}
-              />
-            ))}
+            {experiencesFinal.map(exp => {
+              const id = exp.slug ? exp.slug : exp.name;
+              return (
+                <ProjectFold
+                  key={exp.name}
+                  id={s[`${id.toLowerCase()}Work`]}
+                  {...exp}
+                />
+              );
+            })}
           </main>
 
           <aside id="rate" class={s.rate}>
             <h3 id="rateTitle" class={cx('container', s.sectionTitle)}>{t('rate-title')}</h3>
 
             <div class="container">
-              <p dangerouslySetInnerHTML={{ __html: t('rate-block').replace('{{rate}}', freelanceRate) }} />
+              <p dangerouslySetInnerHTML={{ __html: t('rate-block') }} />
             </div>
           </aside>
 

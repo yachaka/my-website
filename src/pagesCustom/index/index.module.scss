@@ -30,15 +30,15 @@
 
     .heroStatus {
       // box-shadow: 0.5em 0 0 #fff6db,-0.5em 0 0 #fff6db;
-      background-color: #fcd3ca;
+      background-color: #d6f7ce;
       display: inline-block;
 
       a {
-        background-color: darken(#fcd3ca, 8%);
-        border-bottom: 1px solid darken(#fcd3ca, 20%);
+        background-color: darken(#d6f7ce, 8%);
+        border-bottom: 1px solid darken(#d6f7ce, 20%);
 
         &:hover {
-        background-color: darken(#fcd3ca, 14%);
+        background-color: darken(#d6f7ce, 14%);
 
         }
       }
@@ -197,6 +197,14 @@
   }
   #spendeskWork {
     @include work(rgb(97, 0, 255), .07);
+  }
+
+  #shotgunWork {
+    @include work(rgb(193, 122, 255), .10);
+  }
+
+  #chateaupercheWork {
+    @include work(#ECD9C9, .45);
   }
 }
 

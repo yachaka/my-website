@@ -10,11 +10,102 @@ import konbiniMobileHomepageLoad from './konbini/mobile-homepage.mp4';
 import konbiniDesktopArticleLoad from './konbini/desktop-article-load.mp4';
 import konbiniDesktopHomepageLoad from './konbini/desktop-homepage.mp4';
 
+import shotgunLogin from './shotgun/login.mp4';
+import shotgunScanTicketHorsLigne from './shotgun/scan-ticket-hors-ligne.mp4';
+import shotgunAjoutGuestlistGuest from './shotgun/ajout-guestlist-guest.mp4';
+import shotgunRefundTicket from './shotgun/remboursement-ticket.mp4';
+
+import chateauPercheVideo from './chateau-perche/home.mp4';
+
 /*
  * Lists all my professionnal experiences
  */
 
 export default {
+  shotgun: {
+    color: "#c17aff",
+    "color-fx-ratio": 0.70,
+    name: "Shotgun",
+    url: "https://shotgun.live/",
+    dates: [dayjs('2020-01-14'), dayjs('2021-03-01')],
+    "freelanceOrEmployee": "freelance",
+    "technologiesUsed": ['React-Native', 'React', 'Bluetooth Low Energy', 'Bridgefy', 'Google Cloud Functions', 'SQLite', 'Express.js', 'JavaScript'],
+    "roleTitle": {
+      "fr": "Développeur fullstack JavaScript - Responsable de l'application Shotgun Scan",
+      "en": "JavaScript Fullstack JavaScript - Shotgun Scan application ownership",
+    },
+    "productBrief": {
+      "fr": "Shotgun est une billetterie en ligne pour les évènements musicaux. Ils fournissent également des outils aux organisateurs pour les aider à gérer leur évènements.",
+      "en": "Shotgun is an online ticketing platform for live music events. They also provide tools for event creators to help them manage their business.",
+    },
+    "myWorkSummaryText": {
+      "fr": "J'ai débuté ma mission chez Shotgun par l'intégration du site de présentation d'un grand festival français de musique techno (Château Perché).<br/><br/>J'ai travaillé pendant quelques mois sur la plateforme proposée aux organisateurs d'évènements, pour les aider dans leur gestion - avec React, Apollo, et d'autres technlogies.<br/><br/>J'ai ensuite été affecté à la refonte de l'application Shotgun Scan, qui est fournie aux organisateurs, pour scanner les codes QR des tickets à l'entrée des évènements. Cette application a la particularité de fonctionner complètement hors-ligne, et synchronise les tickets scannés entre plusieurs téléphones proches via le bluetooth. Avec React Native, et Bridgefy en tant que librairie de communication via bluetooth.",
+      "en": "I started my work with Shotgun with a presentation website for a big, french, techno music festival (Château Perché).<br/><br/>I worked for a few months on the platform provided to event creators, to help them with handling their business - with React, Apollo and other technologies. <br/><br/>I then had to do the rework of the Shotgun Scan application, which is provided to event creators, to scan tickets QR code at event entrances. This application is special in that it works fully offline, and synchronize scanned tickets between nearby devices through Bluetooth. With React Native, and Bridgefy, as a bluetooth communication library.",
+    },
+    "teamText": {
+      fr: "J'ai travaillé avec l'équipe Shotgun lors de mon implication sur la plateforme dediée aux organisateurs d'évènements.<br/><br/>J'ai travaillé avec 1 designer pour la réalisation du site de Château Perché, et partiellement avec 1 autre freelance externe pour la réalisation de Shotgun Scan. J'ai travaillé directement avec Lucas, le CTO de Shotgun, qui s'est impliqué en tant que chef de projet.",
+      en: "I worked with the Shotgun team when I had to work on the platform provided to event creators.<br/><br/>I worked with a designer for Château Perché's website, and I partially worked with 1 other freelance to develop Shotgun Scan application. I worked directly with Lucas, Shotgun's CTO, that worked on Shotgun Scan as a project manager.",
+    },
+    "keyWork": [
+      {
+        fr: "J'ai conçu le protocole de communication P2P via bluetooth, qui synchronise les tickets scannés (et d'autres données) entre les différents téléphones scanners",
+        en: "I've created the bluetooth P2P communication protocol, that synchronizes scanned tickets (and other data) between scanning devices",
+      },
+      {
+        fr: "J'ai été un élément principal dans la refonte de l'application Shotgun Scan, pour l'écriture du code et l'amélioration de l'expérience utilisateur",
+        en: "I was a major element in reworking the Shotgun Scan application, to write code and improve user experience",
+      },
+    ],
+    "mobileScreenshots": {
+      login: {
+        title: {
+          "fr": "Connexion",
+          "en": "Logging in",
+        },
+        "data": shotgunLogin,
+      },
+      scan: {
+        title: {
+          "fr": "Scan d'un ticket hors-ligne",
+          "en": "Scanning a ticket, offline",
+        },
+        "data": shotgunScanTicketHorsLigne,
+      },
+      guestlist: {
+        title: {
+          "fr": "Ajout d'une liste d'invités et d'un invité",
+          "en": "Adding a guestlist and a guest",
+        },
+        "data": shotgunAjoutGuestlistGuest,
+      },
+      refund: {
+        title: {
+          "fr": "Remboursement d'un ticket",
+          "en": "Refunding a ticket",
+        },
+        "data": shotgunRefundTicket,
+      },
+    },
+    // "mobileScreenshots": {},
+    // "feedback": {
+    //   "name": "Lucas Gérard",
+    //   "external": "https://www.linkedin.com/in/lucas-gerard-71447263/",
+    //   "email": "gerardlucas@live.fr",
+    //   "role": {
+    //     "fr": "CTO",
+    //     "en": "CTO",
+    //   },
+    //   "text": {
+    //     "fr": `Ilyes a travaillé en tant que développeur fullstack afin de refactoriser le code du site de Konbini. Il est assidu et sur de lui. J'ai collaboré directement avec lui afin d'intégrer la stack technologique publicitaire. Il m'a impressionné par sa capacité à comprendre les différents sujets rapidement. Il a engrangé une connaissance approfondie de la librairie de tagging publicitaire (Google Publisher Tag) pour Google Ad Manager (GAM) et de son intégration à la RGPD.`,
+    //     "en": `Ilyes has worked as a fullstack developer to refactor the code of Konbini website. He is diligent and confident. I worked closely with him to integrate thoroughly the ad technology stack. He has impressed me with his ability to pick things very quickly. He has gained in-depth experience working with the ad tag library (Google Publisher Tag) for Google Ad Manager (GAM) and ad tech integration with GDPR.`,
+    //   },
+    //   "shortText": {
+    //     "fr": `[...] J'ai collaboré directement avec lui afin d'intégrer la stack technologique publicitaire. Il m'a impressionné par sa capacité à comprendre les différents sujets rapidement. [...]`,
+    //     "en": `[...] I worked closely with him to integrate thoroughly the ad technology stack. He has impressed me with his ability to pick things very quickly. [...]`,
+    //   },
+    // },
+  },
+
   konbini: {
     "color": "#F52635",
     "color-fx-ratio": 0.70,
@@ -51,10 +142,6 @@ export default {
       {
         "fr": "Ré-écriture complète de la page d'accueil mobile, en visant la performance, qui est un carousel permettant de naviguer entre les articles récents",
         "en": `Full re-writing of the mobile homepage, aiming for performance, which is a swiper showing recent articles`,
-      },
-      {
-        "fr": "Collaboration avec un prestataire externe pour la gestion et l'amélioration de l'infrastructure serveur",
-        "en": `Collaboration with an external developper for the management and improvement of the servers`,
       },
       {
         "fr": "Amélioration globale de la performance du site web, notamment via la réduction de la taille totale du code (réduction de 50%)",
@@ -109,6 +196,41 @@ export default {
       "shortText": {
         "fr": `[...] J'ai collaboré directement avec lui afin d'intégrer la stack technologique publicitaire. Il m'a impressionné par sa capacité à comprendre les différents sujets rapidement. [...]`,
         "en": `[...] I worked closely with him to integrate thoroughly the ad technology stack. He has impressed me with his ability to pick things very quickly. [...]`,
+      },
+    },
+  },
+
+  chateauPerche: {
+    "color": "#ECD9C9",
+    name: "Château Perché",
+    slug: 'chateauPerche',
+    url: "https://chateauperche.com/",
+    dates: [dayjs('2020-01-10'), dayjs('2020-01-24')],
+    freelanceOrEmployee: "freelance",
+    technologiesUsed: ['Gatsby', 'JavaScript', 'HTML5', 'CSS3'],
+    roleTitle: {
+      fr: 'Intégrateur HTML/CSS/JavaScript',
+      en: 'HTML/CSS/JavaScript integrator',
+    },
+    productBrief: {
+      fr: "Château Perché est un festival de musique techno réunissant 5 000 à 10 000 personnes.",
+      en: "Château Perché is a techno music festival gathering 5 000 to 10 000 people.",
+    },
+    "myWorkSummaryText": {
+      fr: "J'ai intégré un design réalisé par un designer interne à Shotgun. J'ai réalisé les animations.",
+      en: "I integrated a design made by a Shotgun designer. I made the animations.",
+    },
+    "teamText": {
+      fr: "J'ai travaillé en collaboration avec 1 designer.",
+      en: "I worked with 1 designer.",
+    },
+    laptopScreenshots: {
+      home: {
+        title: {
+          fr: "Accueil et achat de billets",
+          en: "Home and buying tickets",
+        },
+        data: chateauPercheVideo,
       },
     },
   },

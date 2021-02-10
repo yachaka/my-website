@@ -1,11 +1,11 @@
 {
   "hero-text": {
-    "en": "Hello 👋<br/>I am an IT project manager/fullstack developer (JavaScript oriented).",
-    "fr": "Bonjour 👋<br/>Je suis un chef de projet IT/développeur fullstack (orienté JavaScript)."
+    "en": "Hello 👋<br/>I am an senior fullstack developer (JavaScript oriented).<br/>I also know how to manage an IT project, and create basic designs.",
+    "fr": "Bonjour 👋<br/>Je suis développeur fullstack senior (orienté JavaScript).<br/>Je sais aussi gérer un projet, et créer des designs basiques."
   },
   "hero-status": {
-    "en": "I am currently working with <a href=\"https://shotgun.live/\" target=\"_blank\" class=\"external-link\">Shotgun</a>, and is not looking for new opportunities.",
-    "fr": "Je travaille actuellement avec <a href=\"https://shotgun.live/\" target=\"_blank\" class=\"external-link\">Shotgun</a>, et je ne recherche pas de nouvelles opportunités."
+    "en": "I am ending a 1-year long mission with <a href=\"https://shotgun.live/\" target=\"_blank\" class=\"external-link\">Shotgun</a>, and is looking for my next mission.",
+    "fr": "Je finis une mission d'1 an avec <a href=\"https://shotgun.live/\" target=\"_blank\" class=\"external-link\">Shotgun</a>, et je recherche ma prochaine mission."
   },
   "hero-work-link": {
     "en": "My work",
@@ -24,8 +24,8 @@
     "fr": "Est-ce qu'on parle le même language ?"
   },
   "rate-block": {
-    "en": "As a freelance, my daily rate is {{rate}}€ HT.",
-    "fr": "En tant que freelance, mon Tarif Journalier est {{rate}}€ HT."
+    "en": "As a freelance, my daily rate is 400€ HT.<br/>I work part-time (3 days/5) !",
+    "fr": "En tant que freelance, mon Tarif Journalier est 400€ HT.<br/>Je travaille à temps partiel (3 jours/5) !"
   },
   "projects": {
     "en": "Projects",
@@ -41,7 +41,7 @@
   },
   "key-developments": {
     "en": "Main work",
-    "fr": "Développpements principaux"
+    "fr": "Développements principaux"
   },
   "feedback": {
     "en": "Recommendation",

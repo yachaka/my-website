@@ -36,7 +36,13 @@
     margin-bottom: 30px;
     margin-left: auto;
     margin-right: auto;
-    @extend %ms1;
+    width: 80%;
+    font-size: 17px;
+
+    h3 {
+      margin-left: 30px;
+      margin-bottom: 24px;
+    }
 
     ul {
       list-style-type: decimal;
@@ -49,11 +55,12 @@
       li {
         span {
           display: inline-block;
+          margin-left: 8px;
           padding: 6px 10px;
           border-radius: 10px;
           vertical-align: middle;
         }
-        margin-bottom: 12px;
+        margin-bottom: 24px;
       }
 
       .keyPointLink {

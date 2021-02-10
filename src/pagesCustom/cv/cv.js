@@ -490,7 +490,7 @@ const MyDocument = ({
                   <Text>{fullDateString}</Text>
                 }
                 keyPoints={
-                  exp.keyWork.map(k => k[lang])
+                  (exp.keyWork || []).map(k => k[lang])
                 }
                 experienceRecommendation={exp.feedback}
                 color={exp.color}
