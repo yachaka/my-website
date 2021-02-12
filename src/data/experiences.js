@@ -87,23 +87,23 @@ export default {
       },
     },
     // "mobileScreenshots": {},
-    // "feedback": {
-    //   "name": "Lucas Gérard",
-    //   "external": "https://www.linkedin.com/in/lucas-gerard-71447263/",
-    //   "email": "gerardlucas@live.fr",
-    //   "role": {
-    //     "fr": "CTO",
-    //     "en": "CTO",
-    //   },
-    //   "text": {
-    //     "fr": `Ilyes a travaillé en tant que développeur fullstack afin de refactoriser le code du site de Konbini. Il est assidu et sur de lui. J'ai collaboré directement avec lui afin d'intégrer la stack technologique publicitaire. Il m'a impressionné par sa capacité à comprendre les différents sujets rapidement. Il a engrangé une connaissance approfondie de la librairie de tagging publicitaire (Google Publisher Tag) pour Google Ad Manager (GAM) et de son intégration à la RGPD.`,
-    //     "en": `Ilyes has worked as a fullstack developer to refactor the code of Konbini website. He is diligent and confident. I worked closely with him to integrate thoroughly the ad technology stack. He has impressed me with his ability to pick things very quickly. He has gained in-depth experience working with the ad tag library (Google Publisher Tag) for Google Ad Manager (GAM) and ad tech integration with GDPR.`,
-    //   },
-    //   "shortText": {
-    //     "fr": `[...] J'ai collaboré directement avec lui afin d'intégrer la stack technologique publicitaire. Il m'a impressionné par sa capacité à comprendre les différents sujets rapidement. [...]`,
-    //     "en": `[...] I worked closely with him to integrate thoroughly the ad technology stack. He has impressed me with his ability to pick things very quickly. [...]`,
-    //   },
-    // },
+    "feedback": {
+      "name": "Lucas Gérard",
+      "external": "https://www.linkedin.com/in/lucas-gerard-71447263/",
+      "email": "gerardlucas@live.fr",
+      "role": {
+        "fr": "CTO",
+        "en": "CTO",
+      },
+      "text": {
+        "fr": `Ilyes a accompli un excellent travail à Shotgun, en gérant le dévelopment d'une application mobile et en développant la majeure partie. Il possède un très bon ensemble de compétences techniques, est très consciencieux et orienté produit. Il a rapidement intégré nos objectifs business et a délivré un résultat performant et stable.<br /><br />Je suis très statisfait de notre collaboration et je n'hésiterais pas à travailler avec lui dans le futur !`,
+        "en": `Ilyes did a great job at Shotgun, managing the development of a mobile application, and developing most of it. He has a very good technical skillset, is very conscientious and product-oriented. He quickly apprehended our business challenges and delivered a reliable and performant result.<br/><br />I'm very happy of our collaboration and would not hesitate to work with him in the future!`,
+      },
+      "shortText": {
+        "fr": `[...] Il a rapidement intégré nos objectifs business et a délivré un résultat performant et stable. [...] et je n'hésiterais pas à travailler avec lui dans le futur!`,
+        "en": `[...] He quickly apprehended our business challenges and delivered a reliable and performant result. [...] and would not hesitate to work with him in the future!`,
+      },
+    },
   },
 
   konbini: {
@@ -349,11 +349,11 @@ export default {
         "en": "CTO at Spendesk",
       },
       "text": {
-        "fr": `Ilyes a le don de conjuguer parfaitement créativité et pragmatisme !<br /><br />J'ai eu l'occasion de travailler étroitement avec lui pendant 10 mois chez Spendesk, durant lesquels il a participé avec succès à de nombreux projets. Il a notamment été intégralement responsable du développement et de la maintenance de notre application mobile en React Native, et a posé les bases de notre nouvelle API GraphQL.Ilyes m'a impressionné par sa forte capacité d'adaptation et sa faculté à mettre en place des solutions globales, simples et efficaces pour répondre à des problématiques compliquées. Il a toujours fait preuve d'autonomie et a été force de proposition sur chaque projet qui lui a été confié.<br /><br />Son expertise technique et sa bonne humeur sont de vrais atouts dans une équipe !`,
+        "fr": `Ilyes a le don de conjuguer parfaitement créativité et pragmatisme !<br /><br />J'ai eu l'occasion de travailler étroitement avec lui pendant 10 mois chez Spendesk, durant lesquels il a participé avec succès à de nombreux projets. Il a notamment été intégralement responsable du développement et de la maintenance de notre application mobile en React Native, et a posé les bases de notre nouvelle API GraphQL. <br/><br/>Ilyes m'a impressionné par sa forte capacité d'adaptation et sa faculté à mettre en place des solutions globales, simples et efficaces pour répondre à des problématiques compliquées. Il a toujours fait preuve d'autonomie et a été force de proposition sur chaque projet qui lui a été confié.<br /><br />Son expertise technique et sa bonne humeur sont de vrais atouts dans une équipe !`,
         "en": `Ilyes has the gift of perfectly combining creativity and pragmatism!<br/><br/>I had the opportunity to work closely with him for 10 months at Spendesk, during which he participated successfully in many projects. In particular, he was fully responsible for the development and maintenance of our React Native mobile application and laid the foundation for our new GraphQL API. <br/><br/>Ilyes impressed me with his strong adaptability and his ability to put in place global, simple and effective solutions to solve complicated issues. He has always demonstrated autonomy and has been suggesting solutions on each project entrusted to him.<br /><br />His technical expertise and his good mood are real assets in a team!`,
       },
       "shortText": {
-        "fr": `[...] Il a notamment été intégralement responsable du développement et de la maintenance de notre application mobile en React Native, [...].<br />Ilyes m'a impressionné par sa forte capacité d'adaptation et sa faculté à mettre en place des solutions globales, simples et efficaces pour répondre à des problématiques compliquées. [...]`,
+        "fr": `[...] Il a notamment été intégralement responsable du développement et de la maintenance de notre application mobile en React Native, [...].<br /> Ilyes m'a impressionné par sa forte capacité d'adaptation et sa faculté à mettre en place des solutions globales, simples et efficaces pour répondre à des problématiques compliquées. [...]`,
         "en": `[...] In particular, he was fully responsible for the development and maintenance of our React Native mobile application and [...].<br />Ilyes impressed me with his strong adaptability and his ability to put in place global, simple and effective solutions to solve complicated issues. [...]`,
       },
     },

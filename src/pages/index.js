@@ -56,6 +56,14 @@ export const query = graphql`
       }
     }
 
+    lucas:file(relativePath: { eq: "data/shotgun/lucas.jpg" }) {
+      childImageSharp {
+        sizes(maxWidth: 64, maxHeight: 64) {
+          ...GatsbyImageSharpSizes
+        }
+      }
+    }
+
     habxConfigurateur:file(relativePath: { eq: "data/habx/screenshots/Configurateur-pieces.png" }) {
       ...ImageForLaptopMockup
     }

@@ -49,6 +49,9 @@ class IndexPage extends PureComponent {
     /* Konbini sharp images */
     this.experiencesWebsite.konbini.feedback.picture = props.data.laurence.childImageSharp.sizes;
 
+    /* Shotgun sharp images */
+    this.experiencesWebsite.shotgun.feedback.picture = props.data.lucas.childImageSharp.sizes;
+
     const t = i18n(props.pageContext.lang, translations);
     this.sorts = [
       { key: 'recommended', text: t('experiences-sort-recommended') },
