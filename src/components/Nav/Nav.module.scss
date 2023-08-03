@@ -1,0 +1,724 @@
+
+@use "sass:math";
+
+@import '../../lib/css/vars';
+
+$nav-link-height: 50px;
+$nav-link-vertical-margin: 10px;
+$nav-height: $nav-link-height + $nav-link-vertical-margin * 2;
+$nav-margin-bottom: 30px;
+$nav-link-border-width: 1px;
+
+$submenu-extra-width: 60px;
+
+#nav {
+  position: fixed;
+  background-color: white;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  overflow: visible;
+  transition: box-shadow 300ms ease;
+
+  @media (max-width: 767px) {
+    .container {
+      padding: 0;
+    }
+  }
+
+  &.shadowy {
+    box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.16);
+  }
+
+  & > div > ul.listMenu {
+    overflow: visible;
+
+    @media (max-width: 767px) {
+      .rateLink { display: none; }
+      .projectLink { display: none; }
+      .home { display: none; }
+      .burgerLink {
+        display: block;
+        a {
+          padding-left: 22px !important;
+        }
+      }
+      li.contact {
+        a {
+          margin-right: 11px;
+        }
+      }
+
+    }
+    @media (min-width: 768px) {
+      .projectLink { display: block; }
+      .burgerLink { display: none; }
+    }
+
+    & > li {
+      float: right;
+
+      &.burgerLink {
+        float: left;
+
+        a {
+          line-height: 44px;
+
+          svg {
+            vertical-align: middle;
+            display: inline-block;
+          }
+        }
+      }
+      &.home {
+        float: left;
+        img {
+          height: 100%;
+          opacity: .8;
+          vertical-align: middle;
+          display: inline-block;
+        }
+      }
+      &.leftmost a { padding: 0 30px 0 0; }
+      // &.rightmost a { padding: 0 0 0 30px; }
+
+      $contact-link-size: 136px;
+      $contact-link-border-width: 2px;
+      $contact-link-padding: 2px;
+      $contact-link-inner-gray-box-size: $contact-link-size - ($contact-link-border-width * 2) - ($contact-link-padding * 2);
+      $contact-svg-size: 22px;
+      $contact-form-width: 700px;
+      $contact-form-height: 440px;
+
+      $total-px-border-travel-length: $contact-link-size * 3 + ($contact-form-width - $contact-link-size) + $contact-form-width + $contact-form-height * 2;
+
+      /////////////////
+      // Borders animation
+      $animationDuration: 650ms;
+      
+      $topLeftMiddleToLeftDuration: math.div($animationDuration * ($contact-link-size * 0.5), $total-px-border-travel-length) * 2;
+      $topLeftTopToBottomDuration: math.div($animationDuration * $contact-link-size, $total-px-border-travel-length) * 2;
+
+      $topRightMiddleToRightDuration: $topLeftMiddleToLeftDuration;
+      $topRightTopToBottomDuration: $topLeftTopToBottomDuration;
+      
+      $subTopLeftRightToLeftDuration: math.div($animationDuration * ($contact-form-width - $contact-link-size), $total-px-border-travel-length);
+      $subTopLeftTopToMiddleDuration: math.div($animationDuration * ($contact-form-height * 0.5), $total-px-border-travel-length);
+      
+      $subBottomRightTopToBottomDuration: math.div($animationDuration * $contact-form-height, $total-px-border-travel-length);
+      $subBottomRightRightToMiddleDuration: math.div($animationDuration * ($contact-form-width * 0.5), $total-px-border-travel-length);
+
+      $subLeftBottomMiddleToBottomDuration: math.div($animationDuration * ($contact-form-height * 0.5), $total-px-border-travel-length);
+      
+      $subBottomLeftMiddleToLeftDuration: math.div($animationDuration * ($contact-form-width * 0.5), $total-px-border-travel-length);
+      
+      &.contact {
+        margin-left: 30px;
+        .border { position: absolute; display: block; pointer-events: none; border: 0px solid #0080F7; transition-timing-function: linear; }
+        @media (max-width: 500px) {
+          margin-left: 0;
+        }
+
+        & > a {
+          border-width: $contact-link-border-width;
+          width: $contact-link-size;
+
+          @media (max-width: 500px) {
+            width: 46px;
+          }
+
+          padding: $contact-link-padding;
+          position: relative;
+          line-height: $nav-link-height - ($nav-link-border-width * 2) - ($contact-link-padding * 2);
+
+          &:hover {
+            color: inherit;
+          }
+
+          & > .inner {
+            background-color: #0080F7;
+            width: $contact-link-inner-gray-box-size; text-align: center;  display: inline-block; height: 100%; border-radius: 4px;
+            cursor: pointer;
+            color: white;
+
+            @media (max-width: 500px) {
+              width: 38px;
+              padding-left: 8px;
+              padding-right: 8px;
+
+              .contactText {
+                display: none;
+              }
+            }
+
+            &:hover {
+              background-color: #2997FF;
+            }
+
+          }
+          svg { vertical-align: text-bottom; width: $contact-svg-size; height: $contact-svg-size; margin-left: 12px; }
+          @media (max-width: 500px) {
+            svg {
+              margin-left: 0;
+            }
+          }
+
+          .topLeftBorder {
+            $start-delay: $subLeftBottomMiddleToBottomDuration + $subTopLeftTopToMiddleDuration + $subTopLeftRightToLeftDuration;
+            $border-delay: $start-delay + $topLeftTopToBottomDuration + $topLeftMiddleToLeftDuration;
+            left: 50%; right: 50%; top: -2px; bottom: 100%; border-top-left-radius: 4px; border-left-width: 0; border-top-width: 0;
+            transition-property: border-left-width, border-top-width, bottom, left;
+            transition-delay: $border-delay, $border-delay, $start-delay, $start-delay + $topLeftTopToBottomDuration;
+            transition-duration: 0s, 0s, $topLeftTopToBottomDuration, $topLeftMiddleToLeftDuration;
+          }
+          .topRightBorder {
+            $start-delay: $subBottomLeftMiddleToLeftDuration + $subBottomRightRightToMiddleDuration + $subBottomRightTopToBottomDuration;
+            $border-delay: $start-delay + $topRightTopToBottomDuration + $topRightMiddleToRightDuration;
+            right: 50%; left: 50%; top: -2px; bottom: 100%; border-top-right-radius: 4px; border-right-width: 0; border-top-width: 0;
+            transition-property: border-right-width, border-top-width, bottom, right;
+            transition-delay: $border-delay, $border-delay, $start-delay, $start-delay + $topRightTopToBottomDuration;
+            transition-duration: 0s, 0s, $topRightTopToBottomDuration, $topRightMiddleToRightDuration;
+          }
+
+          .subTopLeftBorder {
+            $start-delay: $subLeftBottomMiddleToBottomDuration;
+            $border-delay: $subLeftBottomMiddleToBottomDuration + $subTopLeftTopToMiddleDuration + $subTopLeftRightToLeftDuration;
+            right: $contact-link-size - 2px; left: $contact-form-width - $contact-link-size; bottom: 100%; top: -2px; border-top-left-radius: 4px; border-left-width: 0; border-top-width: 0;
+
+            @media (max-width: 500px) {
+              right: 44px;
+            }
+
+            transition-property: border-left-width, border-top-width, bottom, left;
+            transition-delay: $border-delay, $border-delay, $start-delay, $start-delay + $subTopLeftTopToMiddleDuration;
+            transition-duration: 0s, 0s, $subTopLeftTopToMiddleDuration, $subTopLeftRightToLeftDuration;
+          }
+          .subBottomRightBorder {
+            $start-delay: $subBottomLeftMiddleToLeftDuration;
+            $border-delay: $subBottomLeftMiddleToLeftDuration + $subBottomRightRightToMiddleDuration + $subBottomRightTopToBottomDuration;
+            top: -2px; left: 100%; right: -2px; bottom: 100%; border-bottom-right-radius: 4px; border-right-width: 0; border-bottom-width: 0;
+            transition-property: border-bottom-width, border-right-width, left, bottom;
+            transition-delay: $border-delay, $border-delay, $start-delay, $start-delay + $subBottomRightRightToMiddleDuration;
+            transition-duration: 0s, 0s, $subBottomRightRightToMiddleDuration, $subBottomRightTopToBottomDuration;
+          }
+          .subLeftBottomBorder {
+            bottom: 50%; left: -2px; top: 50%; right: 100%; border-bottom-left-radius: 4px;  border-left-width: 0; border-bottom-width: 0;
+            transition-property: border-left-width, border-bottom-width, bottom;
+            transition-delay: $subLeftBottomMiddleToBottomDuration, $subLeftBottomMiddleToBottomDuration, 0s;
+            transition-duration: 0s, 0s, $subLeftBottomMiddleToBottomDuration;
+          }
+          .subBottomLeftBorder {
+            right: 50%; bottom: -2px; top: 100%; left: 50%; border-bottom-left-radius: 4px;  border-left-width: 0; border-bottom-width: 0;
+            transition-property: border-left-width, border-bottom-width, left;
+            transition-delay: $subBottomLeftMiddleToLeftDuration, $subBottomLeftMiddleToLeftDuration, 0s;
+            transition-duration: 0s, 0s, $subBottomLeftMiddleToLeftDuration;
+          }
+        }
+
+        .contactForm {
+          pointer-events: none;
+          position: absolute;
+          top: 100%;
+          right: 0;
+
+          .inner {
+            position: relative;
+
+            .content {
+              overflow: auto;
+              line-height: 1.4;
+              $delay: math.div($animationDuration, 16);
+              $duration: $animationDuration * 0.33;
+              transition: opacity $duration ease $delay;
+              opacity: 0;
+              background-color: white;
+              width: $contact-form-width;
+              max-width: 95vw;
+              // height: $contact-form-height;
+
+              padding: 15px;
+
+              .lastMessageSent {
+                background-color: #c6ffd5;
+                @extend %ms0;
+                padding: 6px;
+                margin-bottom: 8px;
+                border-radius: 4px;
+              }
+
+              .title { margin-bottom: 20px; }
+
+              .viewSentMessageLink {
+                color: #0080f7;
+                margin-left: 7px;
+              }
+
+              form {
+                @extend %ms1;
+
+
+                .hidden { display: none; }
+                
+                .inputRow {
+                  margin: 0 -5px;
+                }
+
+                .oneThirdInput {
+                  float: left;
+                  width: 33%;
+                  padding: 0 5px;
+                }
+
+                .inputGroup {
+                  margin-bottom: 15px;
+                  
+                  label {
+                    @extend %ms1;
+                    margin-bottom: 7px;
+                    display: inline-block;
+                  }
+
+                  input, textarea {
+                    font: inherit;
+                    @extend %ms1;
+                    border: 1px solid #999;
+                    border-radius: 4px;
+                    padding: 8px;
+                    width: 100%;
+                    margin: 0;
+
+                    &:focus {
+                      border-color: darken(#cceeff, 40%);
+                    }
+
+                    &[disabled] {
+                      background-color: white;
+                      opacity: .7;
+                      border-color: #ccc;
+                    }
+                  }
+
+                  textarea {
+                    height: 192px;
+                  }
+
+                  @media (max-width: 767px) {
+                    textarea {
+                      height: 160px;
+                    }
+                  }
+
+                  &.error {
+                    input, textarea {
+                      border-color: red;
+                    }
+                    label {
+                      color: red;
+                    }
+                  }
+                }
+
+                .helpText {
+                  @extend %ms0;
+                }
+
+                .send {
+                  float: right;
+                  margin-left: 8px;
+                  background-color: rgba(187, 239, 253, 0.9);
+                  border: none;
+                  padding: 8px 12px;
+                  border-radius: 4px;
+                  @extend %ms1;
+
+                  img { width: 18px; height: 18px; display: inline-block; vertical-align: middle; margin-right: 8px; }
+
+                  &:hover {
+                    background-color: #bbeffd;
+                  }
+
+                  &:active {
+                    background-color: darken(#bbeffd, 10%);
+                  }
+
+                  &[disabled] {
+                    background-color: rgba(187, 239, 253, 0.5);
+                  }
+
+                  &.sent {
+                    background-color: #c6ffd5;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+      }
+
+
+      &.contact a.active {
+        // Slow down first
+        .topLeftBorder {
+          left: -2px;
+          bottom: 0;
+          border-top-width: 2px; border-left-width: 2px; 
+          transition-property: left, bottom;
+          transition-duration: $topLeftMiddleToLeftDuration, $topLeftTopToBottomDuration;
+          transition-delay: 0s, $topLeftMiddleToLeftDuration;
+        }
+
+        .topRightBorder {
+          right: -2px;
+          bottom: 0;
+          border-top-width: 2px; border-right-width: 2px; 
+          transition-property: right, bottom;
+          transition-duration: $topRightMiddleToRightDuration, $topRightTopToBottomDuration;
+          transition-delay: 0s, $topRightMiddleToRightDuration;
+        }
+
+        .subTopLeftBorder {
+          $start-delay: $topLeftMiddleToLeftDuration + $topLeftTopToBottomDuration;
+          left: -2px;
+          bottom: 50%;
+          border-top-width: 2px; border-left-width: 2px;
+          transition-property: border-top-width, border-left-width, left, bottom;
+          transition-delay: $start-delay, $start-delay, $start-delay, $start-delay + $subTopLeftRightToLeftDuration;
+          transition-duration: 0s, 0s, $subTopLeftRightToLeftDuration, $subTopLeftTopToMiddleDuration;
+        }
+
+        .subBottomRightBorder {
+          $start-delay: $topRightMiddleToRightDuration + $topRightTopToBottomDuration;
+          bottom: -2px;
+          left: 50%;
+          border-bottom-width: 2px; border-right-width: 2px;
+          transition-property: border-bottom-width, border-right-width, bottom, left;
+          transition-delay: $start-delay, $start-delay, $start-delay, $start-delay + $subBottomRightTopToBottomDuration;
+          transition-duration: 0s, 0s, $subBottomRightTopToBottomDuration, $subBottomRightRightToMiddleDuration;
+        }
+
+        .subLeftBottomBorder {
+          $start-delay: $topLeftMiddleToLeftDuration + $topLeftTopToBottomDuration + $subTopLeftRightToLeftDuration + $subTopLeftTopToMiddleDuration;
+          bottom: -2px;
+          border-left-width: 2px; border-bottom-width: 2px;
+          transition-property: border-left-width, border-bottom-width, bottom;
+          transition-delay: $start-delay, $start-delay, $start-delay;
+          transition-duration: 0s, 0s, $subLeftBottomMiddleToBottomDuration;
+        }
+
+        .subBottomLeftBorder {
+          $start-delay: $topRightMiddleToRightDuration + $topRightTopToBottomDuration + $subBottomRightTopToBottomDuration + $subBottomRightRightToMiddleDuration;
+          left: -2px;
+          border-bottom-width: 2px; border-left-width: 2px;
+          transition-property: border-bottom-width, border-left-width, left;
+          transition-delay: $start-delay, $start-delay, $start-delay;
+          transition-duration: 0s, 0s, $subBottomLeftMiddleToLeftDuration;
+        }
+
+        & > .inner {
+          background-color: #5AAFFF;
+        }
+
+        .contactForm {
+          pointer-events: auto;
+        }
+
+        .contactForm > .inner > .content {
+          $delay: math.div($animationDuration, 16);
+          $duration: $animationDuration * 0.33;
+          opacity: 1;
+          transition: opacity $duration ease $delay;
+        }
+
+      }
+
+      &.social > a {
+        padding: 0 14px;
+      }
+
+      & > a {
+        background-color: transparent;
+        position: relative;
+        display: block;
+        height: $nav-link-height;
+        line-height: $nav-link-height - ($nav-link-border-width * 2);
+        text-decoration: none;
+        margin: $nav-link-vertical-margin 0;
+        padding: 0 30px;
+        border-bottom: none;
+        border: $nav-link-border-width solid transparent;
+        @extend %ms1;
+
+        img {
+          height: 45%;
+          vertical-align: middle;
+          opacity: 0.5;
+        }
+
+        &:hover {
+          color: darken(#cceeff, 40%);
+
+          img {
+            opacity: 1;
+          }
+        }
+
+        &.withSubmenu {
+          border-radius: 4px 4px 0 0;
+          border-bottom: none;
+          background-color: white;
+          
+          $step: 170ms;
+          $half-step: $step * 0.5;
+          $quart-step: $step * 0.25;
+          $three-four: $half-step + $quart-step;
+
+          .hider {
+            pointer-events: none;
+            position: absolute;
+            transition-timing-function: linear;
+            border: 0px solid black;
+            overflow: hidden;
+          }
+
+          .topLeftHider { top: 50%; left: -$nav-link-border-width; bottom: 50%; right: 100%; border-top-left-radius: 4px; }
+          .topRightHider { left: 50%; bottom: 100%; top: -$nav-link-border-width; right: 50%; border-top-right-radius: 4px; }
+          .subTopLeftHider { top: -$nav-link-border-width; left: $submenu-extra-width - $nav-link-border-width; width: 0; border-top-left-radius: 4px; bottom: 100%; }
+          .subTopRightHider { top: 50%; right: -$nav-link-border-width; width: $nav-link-border-width; bottom: 50%; border-top-right-radius: 4px; }
+          .subBottomLeftHider { left: 50%; bottom: -$nav-link-border-width; top: 100%; right: 50%; border-bottom-left-radius: 4px; }
+          .subLeftBottomHider { left: -$nav-link-border-width; bottom: 50%; top: 50%; right: 100%; border-bottom-left-radius: 4px;  }
+          .subBottomRightHider { top: 50%; right: -$nav-link-border-width; bottom: 50%; left: 100%; border-bottom-right-radius: 4px; }
+
+          &:hover, &:focus, &:focus-within {
+            .submenu {
+              opacity: 1;
+              pointer-events: auto;
+            }
+
+            .submenu ul {
+              opacity: 1;
+              transition: opacity $step + $half-step linear $half-step;
+            }
+
+            /* 0 to .5 */
+            .topLeftHider {
+              border-left-width: $nav-link-border-width; border-top-width: $nav-link-border-width; bottom: 0; top: -$nav-link-border-width; right: 50%;
+              transition-delay: 0s, 0s, $half-step;
+              transition-property: bottom, top, right;
+              transition-duration: $half-step, $half-step, $quart-step;
+            }
+
+            .topRightHider {
+              border-top-width: $nav-link-border-width; border-right-width: $nav-link-border-width;
+              right: -$nav-link-border-width;
+              bottom: 0;
+              transition-delay: $three-four, $three-four, $three-four, $step;
+              transition-duration: 0s, 0s, $quart-step, $half-step;
+              transition-property: border-top-width, border-right-width, right, bottom;
+            }
+
+            /* .5 to 1 */
+            .subTopLeftHider {
+              width: $submenu-extra-width; left: -$nav-link-border-width; border-left-width: $nav-link-border-width; border-top-width: $nav-link-border-width;
+              bottom: 50%;
+              transition-delay: $half-step, $half-step, $half-step, $half-step, $step;
+              transition-property: width, left, border-left-width, border-top-width, bottom;
+              transition-duration: $half-step, $half-step, 0s, 0s, $half-step;
+            }
+
+            .subTopRightHider {
+              border-right-width: $nav-link-border-width; border-top-width: $nav-link-border-width;
+              top: -$nav-link-border-width;
+              width: $submenu-extra-width;
+              transition-delay: $half-step, $half-step, $half-step, $step;
+              transition-duration: 0s, 0s, $half-step, $half-step;
+              transition-property: border-right-width, border-top-width, top, width;
+            }
+
+            .subBottomRightHider {
+              border-right-width: $nav-link-border-width; border-bottom-width: $nav-link-border-width;
+              bottom: -$nav-link-border-width;
+              left: 50%;
+              transition-delay: $half-step, $half-step, $half-step, $step;
+              transition-duration: 0s, 0s, $half-step, $half-step;
+              transition-property: border-right-width, border-bottom-width, bottom, left;
+            }
+
+            .subBottomLeftHider {
+              border-left-width: $nav-link-border-width; border-bottom-width: $nav-link-border-width;
+              left: -$nav-link-border-width;
+              top: 95%;
+              transition-delay: $step + $half-step, $step + $half-step, $step + $half-step, 2 * $step;
+              transition-duration: 0s, 0s, $half-step, 1ms;
+              transition-property: border-left-width, border-bottom-width, left, top;
+            }
+
+            .subLeftBottomHider {
+              border-left-width: $nav-link-border-width; border-bottom-width: $nav-link-border-width;
+              bottom: -$nav-link-border-width;
+              right: 95%;
+              transition-delay: $step + $half-step, $step + $half-step, $step + $half-step, 2 * $step;
+              transition-duration: 0s, 0s, $half-step, 1ms;
+              transition-property: border-left-width, border-bottom-width, bottom, right;
+            }
+          }
+
+          // .topLeftHider { height: $nav-link-border-width + 1; left: 0; right: 50%; top: -$nav-link-border-width; background-color: white; }
+          // .topRightHider { height: $nav-link-border-width + 1; right: 0; left: 50%; top: -$nav-link-border-width; background-color: white; }
+          // .leftTopHider { width: $nav-link-border-width + 1; top: -$nav-link-border-width; left: -$nav-link-border-width; bottom: 50%; background-color: white; }
+          // .leftBottomHider { width: $nav-link-border-width + 1; bottom: 0; left: -$nav-link-border-width; top: 50%; background-color: white; }
+          // .rightBottomHider { width: $nav-link-border-width + 1; bottom: 0; right: -$nav-link-border-width; top: 50%; background-color: white; }
+          // .rightTopHider { width: $nav-link-border-width + 1; top: -$nav-link-border-width; right: -$nav-link-border-width; bottom: 50%; background-color: white; }
+          // .bottomHider { left: 0; right: 0; top: 100%; z-index: 11; height: $nav-link-border-width; background-color: white; }
+
+          // &:hover, &:focus, &:focus-within {
+          //   color: #999;
+          //   cursor: default;
+          //   .submenu { opacity: 1; pointer-events: auto; }
+
+          //   /* 0 to 1 */
+          //   .leftTopHider { transition-duration: $half-step; bottom: 100%; top: 0; }
+          //   .leftBottomHider { transition-duration: $half-step; top: 100%; }
+
+          //   .topLeftHider { transition-delay: $half-step; transition-duration: $quart-step; left: 50%; }
+          //   .topRightHider { transition-delay: $half-step + $quart-step; transition-duration: $quart-step; left: 100%; }
+          //   .subRightTopHider { transition-delay: $half-step; bottom: 100%; top: 0; }
+          //   .subRightBottomHider { transition-delay: $half-step; bottom: 0; top: 100%; }
+          //   .subTopLeftHider { transition-delay: $half-step; transition-duration: $half-step; width: 0; left: 1; }
+
+          //   /* 1 to 2 */
+          //   .rightTopHider { transition-delay: $step; transition-duration: $quart-step; top: 50%; }
+          //   .rightBottomHider { transition-delay: $step + $quart-step; transition-duration: $quart-step; top: 100%; }
+          //   .subLeftTopHider { transition-delay: $step; transition-duration: $half-step; top: 50%; }
+
+          //   /* 2 to 3 */
+          //   .subTopRightHider { transition-delay: $step + $half-step; transition-duration: $quart-step; right: $submenu-extra-width + $nav-link-border-width; }
+          //   .subLeftBottomHider { transition-delay: $step + $half-step; transition-duration: $quart-step; top: 100%; bottom: 0; }
+          //   .subBottomRightHider { transition-delay: $step + $half-step; transition-duration: $quart-step; right: 50%; }
+          //   .subBottomLeftHider { transition-delay: $step + $half-step + $quart-step; transition-duration: $quart-step; right: 100%; left: 0; }
+          
+          //   .submenu ul {
+          //     opacity: 1;
+          //     transition-property: opacity;
+          //     transition-delay: $half-step;
+          //     transition-duration: $step + $half-step;
+          //   }
+          // }
+        }
+
+        & > .submenu {
+          .inner { position: relative; }
+
+          opacity: 0;
+          pointer-events: none;
+          border: $nav-link-border-width solid transparent;
+          border-radius: 4px;
+          position: absolute;
+          z-index: 10;
+          top: 100%;
+          left: 0;
+          right: 0;
+          margin-right: -$submenu-extra-width;
+          margin-left: -$submenu-extra-width;
+
+
+          // .subTopLeftHider { height: $nav-link-border-width; left: 0; width: $submenu-extra-width - $nav-link-border-width; top: -$nav-link-border-width; background-color: white; }
+          // .subTopRightHider { height: $nav-link-border-width; right: 0; width: $submenu-extra-width - $nav-link-border-width; top: -$nav-link-border-width; background-color: white; }
+          // .subLeftTopHider { width: $nav-link-border-width + 1; top: -$nav-link-border-width; left: -$nav-link-border-width; bottom: 50%; background-color: white; }
+          // .subLeftBottomHider { width: $nav-link-border-width + 1; bottom: -$nav-link-border-width; left: -$nav-link-border-width; top: 50%; background-color: white; }
+          // .subRightBottomHider { width: $nav-link-border-width + 1; bottom: -$nav-link-border-width; right: -$nav-link-border-width; top: 50%; background-color: white; }
+          // .subRightTopHider { width: $nav-link-border-width + 1; top: -$nav-link-border-width; right: -$nav-link-border-width; bottom: 50%; background-color: white; }
+          // .subBottomLeftHider { height: $nav-link-border-width + 1; left: 0; right: 50%; bottom: -$nav-link-border-width; background-color: white; }
+          // .subBottomRightHider { height: $nav-link-border-width + 1; right: 0; left: 50%; bottom: -$nav-link-border-width; background-color: white; }
+
+          ul {
+            background-color: #fff;
+            opacity: 0;
+
+            & > li {
+              line-height: 1.4;
+              margin: 0 20px;
+              border-bottom: 2px solid #aaa;
+
+              &:last-child {
+                border-bottom: none;
+              }
+
+              & > a {
+                padding: 20px 15px;
+                border-bottom: none;
+                display: block;
+                line-height: 1.4;
+                text-align: center;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+
+.menuOverlay {
+  display: none;
+  transition: all 200ms ease;
+  z-index: 1000;
+  background-color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: .4;
+  transform: translateY(120px);
+
+  &:global(.overlay-enter) {
+    opacity: .4;
+    transform: translateY(120px);
+    display: block;
+  }
+  &:global(.overlay-enter-active), &:global(.overlay-enter-done) {
+    opacity: 1;
+    transform: translateY(0);
+    display: block;
+  }
+  &:global(.overlay-exit)  {
+    opacity: 1;
+    transform: translateY(0);
+    display: block;
+  }
+  &:global(.overlay-exit-active) {
+    opacity: 0;
+    transform: translateY(120px);
+  }
+  &:global(.overlay-exit-done) {
+    display: none;
+  }
+  // &.enter {
+  //   transform: scale(1);
+  //   opacity: ;
+  // }
+
+  .close {
+    padding: 22px;
+    display: inline-block;
+    margin-bottom: 44px;
+  }
+
+  & > ul {
+    padding-left: 22px;
+
+    & > li {
+      @extend %ms4;
+      margin-bottom: 22px;
+
+      a {
+        color: #0080f7;
+
+        &.underline { border-bottom: 1px solid; }
+      }
+    }
+  }
+}

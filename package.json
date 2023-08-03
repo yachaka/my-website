@@ -15,14 +15,31 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@react-pdf/renderer": "^3.1.12",
+    "classnames": "^2.3.2",
+    "color": "^4.2.3",
+    "dayjs": "^1.11.9",
     "gatsby": "^5.11.0",
+    "gatsby-image": "^3.11.0",
     "gatsby-plugin-image": "^3.11.0",
     "gatsby-plugin-sass": "^6.11.0",
     "gatsby-plugin-sharp": "^5.11.0",
+    "gatsby-remark-video-poster": "^0.0.1-alpha.1",
     "gatsby-source-filesystem": "^5.11.0",
+    "gatsby-transformer-remark": "^6.11.0",
     "gatsby-transformer-sharp": "^5.11.0",
+    "js-cookie": "^3.0.5",
+    "lodash.debounce": "^4.0.8",
+    "lodash.merge": "^4.6.2",
+    "modularscale-sass": "^3.0.10",
+    "outside-click": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sass": "^1.64.1"
+    "react-helmet": "^6.1.0",
+    "react-transition-group": "^4.4.5",
+    "reset-css": "^5.0.2",
+    "sass": "^1.64.1",
+    "smooth-scroll-to": "^0.5.0",
+    "yet-another-react-lightbox": "^3.12.0"
   }
 }

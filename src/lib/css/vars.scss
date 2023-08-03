@@ -1,0 +1,24 @@
+
+$serif-font: Georgia;
+$sans-serif-font: Arial;
+
+/* TYPOGRAPHY */
+@import '~modularscale-sass/stylesheets/modularscale';
+
+$modularscale: (
+  base: 12px,
+  ratio: 1.305
+);
+
+@mixin ms0 { font-size: ms(0); line-height: 1.6; }
+%ms0 { @include ms0; }
+@mixin ms1 { font-size: ms(1); line-height: 1.6; }
+%ms1 { @include ms1; }
+@mixin ms2 { font-size: ms(2); line-height: 1.6; }
+%ms2 { @include ms2; }
+@mixin ms3 { font-size: ms(3); line-height: 1.4; }
+%ms3 { @include ms3; }
+@mixin ms4 { font-size: ms(4); line-height: 1.2; }
+%ms4 { @include ms4; }
+@mixin ms5 { font-size: ms(5); line-height: 1.1; }
+%ms5 { @include ms5; }

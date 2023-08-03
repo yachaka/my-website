@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512px" height="512px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>Desktop HD</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round">
+        <g id="Desktop-HD" transform="translate(-392.000000, -280.000000)" stroke="#000000" stroke-width="42">
+            <path d="M819,377 C788.333333,378.333333 762,385.333333 740,398 C721,408 707,429 702,444 C689,490 732,557.5 670,577 C597.946236,596 581,534.558059 491,587 C433,621 462.364027,534.558059 471,504 C484,458 513.794515,446.294014 562,468 C610.205485,489.705986 650,547 651,577 C652,605 616,676 515,735" id="Shape"></path>
+            <path d="M769,488 C790.916972,593 736,607 747.597389,607 C772.532463,601 802.19913,617.666667 836.597389,657" id="Path-2" stroke-linejoin="round"></path>
+            <polyline id="Path-3" stroke-linejoin="round" transform="translate(637.000000, 372.000000) scale(-1, 1) translate(-637.000000, -372.000000) " points="637 408 637 336 637 363.105882"></polyline>
+        </g>
+    </g>
+</svg>

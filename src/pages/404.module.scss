@@ -1,0 +1,16 @@
+
+@import '../lib/css/vars';
+
+#p404 {
+  height: 542px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  #title {
+    text-align: center;
+    color: #aaa;
+    @extend %ms5;
+  }
+}

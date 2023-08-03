@@ -1,0 +1,98 @@
+{
+  "home": {
+    "en": "Home",
+    "fr": "Accueil"
+  },
+  "projects": {
+    "en": "Projects",
+    "fr": "Réalisations"
+  },
+  "rate": {
+    "en": "Rate",
+    "fr": "Tarif"
+  },
+  "contact-form": {
+    "last-message-sent": {
+      "en": "You sent me a message on {{date}}.",
+      "fr": "Vous m'avez envoyé un message le {{date}}."
+    },
+    "view-message-link": {
+      "en": "See more [+]",
+      "fr": "En détails [+]"
+    },
+    "title": {
+      "en": "A question, a task, an idea, a story by the campfire ?<br/>Send me a message 👇",
+      "fr": "Une question, une tâche, une idée, une histoire au coin du feu ?<br/>Envoyez-moi un message 👇"
+    },
+    "your-name-label": {
+      "en": "Name",
+      "fr": "Nom"
+    },
+    "your-name-placeholder": {
+      "en": "John Doe",
+      "fr": "Thomas Dupont"
+    },
+    "your-email-label": {
+      "en": "Email",
+      "fr": "Email"
+    },
+    "your-email-placeholder": {
+      "en": "john.doe@entreprise.io",
+      "fr": "thomas.dupont@entreprise.io"
+    },
+    "your-phone-label": {
+      "en": "Phone",
+      "fr": "Téléphone"
+    },
+    "your-phone-placeholder": {
+      "en": "07 33 11 40 45",
+      "fr": "07 33 11 40 45"
+    },
+    "your-message-label": {
+      "en": "Message",
+      "fr": "Message"
+    },
+    "your-message-placeholder": {
+      "en": "Your message...",
+      "fr": "Votre message..."
+    },
+    "help-text": {
+      "en": "Your message lands in my inbox.",
+      "fr": "Votre message arrive dans ma boite e-mail."
+    },
+    "send-button": {
+      "en": "Send",
+      "fr": "Envoyer"
+    },
+    "send-button-sending": {
+      "en": "Sending...",
+      "fr": "Envoi en cours..."
+    },
+    "send-button-sent": {
+      "en": "Message sent",
+      "fr": "Message envoyé"
+    },
+    "last-message-popup": {
+      "details": {
+        "en": "Provided details",
+        "fr": "Détails renseignés"
+      },
+      "name": {
+        "en": "Name",
+        "fr": "Nom"
+      },
+      "email": {
+        "en": "Email",
+        "fr": "Email"
+      },
+      "phone": {
+        "en": "Phone",
+        "fr": "Téléphone"
+      },
+      "message": {
+        "en": "Message",
+        "fr": "Message"
+      }
+    }
+  }
+}

@@ -1,0 +1,107 @@
+.carousel {
+  position: relative;
+  height: 100%;
+
+  &:hover {
+    .screenTitle {
+      opacity: 1;
+    }
+    .arrow {
+      opacity: 0.7;
+    }
+  }
+
+  &.mobileStyle {
+    .screenTitle {
+      opacity: 1;
+    }
+
+    .arrow {
+      opacity: 1;
+      -webkit-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.45);
+      -moz-box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.45);
+      box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.45);
+    }
+
+    .leftArrow {
+      left: 8px;
+      transform: translate3d(0, -50%, 0);
+    }
+
+    .rightArrow {
+      right: 8px;
+      transform: translate3d(0, -50%, 0);
+    }
+  }
+}
+
+.screenTitle {
+  position: absolute;
+  bottom: 100%;
+  margin-bottom: 4px;
+  font-size: 13px;
+  line-height: 13px;
+  color: #ddd;
+  padding: 4px 6px;
+  background-color: rgba(0, 0, 0, .7);
+  border-radius: 6px;
+  opacity: 0;
+  transition: opacity 350ms ease;
+}
+
+.screensWrapper {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.screens {
+  height: 100%;
+  transition: margin-left 250ms ease;
+
+  video {
+    background-color: #333;
+  }
+}
+
+.arrow {
+  z-index: 2;
+  width: 45px;
+  height: 45px;
+  border-radius: 40px;
+  opacity: 0;
+  text-align: center;
+  display: block;
+  transition: background 150ms ease, opacity 350ms ease;
+  border: none;
+  font-size: 26px;
+  color: white;
+  position: absolute;
+  transition: all 250ms ease;
+  cursor: pointer;
+  top: 50%;
+
+  &:hover {
+    opacity: 1 !important;
+  }
+
+  &[disabled] {
+    background-color: rgba(200, 200, 200, .7) !important;
+    color: #666;
+    cursor: auto;
+
+    &:hover {
+      opacity: 0.7 !important;
+    }
+  }
+}
+
+.leftArrow {
+  left: 0;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.rightArrow {
+  right: 0;
+  transform: translate3d(50%, -50%, 0);
+}

@@ -1,0 +1,94 @@
+{
+  "hero-text": {
+    "en": "Hello 👋<br/>I am an senior fullstack developer.<br/>I also know how to manage an IT project, and create basic designs.",
+    "fr": "Bonjour 👋<br/>Je suis développeur fullstack senior.<br/>Je sais aussi gérer un projet, et créer des designs basiques."
+  },
+  "hero-status": {
+    "en": "I am looking for my next work",
+    "fr": "Je suis à la recherche de mon prochain travail"
+  },
+  "hero-work-link": {
+    "en": "My work",
+    "fr": "Mes réalisations"
+  },
+  "work": {
+    "en": "Experience",
+    "fr": "Expérience"
+  },
+  "rate-title": {
+    "en": "Rate",
+    "fr": "Tarif"
+  },
+  "contact-cta-text": {
+    "en": "Please contact me to discuss your project!",
+    "fr": "Contactez-moi pour discuter de votre projet !"
+  },
+  "rate-block": {
+    "en": "As a freelance, my daily rate is 350€ HT.<br/>I work part-time (3 days/5) !",
+    "fr": "En tant que freelance, mon Tarif Journalier est 350€ HT.<br/>Je travaille à temps partiel (3 jours/5) !"
+  },
+  "projects": {
+    "en": "Projects",
+    "fr": "Projets"
+  },
+  "summary": {
+    "en": "Summary",
+    "fr": "Résumé"
+  },
+  "team": {
+    "en": "Team",
+    "fr": "Équipe"
+  },
+  "key-developments": {
+    "en": "Main work",
+    "fr": "Développements principaux"
+  },
+  "feedback": {
+    "en": "Recommendation",
+    "fr": "Recommandation"
+  },
+  "month": {
+    "en": "month",
+    "fr": "mois"
+  },
+  "months": {
+    "en": "months",
+    "fr": "mois"
+  },
+  "as-employee": {
+    "en": "as an employee",
+    "fr": "en tant qu'employé"
+  },
+  "as-freelance": {
+    "en": "as a freelance",
+    "fr": "en tant que freelance"
+  },
+  "as-both": {
+    "en": "as a freelance and as an employee",
+    "fr": "en tant que freelance et qu'employé"
+  },
+  "techs-used": {
+    "en": "Techs used:",
+    "fr": "Techs utilisées :"
+  },
+  "with": {
+    "en": "With",
+    "fr": "Avec"
+  },
+  "sort": {
+    "fr": "Tri :",
+    "en": "Sort:"
+  },
+  "experiences-sort-recommended": {
+    "fr": "Recommandé - expériences significatives en premier",
+    "en": "Recommended - significant experiences first"
+  },
+  "experiences-sort-asc": {
+    "fr": "Ancien à récent",
+    "en": "Oldest to newest"
+  },
+  "experiences-sort-desc": {
+    "fr": "Récent à ancien",
+    "en": "Newest to oldest"
+  }
+}
