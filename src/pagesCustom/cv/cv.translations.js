@@ -117,5 +117,10 @@ export default {
   'education-highschool': {
     fr: `Baccalaureat Economie et Social`,
     en: `Bachelor's degree Economics and social`,
-  }
+  },
+
+  'project-videos': {
+    fr: `Vidéos des projets`,
+    en: `Project videos`,
+  },
 };

@@ -26,7 +26,8 @@
   .galleryDemo {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    overflow-x: auto;
+    // flex-wrap: wrap;
 
     .galleryDemoItem {
       margin-right: 20px;
@@ -35,6 +36,7 @@
       display: block;
       outline: none;
       color: transparent;
+      flex-shrink: 0;
     }
     .galleryDemoItem_img {
       height: 300px;

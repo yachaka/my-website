@@ -6,3 +6,7 @@ html, body, #___gatsby, #gatsby-focus-wrapper {
 .yarl__slide_description {
   font-size: 16px;
 }
+
+.yarl__slide_description_container {
+  pointer-events: none;
+}

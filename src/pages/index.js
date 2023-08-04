@@ -17,6 +17,10 @@ export const query = graphql`
       }
     }
 
+    drawerOrdersList:file(relativePath: { eq: "data/shotgun/drawer-app/orders-list.png" }) {
+      ...ImageForLaptopMockup
+    }
+
     cardsScreenImg:file(relativePath: { eq: "data/Spendesk/webapp/Cards.png" }) {
       ...ImageForLaptopMockup
     }

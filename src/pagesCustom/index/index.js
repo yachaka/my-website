@@ -52,6 +52,7 @@ class IndexPage extends PureComponent {
     this.experiencesWebsite.konbini.feedback.picture = props.data.laurence.childImageSharp.gatsbyImageData;
 
     /* Shotgun sharp images */
+    this.experiencesWebsite.shotgun.mobileScreenshots.drawerOrdersList.data = props.data.drawerOrdersList.childImageSharp.gatsbyImageData;
     this.experiencesWebsite.shotgun.feedback.picture = props.data.lucas.childImageSharp.gatsbyImageData;
 
     const t = i18n(props.pageContext.lang, translations);

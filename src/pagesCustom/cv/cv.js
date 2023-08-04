@@ -512,6 +512,10 @@ const MyDocument = ({
                 </Text>
 
                 <Text style={styles.skill}>
+                  IoT
+                </Text>
+
+                <Text style={styles.skill}>
                   Testing
                 </Text>
 
@@ -569,7 +573,7 @@ const MyDocument = ({
 
             <View style={styles.contactInfoUnit}>
               <Image style={[styles.contactInfoUnit_icon]} src={rightArrowGreenIcon} />
-              <Text style={styles.contactInfoUnit_text}>Projects videos </Text>
+              <Text style={styles.contactInfoUnit_text}>{t('project-videos')} </Text>
               <ExternalLink style={styles.contactInfoUnit_text} src="https://www.ilyeshermellin.dev">ilyeshermellin.dev</ExternalLink>
             </View>
 

@@ -18,14 +18,31 @@ import konbiniDesktopArticleLoadPoster from './konbini/desktop-article-load.png'
 import konbiniDesktopHomepageLoad from './konbini/desktop-homepage.mp4';
 import konbiniDesktopHomepageLoadPoster from './konbini/desktop-homepage.png';
 
-import shotgunLogin from './shotgun/login.mp4';
-import shotgunLoginPoster from './shotgun/login.png';
-import shotgunScanTicketHorsLigne from './shotgun/scan-ticket-hors-ligne.mp4';
-import shotgunScanTicketHorsLignePoster from './shotgun/scan-ticket-hors-ligne.png';
-import shotgunAjoutGuestlistGuest from './shotgun/ajout-guestlist-guest.mp4';
-import shotgunAjoutGuestlistGuestPoster from './shotgun/ajout-guestlist-guest.png';
-import shotgunRefundTicket from './shotgun/remboursement-ticket.mp4';
-import shotgunRefundTicketPoster from './shotgun/remboursement-ticket.png';
+import shotgunLoadEvent from './shotgun/load-event.mp4';
+import shotgunLoadEventPoster from './shotgun/load-event.png';
+import shotgunScanTicket from './shotgun/scan-ticket.mp4';
+import shotgunScanTicketPoster from './shotgun/scan-ticket.png';
+import shotgunAjoutGuestlistGuest from './shotgun/add-guest.mp4';
+import shotgunAjoutGuestlistGuestPoster from './shotgun/add-guest.png';
+import shotgunSearch from './shotgun/search.mp4';
+import shotgunSearchPoster from './shotgun/search.png';
+import shotgunScanningCountEntrances from './shotgun/entrances-scanning-count.mp4';
+import shotgunScanningCountEntrancesPoster from './shotgun/entrances-scanning-count.png';
+
+import drawerOrdering from './shotgun/drawer-app/ordering.mp4';
+import drawerOrderingPoster from './shotgun/drawer-app/ordering.png';
+import drawerPrinting from './shotgun/drawer-app/printing.mp4';
+import drawerPrintingPoster from './shotgun/drawer-app/printing.png';
+import drawerSalesStats from './shotgun/drawer-app/sales-stats.mp4';
+import drawerSalesStatsPoster from './shotgun/drawer-app/sales-stats.png';
+import drawerOrdersList from './shotgun/drawer-app/orders-list.png';
+import drawerSettings from './shotgun/drawer-app/settings.mp4';
+import drawerSettingsPoster from './shotgun/drawer-app/settings.png';
+
+import shotgunCustomerWebsite from './shotgun/customer-website.mp4';
+import shotgunCustomerWebsitePoster from './shotgun/customer-website.png';
+import shotgunOrganizerWebsite from './shotgun/organizer-website.mp4';
+import shotgunOrganizerWebsitePoster from './shotgun/organizer-website.png';
 
 import chateauPercheVideo from './chateau-perche/home.mp4';
 import chateauPercheVideoPoster from './chateau-perche/home.png';
@@ -61,10 +78,6 @@ export default {
     },
     "keyWork": [
       {
-        fr: "J'ai conçu le protocole de communication P2P via bluetooth, qui synchronise les tickets scannés (et d'autres données) entre les différents téléphones scanners",
-        en: "I've created the bluetooth P2P communication protocol, that synchronizes scanned tickets (and other data) between scanning devices",
-      },
-      {
         fr: "J'étais le seul développeur sur l'application Shotgun Scan, qui a scanné 600 000 billets lors du mois de Juillet 23. C'est une application hors-ligne avec synchronisation P2P, sur iOS et Android - React-native avec modules natifs Swift/Objective-C et Java",
         en: "I was the only developper working on the Shotgun Scan application, which scanned 600 000 entries in July 23. It is an offline-first app with P2P synchronization, on iOS and Android - React-Native with native modules Swift/Objective-C and Java",
       },
@@ -73,51 +86,134 @@ export default {
         en: "I also built a on-site tickets selling app, responsive on tablets and mobile phones, and connected to industry-specific printers to sell and print tickets at the door",
       },
       {
-        fr: `J'ai travaillé sur la plateforme web et d'autres taches, notamment : maintenir les nouvelles fonctionnalités sur une codebase Ruby on Rails historique, travail sur un outil d'administration interne, intégrer une page vitrine pour un festival de musique connu, et plus encore`,
-        en: `I worked on the web platform and other tasks, including : adding features on a NodeJS/GraphQL stack, maintaining new features on a legacy Ruby On Rails backend, working on an internal administration backend tool, integrating a landing page for a known music festival, and more`
+        fr: `J'ai travaillé sur la plateforme web Organisateurs, et d'autres taches sur l'ensemble des services Shotgun, notamment : maintenir les nouvelles fonctionnalités sur une codebase Ruby on Rails historique, travail sur un outil d'administration interne, intégrer une page vitrine pour un festival de musique connu, et plus encore`,
+        en: `I worked on the web Organizers platform and other tasks on the entirety of Shotgun platform, including : adding features on a NodeJS/GraphQL stack, maintaining new features on a legacy Ruby On Rails backend, working on an internal administration backend tool, integrating a landing page for a known music festival, and more`
       }
     ],
     "mobileScreenshots": {
       login: {
         title: {
-          "fr": "Connexion",
-          "en": "Logging in",
+          "fr": "Chargement d'un évènement",
+          "en": "Loading an event",
         },
         "data": {
-          video: shotgunLogin,
-          poster: shotgunLoginPoster,
+          video: shotgunLoadEvent,
+          poster: shotgunLoadEventPoster,
         }
       },
       scan: {
         title: {
-          "fr": "Scan d'un ticket hors-ligne",
-          "en": "Scanning a ticket, offline",
+          "fr": "Scan d'un ticket",
+          "en": "Scanning a ticket",
         },
         "data": {
-          video: shotgunScanTicketHorsLigne,
-          poster: shotgunScanTicketHorsLignePoster,
+          video: shotgunScanTicket,
+          poster: shotgunScanTicketPoster,
         }
       },
       guestlist: {
         title: {
-          "fr": "Ajout d'une liste d'invités et d'un invité",
-          "en": "Adding a guestlist and a guest",
+          "fr": "Ajout d'un invité",
+          "en": "Adding a guest",
         },
         "data": {
           video: shotgunAjoutGuestlistGuest,
           poster: shotgunAjoutGuestlistGuestPoster,
         }
       },
-      refund: {
+      search: {
         title: {
-          "fr": "Remboursement d'un ticket",
-          "en": "Refunding a ticket",
+          "fr": "Recherche",
+          "en": "Search",
         },
         "data": {
-          video: shotgunRefundTicket,
-          poster: shotgunRefundTicketPoster,
+          video: shotgunSearch,
+          poster: shotgunSearchPoster,
         }
       },
+      entrances: {
+        title: {
+          "fr": "Scan par entrée, statistiques et historique de scan",
+          "en": "Scan per entrance, stats and scan history",
+        },
+        "data": {
+          video: shotgunScanningCountEntrances,
+          poster: shotgunScanningCountEntrancesPoster,
+        }
+      },
+
+      drawerOrdering: {
+        title: {
+          fr: "Commande de billets",
+          en: `Ordering tickets`,
+        },
+        data: {
+          video: drawerOrdering,
+          poster: drawerOrderingPoster,
+        },
+      },
+      
+      drawerPrinting: {
+        title: {
+          fr: "Impression des billets avec des imprimantes évènementielles",
+          en: `Printing tickets with events' tickets printers`,
+        },
+        data: {
+          video: drawerPrinting,
+          poster: drawerPrintingPoster,
+        },
+      },
+
+      drawerOrdersList: {
+        title: {
+          fr: "Liste des commandes",
+          en: `Orders list`,
+        },
+      },
+
+      drawerSalesStats: {
+        title: {
+          fr: "Statistiques de vente",
+          en: `Sales stats`,
+        },
+        data: {
+          video: drawerSalesStats,
+          poster: drawerSalesStatsPoster,
+        },
+      },
+
+      drawerSettings: {
+        title: {
+          fr: "Paramètres",
+          en: `Settings`,
+        },
+        data: {
+          video: drawerSettings,
+          poster: drawerSettingsPoster,
+        },
+      },
+
+      customerWebsite: {
+        title: {
+          fr: `Site web pour les clients`,
+          en: `Website for customers`,
+        },
+        data: {
+          video: shotgunCustomerWebsite,
+          poster: shotgunCustomerWebsitePoster,
+        },
+      },
+
+      organizerWebsite: {
+        title: {
+          fr: `Site web pour les organisateurs d'évènements`,
+          en: `Website for events organizers`
+        },
+        data: {
+          video: shotgunOrganizerWebsite,
+          poster: shotgunOrganizerWebsitePoster,
+        },
+      }
     },
     // "mobileScreenshots": {},
     "feedback": {
