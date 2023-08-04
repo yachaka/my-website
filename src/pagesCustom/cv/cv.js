@@ -555,6 +555,18 @@ const MyDocument = ({
                 <Text style={styles.skill}>
                   MongoDB
                 </Text>
+
+                <Text style={styles.skill}>
+                  VueJS/Svelte/Angular
+                </Text>
+
+                <Text style={styles.skill}>
+                  Flutter
+                </Text>
+
+                <Text style={styles.skill}>
+                  C
+                </Text>
               </View>
             </View>
 
