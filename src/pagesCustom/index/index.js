@@ -67,6 +67,17 @@ class IndexPage extends PureComponent {
     };
   }
 
+  componentDidMount() {
+    console.log('hey')
+    const script = document.createElement("script");
+
+    script.src = "https://scripts.simpleanalyticscdn.com/latest.js";
+    script.async = true;
+    script.defer = true;
+
+    document.body.appendChild(script);
+  }
+
   onContactLinkClick = () => {
     window.openContact();
   }
@@ -191,11 +202,6 @@ class IndexPage extends PureComponent {
         </div>
         <Footer />
 
-        <div dangerouslySetInnerHTML={{
-          __html: `
-<script async defer src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
-<noscript><img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" referrerpolicy="no-referrer-when-downgrade" /></noscript>`
-        }}/>
       </LangContext.Provider>
     );
   }
