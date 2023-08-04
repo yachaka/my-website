@@ -549,6 +549,10 @@ const MyDocument = ({
                 </Text>
 
                 <Text style={styles.skill}>
+                  PHP
+                </Text>
+
+                <Text style={styles.skill}>
                   Python/Django
                 </Text>
 
