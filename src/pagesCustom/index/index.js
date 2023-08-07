@@ -71,7 +71,7 @@ class IndexPage extends PureComponent {
     console.log('hey')
     const script = document.createElement("script");
 
-    script.src = "https://scripts.simpleanalyticscdn.com/latest.js";
+    script.src = "https://external1.ilyeshermellin.dev/latest.js";
     script.async = true;
     script.defer = true;
 
