@@ -172,7 +172,8 @@ class IndexPage extends PureComponent {
             </div>
 
             {experiencesFinal.map(exp => {
-              const id = exp.slug ? exp.slug : exp.name;
+              let id = exp.slug ? exp.slug : exp.name;
+              id = id.replace(' ', '');
               return (
                 <ProjectFold
                   key={exp.name}

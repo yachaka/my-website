@@ -31,7 +31,7 @@
 
     .heroStatus {
       // box-shadow: 0.5em 0 0 #fff6db,-0.5em 0 0 #fff6db;
-      background-color: #91fc76;
+      background-color: #bfffae;
       // background-color: #F9ECC8;
       display: inline-block;
 
@@ -203,6 +203,10 @@
 
   #shotgunWork {
     @include work(rgb(193, 122, 255), .10);
+  }
+
+  #pierrefabreWork {
+    @include work(rgb(54, 59, 215), .10);
   }
 
   #chateaupercheWork {

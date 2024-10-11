@@ -57,7 +57,7 @@ export default {
     "color-fx-ratio": 0.70,
     name: "Shotgun",
     url: "https://shotgun.live/",
-    dates: [dayjs('2020-01-14'), dayjs('2023-09-01')],
+    dates: [dayjs('2020-01-14'), dayjs('2023-07-01')],
     "freelanceOrEmployee": "freelance",
     "technologiesUsed": ['React-Native', 'React', 'P2P exchanges', 'Bluetooth Low Energy', 'Ruby On Rails', 'Serverless', 'Swift/Objective-C', 'Java', 'SQLite', 'JavaScript', 'PostgreSQL', 'Redis'],
     "roleTitle": {
@@ -235,6 +235,305 @@ export default {
     },
   },
 
+  spendesk: {
+    "color": "#6100ff",
+    "name": "Spendesk",
+    "url": "https://www.spendesk.com/",
+    "dates": [dayjs('2016-10-10'), dayjs('2017-08-11')],
+    "freelanceOrEmployee": "employee",
+    "technologiesUsed": ['Node.js', 'React', 'React-Native', 'iOS/Swift', 'Android/Java', 'GraphQL', 'Relay', 'Webpack'],
+    "roleTitle": {
+      "fr": "Développeur fullstack JavaScript",
+      "en": "Fullstack JavaScript developper",
+    },
+    "productBrief": {
+      "fr": "Spendesk est une carte bancaire et une plateforme pour gérer les dépenses professionnelles.",
+      "en": "Spendesk is a company card and a platform to manage professional expenses.",
+    },
+    "myWorkSummaryText": {
+      "fr": "J'ai réalisé le développement initial de l'application mobile, parallèlement sur iOS et Android. <br/><br/>J'ai travaillé à l'amélioration de la plateforme dans sa globalité, plus précisement : le développement de nouvelles fonctionnalités seul ou en collaboration avec un autre développeur, la maintenance passant par la résolution de bugs, l'amélioration des aspects techniques de la plateforme (performance, propreté du code).",
+      "en": "I developed the initial development of the mobile application, in parallel on iOS and Android.<br/><br/>I worked on improving the platform in its entirety, more precisely: the development of new features alone or in collaboration with another developer, maintenance through the resolution of bugs, improvement of the technical aspects of the platform (performance, cleanliness of the code).",
+    },
+    "teamText": {
+      "fr": "J'ai d'abord travaillé au sein d'une équipe produit réduite : 1 chef de produit, et 2 autres développeurs (dont 1 lead). Via des recrutements fréquents, l'équipe s'est agrandie progressivement pour se constituer d'1 chef produit, 4 développeurs (dont 1 lead), 1 UX Designer et 1 Data Scientist. <br/><br/>J'échangeais également fréquemment directement avec l'équipe commerciale ou support client sur des problématiques spécifiques.",
+      "en": "I first worked in a small product team: 1 product manager, and 2 other developers (including 1 lead). Through frequent recruitments, the team has steadily grown to become inclusive of a product leader, 4 developers (including 1 lead), 1 UX Designer and 1 Data Scientist.<br/><br/>I also frequently exchanged directly with the sales team or customer support on specific issues.",
+    },
+    "keyWork": [
+      {
+        "fr": "Force de proposition technique. Livraison de nouvelles fonctionnalités, côté serveur et côté client. Avec React, Redux et Node.js",
+        "en": "Major implication in technical choices. Delivery of new features, fullstack, with React, Redux, and Node.js",
+      },
+      {
+        "fr": "Développement de l’application mobile initiale sur iOS/Android, avec React Native/GraphQL/Relay",
+        "en": "Initial development of the mobile application on iOS and Android, with React Native, GraphQL and Relay",
+      },
+      {
+        "fr": "9ème employé, l'entreprise grandit à 23 employés en 10 mois",
+        "en": "9th employee, the company grew to 23 employees within 10 months",
+      },
+    ],
+    "laptopScreenshots": {
+      requests: {
+        title: {
+          "fr": "Liste des requêtes de dépense",
+          "en": "List of expense requests",
+        },
+      },
+      spends: {
+        title: {
+          "fr": "Historique des dépenses de l'entreprise",
+          "en": "Expenses history",
+        },
+      },
+      cards: {
+        title: {
+          "fr": "Gestion d'une carte de paiement",
+          "en": "Payment card settings",
+        },
+      },
+      // cardOrder: {
+      //   title: {
+      //     "fr": "Commande d'une nouvelle carte de paiement",
+      //     "en": "New card order",
+      //   },
+      // },
+      members: {
+        title: {
+          "fr": "Gestion des membres et de leur droits",
+          "en": "Members admin",
+        },
+      },
+      // branches: {
+      //   title: {
+      //     "fr": "Plusieurs branches d'une même entreprise",
+      //     "en": "A company can have multiple branches",
+      //   },
+      // },
+    },
+    "mobileScreenshots": {
+      approve: {
+        title: {
+          "fr": "Autorisation d'une dépense",
+          "en": "Expense approval",
+        },
+        data: {
+          video: InAppApprovalVideo,
+          poster: InAppApprovalVideoPoster,
+        },
+      },
+      edit: {
+        title: {
+          "fr": "Édition d'un paiement",
+          "en": "Expense edition",
+        },
+        data: {
+          video: PaymentEditionVideo,
+          poster: PaymentEditionVideoPoster,
+        },
+      },
+      topUp: {
+        title: {
+          "fr": "Ajout de cash",
+          "en": "Card top up",
+        },
+        data: {
+          video: TopUpVideo,
+          poster: TopUpVideoPoster,
+        }
+      },
+      login: {
+        title: {
+          "fr": "Connexion",
+          "en": "Log in",
+        },
+        data: {
+          video: LoginVideo,
+          poster: LoginVideoPoster,
+        }
+      },
+    },
+    "feedback": {
+      "name": "Guilhem Bellion",
+      "email": "guilhem@spendesk.com",
+      "external": "https://www.linkedin.com/in/guilhembellion/",
+      "role": {
+        "fr": "CTO chez Spendesk",
+        "en": "CTO at Spendesk",
+      },
+      "text": {
+        "fr": `Ilyes a le don de conjuguer parfaitement créativité et pragmatisme !<br /><br />J'ai eu l'occasion de travailler étroitement avec lui pendant 10 mois chez Spendesk, durant lesquels il a participé avec succès à de nombreux projets. Il a notamment été intégralement responsable du développement et de la maintenance de notre application mobile en React Native, et a posé les bases de notre nouvelle API GraphQL. <br/><br/>Ilyes m'a impressionné par sa forte capacité d'adaptation et sa faculté à mettre en place des solutions globales, simples et efficaces pour répondre à des problématiques compliquées. Il a toujours fait preuve d'autonomie et a été force de proposition sur chaque projet qui lui a été confié.<br /><br />Son expertise technique et sa bonne humeur sont de vrais atouts dans une équipe !`,
+        "en": `Ilyes has the gift of perfectly combining creativity and pragmatism!<br/><br/>I had the opportunity to work closely with him for 10 months at Spendesk, during which he participated successfully in many projects. In particular, he was fully responsible for the development and maintenance of our React Native mobile application and laid the foundation for our new GraphQL API. <br/><br/>Ilyes impressed me with his strong adaptability and his ability to put in place global, simple and effective solutions to solve complicated issues. He has always demonstrated autonomy and has been suggesting solutions on each project entrusted to him.<br /><br />His technical expertise and his good mood are real assets in a team!`,
+      },
+      "shortText": {
+        "fr": `[...] Il a notamment été intégralement responsable du développement et de la maintenance de notre application mobile en React Native, [...].<br /> Ilyes m'a impressionné par sa forte capacité d'adaptation et sa faculté à mettre en place des solutions globales, simples et efficaces pour répondre à des problématiques compliquées. [...]`,
+        "en": `[...] In particular, he was fully responsible for the development and maintenance of our React Native mobile application and [...].<br />Ilyes impressed me with his strong adaptability and his ability to put in place global, simple and effective solutions to solve complicated issues. [...]`,
+      },
+    },
+  },
+
+  pierreFabre: {
+    color: "#0061a1",
+    "color-fx-ratio": 0.70,
+    name: "Pierre Fabre",
+    url: "https://www.pierre-fabre.com/fr",
+    dates: [dayjs('2023-10-14'), dayjs('2023-12-31')],
+    "freelanceOrEmployee": "freelance",
+    "technologiesUsed": ['React', 'Python', 'FastAPI', 'Denodo'],
+    "roleTitle": {
+      "fr": "Développeur fullstack senior",
+      "en": "Senior fullstack developper",
+    },
+    "productBrief": {
+      "fr": "Pierre Fabre est le second groupe producteur de produits dermo-pharmaceutique dans le monde.",
+      "en": "Pierre Fabre is the second group producing dermo-pharmaceutical products in the world.",
+    },
+    "myWorkSummaryText": {
+      "fr": "J'ai travaillé à la finalisation d'un catalogue interne, répertoriant les études et rapports des produits. Cet outil est utilisé par les employés pour mieux classer et comprendre les ventes, les tests pharmaceutiques, les analyses scientifiques ou encore les opérations logistiques à travers des documents classés.",
+      "en": "I worked on finalizing an internal catalog, listing product studies and reports. This tool is used by employees to better classify and understand sales, pharmaceutical tests, scientific analyses and logistics operations through classified documents.",
+    },
+    "teamText": {
+      fr: "J'ai travaillé dans une équipe composé de 4 développeur(se). Je suis arrivé à un stade avancé du projet, en renfort afin de finaliser les dernières fonctionalités et résoudre les derniers bugs.",
+      en: "I worked in a team of 4 developers. I arrived at an advanced stage of the project, as a back-up to finalize the last functionalities and resolve the last bugs.",
+    },
+    "keyWork": [
+      {
+        fr: "Recherches de documents sur plusieurs critères se combinant",
+        en: "Combine multiple criteria to search for documents",
+      },
+      {
+        fr: "Réduction des temps de chargement, interface utilisateur fluide",
+        en: "Reduced loading times, smooth user interface",
+      },
+      {
+        fr: `Travail avec des multiples sources de données, dont des serveurs API, des bases de données virtualisées et des messages queues`,
+        en: `Work with multiple data sources, including API servers, virtualized databases and message queues`
+      }
+    ],
+      login: {
+        title: {
+          "fr": "Chargement d'un évènement",
+          "en": "Loading an event",
+        },
+        "data": {
+          video: shotgunLoadEvent,
+          poster: shotgunLoadEventPoster,
+        }
+      },
+      scan: {
+        title: {
+          "fr": "Scan d'un ticket",
+          "en": "Scanning a ticket",
+        },
+        "data": {
+          video: shotgunScanTicket,
+          poster: shotgunScanTicketPoster,
+        }
+      },
+      guestlist: {
+        title: {
+          "fr": "Ajout d'un invité",
+          "en": "Adding a guest",
+        },
+        "data": {
+          video: shotgunAjoutGuestlistGuest,
+          poster: shotgunAjoutGuestlistGuestPoster,
+        }
+      },
+      search: {
+        title: {
+          "fr": "Recherche",
+          "en": "Search",
+        },
+        "data": {
+          video: shotgunSearch,
+          poster: shotgunSearchPoster,
+        }
+      },
+      entrances: {
+        title: {
+          "fr": "Scan par entrée, statistiques et historique de scan",
+          "en": "Scan per entrance, stats and scan history",
+        },
+        "data": {
+          video: shotgunScanningCountEntrances,
+          poster: shotgunScanningCountEntrancesPoster,
+        }
+      },
+
+      drawerOrdering: {
+        title: {
+          fr: "Commande de billets",
+          en: `Ordering tickets`,
+        },
+        data: {
+          video: drawerOrdering,
+          poster: drawerOrderingPoster,
+        },
+      },
+      
+      drawerPrinting: {
+        title: {
+          fr: "Impression des billets avec des imprimantes évènementielles",
+          en: `Printing tickets with events' tickets printers`,
+        },
+        data: {
+          video: drawerPrinting,
+          poster: drawerPrintingPoster,
+        },
+      },
+
+      drawerOrdersList: {
+        title: {
+          fr: "Liste des commandes",
+          en: `Orders list`,
+        },
+      },
+
+      drawerSalesStats: {
+        title: {
+          fr: "Statistiques de vente",
+          en: `Sales stats`,
+        },
+        data: {
+          video: drawerSalesStats,
+          poster: drawerSalesStatsPoster,
+        },
+      },
+
+      drawerSettings: {
+        title: {
+          fr: "Paramètres",
+          en: `Settings`,
+        },
+        data: {
+          video: drawerSettings,
+          poster: drawerSettingsPoster,
+        },
+      },
+
+      customerWebsite: {
+        title: {
+          fr: `Site web pour les clients`,
+          en: `Website for customers`,
+        },
+        data: {
+          video: shotgunCustomerWebsite,
+          poster: shotgunCustomerWebsitePoster,
+        },
+      },
+
+      organizerWebsite: {
+        title: {
+          fr: `Site web pour les organisateurs d'évènements`,
+          en: `Website for events organizers`
+        },
+        data: {
+          video: shotgunOrganizerWebsite,
+          poster: shotgunOrganizerWebsitePoster,
+        },
+      }
+  },
+
   konbini: {
     "color": "#F52635",
     "color-fx-ratio": 0.70,
@@ -375,142 +674,6 @@ export default {
   //     },
   //   },
   // },
-
-  spendesk: {
-    "color": "#6100ff",
-    "name": "Spendesk",
-    "url": "https://www.spendesk.com/",
-    "dates": [dayjs('2016-10-10'), dayjs('2017-08-11')],
-    "freelanceOrEmployee": "employee",
-    "technologiesUsed": ['Node.js', 'React', 'React-Native', 'iOS/Swift', 'Android/Java', 'GraphQL', 'Relay', 'Webpack'],
-    "roleTitle": {
-      "fr": "Développeur fullstack JavaScript",
-      "en": "Fullstack JavaScript developper",
-    },
-    "productBrief": {
-      "fr": "Spendesk est une carte bancaire et une plateforme pour gérer les dépenses professionnelles.",
-      "en": "Spendesk is a company card and a platform to manage professional expenses.",
-    },
-    "myWorkSummaryText": {
-      "fr": "J'ai réalisé le développement initial de l'application mobile, parallèlement sur iOS et Android. <br/><br/>J'ai travaillé à l'amélioration de la plateforme dans sa globalité, plus précisement : le développement de nouvelles fonctionnalités seul ou en collaboration avec un autre développeur, la maintenance passant par la résolution de bugs, l'amélioration des aspects techniques de la plateforme (performance, propreté du code).",
-      "en": "I developed the initial development of the mobile application, in parallel on iOS and Android.<br/><br/>I worked on improving the platform in its entirety, more precisely: the development of new features alone or in collaboration with another developer, maintenance through the resolution of bugs, improvement of the technical aspects of the platform (performance, cleanliness of the code).",
-    },
-    "teamText": {
-      "fr": "J'ai d'abord travaillé au sein d'une équipe produit réduite : 1 chef de produit, et 2 autres développeurs (dont 1 lead). Via des recrutements fréquents, l'équipe s'est agrandie progressivement pour se constituer d'1 chef produit, 4 développeurs (dont 1 lead), 1 UX Designer et 1 Data Scientist. <br/><br/>J'échangeais également fréquemment directement avec l'équipe commerciale ou support client sur des problématiques spécifiques.",
-      "en": "I first worked in a small product team: 1 product manager, and 2 other developers (including 1 lead). Through frequent recruitments, the team has steadily grown to become inclusive of a product leader, 4 developers (including 1 lead), 1 UX Designer and 1 Data Scientist.<br/><br/>I also frequently exchanged directly with the sales team or customer support on specific issues.",
-    },
-    "keyWork": [
-      {
-        "fr": "Force de proposition technique. Livraison de nouvelles fonctionnalités, côté serveur et côté client. Avec React, Redux et Node.js",
-        "en": "Major implication in technical choices. Delivery of new features, fullstack, with React, Redux, and Node.js",
-      },
-      {
-        "fr": "Développement de l’application mobile initiale sur iOS/Android, avec React Native/GraphQL/Relay",
-        "en": "Initial development of the mobile application on iOS and Android, with React Native, GraphQL and Relay",
-      },
-      {
-        "fr": "9ème employé, l'entreprise grandit à 23 employés en 10 mois",
-        "en": "9th employee, the company grew to 23 employees within 10 months",
-      },
-    ],
-    "laptopScreenshots": {
-      requests: {
-        title: {
-          "fr": "Liste des requêtes de dépense",
-          "en": "List of expense requests",
-        },
-      },
-      spends: {
-        title: {
-          "fr": "Historique des dépenses de l'entreprise",
-          "en": "Expenses history",
-        },
-      },
-      cards: {
-        title: {
-          "fr": "Gestion d'une carte de paiement",
-          "en": "Payment card settings",
-        },
-      },
-      // cardOrder: {
-      //   title: {
-      //     "fr": "Commande d'une nouvelle carte de paiement",
-      //     "en": "New card order",
-      //   },
-      // },
-      members: {
-        title: {
-          "fr": "Gestion des membres et de leur droits",
-          "en": "Members admin",
-        },
-      },
-      // branches: {
-      //   title: {
-      //     "fr": "Plusieurs branches d'une même entreprise",
-      //     "en": "A company can have multiple branches",
-      //   },
-      // },
-    },
-    "mobileScreenshots": {
-      approve: {
-        title: {
-          "fr": "Autorisation d'une dépense",
-          "en": "Expense approval",
-        },
-        data: {
-          video: InAppApprovalVideo,
-          poster: InAppApprovalVideoPoster,
-        },
-      },
-      edit: {
-        title: {
-          "fr": "Édition d'un paiement",
-          "en": "Expense edition",
-        },
-        data: {
-          video: PaymentEditionVideo,
-          poster: PaymentEditionVideoPoster,
-        },
-      },
-      topUp: {
-        title: {
-          "fr": "Ajout de cash",
-          "en": "Card top up",
-        },
-        data: {
-          video: TopUpVideo,
-          poster: TopUpVideoPoster,
-        }
-      },
-      login: {
-        title: {
-          "fr": "Connexion",
-          "en": "Log in",
-        },
-        data: {
-          video: LoginVideo,
-          poster: LoginVideoPoster,
-        }
-      },
-    },
-    "feedback": {
-      "name": "Guilhem Bellion",
-      "email": "guilhem@spendesk.com",
-      "external": "https://www.linkedin.com/in/guilhembellion/",
-      "role": {
-        "fr": "CTO chez Spendesk",
-        "en": "CTO at Spendesk",
-      },
-      "text": {
-        "fr": `Ilyes a le don de conjuguer parfaitement créativité et pragmatisme !<br /><br />J'ai eu l'occasion de travailler étroitement avec lui pendant 10 mois chez Spendesk, durant lesquels il a participé avec succès à de nombreux projets. Il a notamment été intégralement responsable du développement et de la maintenance de notre application mobile en React Native, et a posé les bases de notre nouvelle API GraphQL. <br/><br/>Ilyes m'a impressionné par sa forte capacité d'adaptation et sa faculté à mettre en place des solutions globales, simples et efficaces pour répondre à des problématiques compliquées. Il a toujours fait preuve d'autonomie et a été force de proposition sur chaque projet qui lui a été confié.<br /><br />Son expertise technique et sa bonne humeur sont de vrais atouts dans une équipe !`,
-        "en": `Ilyes has the gift of perfectly combining creativity and pragmatism!<br/><br/>I had the opportunity to work closely with him for 10 months at Spendesk, during which he participated successfully in many projects. In particular, he was fully responsible for the development and maintenance of our React Native mobile application and laid the foundation for our new GraphQL API. <br/><br/>Ilyes impressed me with his strong adaptability and his ability to put in place global, simple and effective solutions to solve complicated issues. He has always demonstrated autonomy and has been suggesting solutions on each project entrusted to him.<br /><br />His technical expertise and his good mood are real assets in a team!`,
-      },
-      "shortText": {
-        "fr": `[...] Il a notamment été intégralement responsable du développement et de la maintenance de notre application mobile en React Native, [...].<br /> Ilyes m'a impressionné par sa forte capacité d'adaptation et sa faculté à mettre en place des solutions globales, simples et efficaces pour répondre à des problématiques compliquées. [...]`,
-        "en": `[...] In particular, he was fully responsible for the development and maintenance of our React Native mobile application and [...].<br />Ilyes impressed me with his strong adaptability and his ability to put in place global, simple and effective solutions to solve complicated issues. [...]`,
-      },
-    },
-  },
 
   habx: {
     "color": "#ffce00",

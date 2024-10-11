@@ -38,9 +38,13 @@ function ProjectFold({
   const [isLightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxInitialIndex, setLightboxInitialIndex] = useState(0);
   let monthDuration;
+  let monthStr;
   let startYear;
   let endYear;
   let yearStr;
+
+  const lang = useContext(LangContext);
+  const t = i18n(lang, merge(specificTranslations, projectTranslations));
 
   if (typeof dates[0][0] === 'object') {
     startYear = dates[0][0].year();
@@ -48,6 +52,10 @@ function ProjectFold({
     monthDuration = dates.reduce((total, entry) => {
       return total + entry[1].diff(entry[0], 'month', true);
     }, 0);
+
+    if (monthDuration > 11) {
+
+    }
   } else {
     startYear = dates[0].year();
     endYear = dates[1].year();
@@ -58,13 +66,14 @@ function ProjectFold({
     ? startYear
     : `${startYear} → ${endYear}`;
   monthDuration = Math.round(monthDuration);
+  monthStr = monthDuration > 11
+    ? `${Math.floor(monthDuration / 12)} ${t('years')}`
+    : `${monthDuration} ${monthDuration > 1 ? t('months') : t('month')}`
   // showScreen = (device, slide) => {
   //   smoothScrollTo(this.mockupsDivRef.offsetTop - 100, 300)
   //   setTimeout(() => this[`${device}Ref`].changeScreen(slide), 200)
   // }
 
-  const lang = useContext(LangContext);
-  const t = i18n(lang, merge(specificTranslations, projectTranslations));
 
   let statusStr;
 
@@ -118,7 +127,7 @@ function ProjectFold({
         <h2 class={s.title}>
           <a href={url} class="external-link" target="_blank">{name}</a>
           &nbsp;- {yearStr}
-          , {monthDuration} {monthDuration > 1 ? t('months') : t('month')}
+          , {monthStr}
           {/* <span class="muted"> - {statusStr}</span> */}
         </h2>
 

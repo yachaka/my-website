@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   highlightTextBold: {
-    fontWeight: 700,
+    // fontWeight: 700,
     letterSpacing: '0.2',
   },
   highlightLink: {
@@ -460,7 +460,7 @@ const MyDocument = ({
                 </Text>
 
                 <Text style={styles.skill}>
-                  AWS/GCP
+                  AWS / GCP / Lambda or Instance
                 </Text>
 
                 <Text style={styles.skill}>
@@ -480,39 +480,23 @@ const MyDocument = ({
                 </Text>
 
                 <Text style={styles.skill}>
-                  React-Native mobile apps
+                  React-Native
                 </Text>
 
                 <Text style={styles.skill}>
-                  Relay/Apollo
+                  Typescript
                 </Text>
 
                 <Text style={styles.skill}>
-                  Typescript/Flow
+                  PostGres / MySQL
                 </Text>
 
                 <Text style={styles.skill}>
-                  Git
+                  Redis / Memcache
                 </Text>
 
                 <Text style={styles.skill}>
-                  HTML/CSS
-                </Text>
-
-                <Text style={styles.skill}>
-                  PostGres/MySQL/SQLite
-                </Text>
-
-                <Text style={styles.skill}>
-                  Redis
-                </Text>
-
-                <Text style={styles.skill}>
-                  RabbitMQ/SQS
-                </Text>
-
-                <Text style={styles.skill}>
-                  IoT
+                  RabbitMQ / SQS / Kafka
                 </Text>
 
                 <Text style={styles.skill}>
@@ -533,11 +517,11 @@ const MyDocument = ({
                 </View>
 
                 <Text style={styles.skill}>
-                  Ruby/Rails
+                  Ruby / Rails
                 </Text>
 
                 <Text style={styles.skill}>
-                  Swift/Objective-C
+                  Swift / Objective-C
                 </Text>
 
                 <Text style={styles.skill}>
@@ -553,7 +537,7 @@ const MyDocument = ({
                 </Text>
 
                 <Text style={styles.skill}>
-                  Python/Django
+                  Python / Django / FastAPI
                 </Text>
 
                 <Text style={styles.skill}>
@@ -561,7 +545,7 @@ const MyDocument = ({
                 </Text>
 
                 <Text style={styles.skill}>
-                  VueJS/Svelte/Angular
+                  VueJS / Svelte / Angular
                 </Text>
 
                 <Text style={styles.skill}>
@@ -579,7 +563,7 @@ const MyDocument = ({
           <View style={styles.contactInfos}>
             <View style={styles.contactInfoUnit}>
               <Image style={[styles.contactInfoUnit_icon]} src={phoneIcon} />
-              <Text style={styles.contactInfoUnit_text}>+33771605397</Text>
+              <Text style={styles.contactInfoUnit_text}>+33 7 51 36 03 03</Text>
             </View>
 
             <View style={styles.contactInfoUnit}>
@@ -596,11 +580,6 @@ const MyDocument = ({
             <View style={styles.contactInfoUnit}>
               <Image style={[styles.contactInfoUnit_icon]} src={linkedInIcon} />
               <ExternalLink style={styles.contactInfoUnit_text} src="https://www.linkedin.com/in/ilyeshermellin/">{t('hero.linkedinText')}</ExternalLink>
-            </View>
-
-            <View style={styles.contactInfoUnit}>
-              <Image style={[styles.contactInfoUnit_icon]} src={githubIcon} />
-              <ExternalLink style={styles.contactInfoUnit_text} src="https://github.com/yachaka">GitHub @yachaka</ExternalLink>
             </View>
 
             <View style={styles.contactInfoUnit}>
@@ -630,12 +609,20 @@ const MyDocument = ({
             <View style={styles.highlight}>
               <BaseText style={styles.highlightText}>
                 <BaseText style={styles.highlightTextBold}>
-                  {t('highlights.2')}{"\n"}
+                  {t('highlights.2')}
                 </BaseText>&nbsp;
             
-                <ExternalLink style={styles.highlightLink} src="https://stackoverflow.com/a/44568365/3076424">
+                {/* <ExternalLink style={styles.highlightLink} src="https://stackoverflow.com/a/44568365/3076424">
                   {t('highlights.2-linkText')}
-                </ExternalLink>
+                </ExternalLink> */}
+              </BaseText>
+            </View>
+
+            <View style={styles.highlight}>
+              <BaseText style={styles.highlightText}>
+                <BaseText style={styles.highlightTextBold}>
+                  {t('highlights.3')}
+                </BaseText>
               </BaseText>
             </View>
           </View>
