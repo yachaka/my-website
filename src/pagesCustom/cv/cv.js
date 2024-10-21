@@ -205,6 +205,19 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     justifyContent: 'space-between',
   },
+  technologiesUsed: {
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+    flexWrap: 'wrap',
+  },
+  techUsedBox: {
+    backgroundColor: '#d9ebfc',
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    paddingVertical: 5,
+    marginRight: 8,
+    marginBottom: 8,
+  },
   experienceSummary: {
     marginBottom: 8,
     fontSize: 12,
@@ -326,6 +339,7 @@ const Experience = ({
   summary,
 
   experienceRecommendation,
+  technologiesUsed,
   lang,
 }) => (
   <View style={styles.experience}>
@@ -338,6 +352,16 @@ const Experience = ({
       {date}
       </BaseText>
     </View>
+
+    {technologiesUsed && (
+      <View style={styles.technologiesUsed}>
+        {technologiesUsed.map(tech => (
+          <View style={styles.techUsedBox}>
+            <BaseText>{tech}</BaseText>
+          </View>
+        ))}
+      </View>
+    )}
 
     {summary && (
       <View style={styles.experienceSummary}>
@@ -460,6 +484,10 @@ const MyDocument = ({
                 </Text>
 
                 <Text style={styles.skill}>
+                  Python
+                </Text>
+
+                <Text style={styles.skill}>
                   AWS / GCP / Lambda or Instance
                 </Text>
 
@@ -537,10 +565,6 @@ const MyDocument = ({
                 </Text>
 
                 <Text style={styles.skill}>
-                  Python / Django / FastAPI
-                </Text>
-
-                <Text style={styles.skill}>
                   MongoDB
                 </Text>
 
@@ -550,10 +574,6 @@ const MyDocument = ({
 
                 <Text style={styles.skill}>
                   Flutter
-                </Text>
-
-                <Text style={styles.skill}>
-                  C
                 </Text>
               </View>
             </View>
@@ -655,6 +675,7 @@ const MyDocument = ({
                   (exp.keyWork || []).map(k => k[lang])
                 }
                 experienceRecommendation={exp.feedback}
+                technologiesUsed={exp.technologiesUsed}
                 color={exp.color}
                 colorFxRatio={colorFxRatio}
               />

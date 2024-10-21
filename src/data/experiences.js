@@ -59,7 +59,7 @@ export default {
     url: "https://shotgun.live/",
     dates: [dayjs('2020-01-14'), dayjs('2023-07-01')],
     "freelanceOrEmployee": "freelance",
-    "technologiesUsed": ['React-Native', 'React', 'P2P exchanges', 'Bluetooth Low Energy', 'Ruby On Rails', 'Serverless', 'Swift/Objective-C', 'Java', 'SQLite', 'JavaScript', 'PostgreSQL', 'Redis'],
+    "technologiesUsed": ['Python', 'React-Native', 'React', 'P2P exchanges', 'Bluetooth Low Energy', 'Ruby', 'Serverless', 'Swift/Objective-C', 'Java', 'SQLite', 'JavaScript', 'PostgreSQL', 'Redis'],
     "roleTitle": {
       "fr": "Développeur fullstack JavaScript senior",
       "en": "Senior fullstack javascript developper",
@@ -378,7 +378,7 @@ export default {
     url: "https://www.pierre-fabre.com/fr",
     dates: [dayjs('2023-10-14'), dayjs('2023-12-31')],
     "freelanceOrEmployee": "freelance",
-    "technologiesUsed": ['React', 'Python', 'FastAPI', 'Denodo'],
+    "technologiesUsed": ['React', 'Python', 'FastAPI', 'Denodo', 'MongoDB', 'Transformation de données'],
     "roleTitle": {
       "fr": "Développeur fullstack senior",
       "en": "Senior fullstack developper",
