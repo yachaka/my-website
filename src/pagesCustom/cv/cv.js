@@ -638,13 +638,13 @@ const MyDocument = ({
               </BaseText>
             </View>
 
-            <View style={styles.highlight}>
+            {/*<View style={styles.highlight}>
               <BaseText style={styles.highlightText}>
                 <BaseText style={styles.highlightTextBold}>
                   {t('highlights.3')}
                 </BaseText>
               </BaseText>
-            </View>
+            </View>*/}
           </View>
 
           <H2 style={styles.h2}>{t('workTitle')}</H2>
