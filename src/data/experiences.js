@@ -43,10 +43,17 @@ import shotgunCustomerWebsite from './shotgun/customer-website.mp4';
 import shotgunCustomerWebsitePoster from './shotgun/customer-website.png';
 import shotgunOrganizerWebsite from './shotgun/organizer-website.mp4';
 import shotgunOrganizerWebsitePoster from './shotgun/organizer-website.png';
+import shotgunCustomerWebsiteSearch from './shotgun/web client/recherche evenements.png';
+import shotgunCustomerWebsiteArtist from './shotgun/web client/profil artiste.png';
+import shotgunCustomerWebsiteEvent from './shotgun/web client/page evenement.png';
+import shotgunOrganizerWebsiteCashback from './shotgun/web client/screenshot smartboard cashback.png';
+import shotgunOrganizerWebsiteTickets from './shotgun/web client/screenshot smartboard tickets.png';
 
 import chateauPercheVideo from './chateau-perche/home.mp4';
 import chateauPercheVideoPoster from './chateau-perche/home.png';
 
+console.log('\n\n\n' + shotgunCustomerWebsiteSearch + '\n\n\n'
+)
 /*
  * Lists all my professionnal experiences
  */
@@ -91,6 +98,63 @@ export default {
       }
     ],
     "mobileScreenshots": {
+      customerWebsiteSearch: {
+        title: {
+          fr: `Site web pour les clients`,
+          en: `Website for customers`,
+        },
+        data: shotgunCustomerWebsiteSearch,
+      },
+      customerWebsiteArtist: {
+        title: {
+          fr: `Site web pour les clients`,
+          en: `Website for customers`,
+        },
+        data: shotgunCustomerWebsiteArtist,
+      },
+      customerWebsiteEvent: {
+        title: {
+          fr: `Site web pour les clients`,
+          en: `Website for customers`,
+        },
+        data: shotgunCustomerWebsiteEvent,
+      },
+      customerWebsiteVideo: {
+        title: {
+          fr: `Site web pour les clients`,
+          en: `Website for customers`,
+        },
+        data: {
+          video: shotgunCustomerWebsite,
+          poster: shotgunCustomerWebsitePoster,
+        },
+      },
+
+      organizerWebsiteTickets: {
+        title: {
+          fr: `Site web pour les organisateurs d'évènements`,
+          en: `Website for organizers`,
+        },
+        data: shotgunOrganizerWebsiteTickets,
+      },
+      organizerWebsiteCashback: {
+        title: {
+          fr: `Site web pour les organisateurs d'évènements`,
+          en: `Website for organizers`,
+        },
+        data: shotgunOrganizerWebsiteCashback,
+      },
+      organizerWebsiteVideo: {
+        title: {
+          fr: `Site web pour les organisateurs d'évènements`,
+          en: `Website for events organizers`
+        },
+        data: {
+          video: shotgunOrganizerWebsite,
+          poster: shotgunOrganizerWebsitePoster,
+        },
+      },
+
       login: {
         title: {
           "fr": "Chargement d'un évènement",
@@ -192,28 +256,6 @@ export default {
           poster: drawerSettingsPoster,
         },
       },
-
-      customerWebsite: {
-        title: {
-          fr: `Site web pour les clients`,
-          en: `Website for customers`,
-        },
-        data: {
-          video: shotgunCustomerWebsite,
-          poster: shotgunCustomerWebsitePoster,
-        },
-      },
-
-      organizerWebsite: {
-        title: {
-          fr: `Site web pour les organisateurs d'évènements`,
-          en: `Website for events organizers`
-        },
-        data: {
-          video: shotgunOrganizerWebsite,
-          poster: shotgunOrganizerWebsitePoster,
-        },
-      }
     },
     // "mobileScreenshots": {},
     "feedback": {

@@ -101,7 +101,13 @@ function ProjectFold({
 
   const slides = useMemo(() => {
     return allMedias.reduce((arr, o, index, origArr) => {
-      if (o.data.images) {
+      if (typeof o.data === 'string') {
+        console.log('GOT SRC STRING', o.data)
+        arr.push({
+          src: o.data,
+          description: `(${index + 1} / ${origArr.length}) ` + o.title[lang],
+        })
+      } else if (o.data.images) {
         arr.push({
           src: o.data.images.fallback.src,
           description: `(${index + 1} / ${origArr.length}) ` + o.title[lang],
@@ -140,7 +146,19 @@ function ProjectFold({
         {allMedias.length > 0 && (
           <div class={s.galleryDemo}>
             {allMedias.map((o, index) => {
-              if (o.data.images) {
+              if (typeof o.data === 'string') {
+                return (
+                  <a
+                    href="javascript:;"
+                    class={s.galleryDemoItem}
+                    onClick={() => {
+                      setLightboxOpen(true);
+                      setLightboxInitialIndex(index);
+                    }}>
+                    <img src={o.data} class={s.galleryDemoItem_img} />
+                  </a>
+                )
+              } else if (o.data.images) {
                 return (
                   <a
                     href="javascript:;"
