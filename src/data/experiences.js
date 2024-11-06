@@ -418,7 +418,7 @@ export default {
     "color-fx-ratio": 0.70,
     name: "Pierre Fabre",
     url: "https://www.pierre-fabre.com/fr",
-    dates: [dayjs('2023-10-14'), dayjs('2024-06-30')],
+    dates: [dayjs('2023-10-14'), dayjs('2023-12-31')],
     "freelanceOrEmployee": "freelance",
     "technologiesUsed": ['React', 'Python', 'FastAPI', 'Denodo', 'MongoDB', 'Transformation de données'],
     "roleTitle": {
