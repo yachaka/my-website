@@ -343,25 +343,27 @@ const Experience = ({
   lang,
 }) => (
   <View style={styles.experience}>
-    <View style={[styles.experienceHeader, { backgroundColor: '#d9ebfc' }]} wrap={false}>
-      <BaseText style={[styles.experienceHeadline]}>
-        {title}
-      </BaseText>
+    <View wrap={false}>
+      <View style={[styles.experienceHeader, { backgroundColor: '#d9ebfc' }]} wrap={false}>
+        <BaseText style={[styles.experienceHeadline]}>
+          {title}
+        </BaseText>
 
-      <BaseText style={styles.experienceDate}>
-      {date}
-      </BaseText>
-    </View>
-
-    {technologiesUsed && (
-      <View style={styles.technologiesUsed}>
-        {technologiesUsed.map(tech => (
-          <View style={styles.techUsedBox}>
-            <BaseText>{tech}</BaseText>
-          </View>
-        ))}
+        <BaseText style={styles.experienceDate}>
+        {date}
+        </BaseText>
       </View>
-    )}
+
+      {technologiesUsed && (
+        <View style={styles.technologiesUsed}>
+          {technologiesUsed.map(tech => (
+            <View style={styles.techUsedBox}>
+              <BaseText>{tech}</BaseText>
+            </View>
+          ))}
+        </View>
+      )}
+    </View>
 
     {summary && (
       <View style={styles.experienceSummary}>
